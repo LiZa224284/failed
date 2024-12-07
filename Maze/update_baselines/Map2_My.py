@@ -144,7 +144,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="TrapMaze_1200",  
-        name='MyMethod_no_failed_demos',
+        name='MyMethod_no_failed_demos_org',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -254,6 +254,7 @@ if __name__ == "__main__":
         with torch.no_grad():
             pseudo_reward = reward_net(state_tensor)
             pseudo_reward = pseudo_reward.cpu().numpy()
+            pseudo_reward += reward 
         replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
 
         '''
@@ -359,10 +360,10 @@ if __name__ == "__main__":
                 optimizer.step()
                 print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
 
-            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid/mid_reward_{t+1}.pth'
+            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid2/mid_reward_{t+1}.pth'
             torch.save(reward_net.state_dict(), save_path)
 
-            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid/my_map2_rewardnet_{t+1}.png"
+            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid2/my_map2_rewardnet_{t+1}.png"
             visualize_bcirl_reward_function(
                 reward_net_path=save_path,
                 state_dim=state_dim,

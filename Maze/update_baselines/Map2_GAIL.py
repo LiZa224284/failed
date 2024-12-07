@@ -15,10 +15,10 @@ import torch.optim as optim
 import numpy as np
 from collections import deque
 import random
-import matplotlib.pyplot as plts
+import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
 
-success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/Map2/all_success_demos_1_5.pkl'
+success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos.pkl'
 failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
 
 with open(success_demo_path, 'rb') as f:
@@ -64,10 +64,59 @@ class Discriminator(nn.Module):
         x = torch.cat([state, action], 1)
         return self.net(x)
 
+def construct_obs(achieved_goal):
+    observation = np.zeros(4)  # 初始化 observation
+    observation[:2] = achieved_goal  # 前两维为 achieved_goal
+    observation[2:] = [0, 0]  # 后两维为 action，固定为 (0, 0)
+
+    obs_dict = {
+        "observation": np.array(observation),
+        "achieved_goal": np.array(achieved_goal),
+        "desired_goal": np.array([0, 0]),  # 固定为 (0, 0)
+    }
+    obs_array = np.concatenate([obs_dict[key].flatten() for key in sorted(obs_dict.keys())])
+    return np.expand_dims(obs_array, axis=0)  # 增加 batch 维度
+# 可视化 BC-IRL 奖励函数
+def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, device, figure_save_path):
+    # 加载训练好的 Reward Network
+    reward_net = Discriminator(state_dim=8, action_dim=2).to(device)
+    reward_net.load_state_dict(torch.load(reward_net_path, map_location=device))
+    reward_net.eval()
+
+    # 定义状态范围（例如 x 和 y 坐标）
+    x_min, x_max = -2.5, 2.5
+    y_min, y_max = -2, 2
+
+    # 创建网格
+    x = np.linspace(x_min, x_max, 100)
+    y = np.linspace(y_min, y_max, 100)
+    xx, yy = np.meshgrid(x, y)
+
+    # 构造 achieved_goal
+    achieved_goals = np.c_[xx.ravel(), yy.ravel()]  # 网格点作为 achieved_goal
+
+    # 构造 observation
+    obs_list = [construct_obs(achieved_goal) for achieved_goal in achieved_goals]
+    obs_tensor = torch.tensor(np.vstack(obs_list), dtype=torch.float32).to(device)
+    actions_tensor = torch.zeros((obs_tensor.shape[0], action_dim), dtype=torch.float32).to(device)
+    # 计算奖励
+    with torch.no_grad():
+        rewards = compute_gail_reward(obs_tensor,actions_tensor)
+        rewards = rewards.cpu().numpy().reshape(xx.shape)  # 将结果移回 CPU
+    # 绘制奖励函数
+    plt.figure(figsize=(8, 6))
+    plt.contourf(xx, yy, rewards, levels=50, cmap="viridis")
+    plt.colorbar(label="BC-IRL Reward")
+    plt.title("BC-IRL Reward Function Visualization")
+    plt.xlabel("State Dimension 1")
+    plt.ylabel("State Dimension 2")
+    plt.savefig(figure_save_path)
+    plt.close()
+
 if __name__ == "__main__":
 
     wandb.init(
-        project="TrapMaze_1200_map2_test",  
+        project="TrapMaze_1200",  
         name='GAIL',
         config={
             "batch_size": 256,
@@ -112,7 +161,7 @@ if __name__ == "__main__":
 
     batch_size = 512
     # episodes = int(5e6)
-    max_timsteps = int(2e4)
+    max_timsteps = int(300e100) #int(2e4)
     start_timesteps = 100 #int(25e3)
     episode_timesteps = 0
     episode_reward = 0
@@ -182,7 +231,10 @@ if __name__ == "__main__":
             episode_timesteps = 0
             episode_num += 1 
 
-            # Train Discriminator
+        # Train Discriminator
+        if (t+1) % 3000 == 1:
+
+            disc_epochs = 200
             for _ in range(disc_epochs):
                 # Sample from Generator(Actor)
                 gen_states, gen_actions, rewards, next_states, done_bool = replay_buffer.sample(batch_size=512)
@@ -207,6 +259,18 @@ if __name__ == "__main__":
                 disc_loss.backward()
                 disc_optimizer.step()
                 wandb.log({"Discriminator Loss": disc_loss})
+
+            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/GAIL_models/mid/mid_reward_{t+1}.pth'
+            torch.save(discriminator.state_dict(), save_path)
+
+            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/GAIL_models/mid/my_map2_rewardnet_{t+1}.png"
+            visualize_bcirl_reward_function(
+                reward_net_path=save_path,
+                state_dim=state_dim,
+                action_dim=action_dim,
+                device=device,
+                figure_save_path=fig_save_path
+            )
 
     
     wandb.finish()

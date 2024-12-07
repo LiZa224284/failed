@@ -41,10 +41,10 @@ def extract_obs_and_actions(demos):
 expert_states, expert_actions = extract_obs_and_actions(success_demos)
 
 
-def compute_maxent_reward(state, action):
-    with torch.no_grad():
-        reward = reward_net(state_tensor, action_tensor)
-    return reward
+# def compute_bcirl_reward(state, action):
+#     with torch.no_grad():
+#         reward = reward_net(state_tensor, action_tensor)
+#     return reward
 
 
 class RewardNetwork(nn.Module):
@@ -194,7 +194,7 @@ if __name__ == "__main__":
 
         state_tensor = torch.from_numpy(state).float().to(device).unsqueeze(0)
         action_tensor = torch.from_numpy(action).float().to(device).unsqueeze(0)
-        pseudo_reward = compute_maxent_reward(state_tensor, action_tensor)
+        pseudo_reward = compute_bcirl_reward(reward_net, state_tensor, action_tensor)
         print(f'pseudo_r: {pseudo_reward}')
         pseudo_reward = torch.clamp(pseudo_reward, min=-10, max=10)
         pseudo_reward = pseudo_reward.cpu().numpy()
@@ -235,24 +235,26 @@ if __name__ == "__main__":
             episode_timesteps = 0
             episode_num += 1 
 
-            if (t+1) % 3000 == 0:
-                for _ in range(reward_epochs):
-                    idx = np.random.choice(len(expert_states), batch_size)
-                    expert_states_batch = torch.FloatTensor(expert_states[idx]).to(device)
-                    expert_actions_batch = torch.FloatTensor(expert_actions[idx]).to(device)
+        if (t+1) % 3000 == 0:
 
-                    # 策略动作预测
-                    pred_actions = td3_agent.actor(expert_states_batch)
+            reward_epochs = 200
+            for _ in range(reward_epochs):
+                idx = np.random.choice(len(expert_states), batch_size)
+                expert_states_batch = torch.FloatTensor(expert_states[idx]).to(device)
+                expert_actions_batch = torch.FloatTensor(expert_actions[idx]).to(device)
 
-                    # 行为克隆损失
-                    bc_loss = ((pred_actions - expert_actions_batch) ** 2).mean()
-                    reward_optimizer.zero_grad()
-                    bc_loss.backward()
-                    reward_optimizer.step()
+                # 策略动作预测
+                pred_actions = td3_agent.actor(expert_states_batch)
 
-                    wandb.log({"Discriminator Loss": bc_loss})
+                # 行为克隆损失
+                bc_loss = ((pred_actions - expert_actions_batch) ** 2).mean()
+                reward_optimizer.zero_grad()
+                bc_loss.backward()
+                reward_optimizer.step()
+
+                wandb.log({"Discriminator Loss": bc_loss})
             
-        if (t+1) % 1000 == 0:
+
             save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid/mid_reward_{t+1}.pth'
             torch.save(reward_net.state_dict(), save_path)
 
