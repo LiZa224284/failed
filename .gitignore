@@ -1,6 +1,8 @@
 *.pth
 *.zip
+*.TXT
 *.txt
+!requirements.txt
 *.mp4
 wandb/
 *.png
