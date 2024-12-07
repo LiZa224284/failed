@@ -1,0 +1,15 @@
+program: /files1/Yuxuan_Li/failed_demos/Experiments/Robots/PandaPush/PandaPush_KR_TQC_expert_args.py
+name: sweep_expert_KR_SFD_TQC
+method: grid
+metric:
+  goal: maximize
+  name: old_rewards
+parameters:
+  exp_k:
+    value: 1
+  kernel_bandwidth:
+    values: [ 0.3, 0.4, 0.5]
+  n_s_demos:
+    value: 500
+  n_f_demos:
+    value: 500

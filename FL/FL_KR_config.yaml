@@ -1,0 +1,12 @@
+program: /files1/Yuxuan_Li/failed_demos/Experiments/FL/FL_KR_SFD_arg.py
+name: sweep_KR_SFD_exp_bw
+method: bayes
+metric:
+  goal: maximize
+  name: old_rewards
+parameters:
+  exp_k:
+    values: [1, 2, 3]
+  kernel_bandwidth:
+    min: 0.1
+    max: 0.8

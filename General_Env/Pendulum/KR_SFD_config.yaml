@@ -1,0 +1,14 @@
+program: /files1/Yuxuan_Li/failed_demos/Experiments/General_Env/Pendulum/Pendulum_KR_SFD_args.py
+name: sweep_KR_SFD_exp_bw
+method: bayes
+metric:
+  goal: maximize
+  name: old_rewards
+parameters:
+  exp_k:
+    values: [1, 2, 3]
+  kernel_bandwidth:
+    min: 0.1
+    max: 0.8
+  n_demos:
+    values: [100, 200, 500, 1000]
