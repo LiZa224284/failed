@@ -17,6 +17,7 @@ from collections import deque
 import random
 from TD3 import TD3, ReplayBuffer
 import matplotlib.pyplot as plt
+import argparse
 
 success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
@@ -117,8 +118,14 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
     plt.savefig(figure_save_path)
     plt.close()
 
-if __name__ == "__main__":
+def parse_args():
+    parser = argparse.ArgumentParser(description="Run kernel regression with specified parameters.")
+    parser.add_argument('--update_timesteps', type=int, default=3000)
+    parser.add_argument('--reward_epochs', type=int, default=200)
+    return parser.parse_args()
 
+if __name__ == "__main__":
+    args = parse_args()
     wandb.init(
         project="TrapMaze_1200",  # 替换为你的项目名称
         name='MaxEnt',
@@ -235,9 +242,12 @@ if __name__ == "__main__":
             episode_timesteps = 0
             episode_num += 1 
 
-        if (t+1) % 4500 == 1: # update reward net every 5 episoide 
+        # update_timesteps = 4500
+        update_timesteps = args.update_timesteps
+        if (t+1) % update_timesteps == 0: # update reward net every 5 episoide 
 
-            reward_epochs = 100
+            # reward_epochs = 100
+            reward_epochs = args.reward_epochs
             for _ in range(reward_epochs):
 
                 gen_states, gen_actions, rewards, next_states, done_bool = replay_buffer.sample(batch_size=512)

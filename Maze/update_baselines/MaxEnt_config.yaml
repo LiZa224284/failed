@@ -1,0 +1,11 @@
+program: /home/yuxuanli/failed_IRL_new/Maze/update_baselines/Map2_MaxEnt.py
+name: sweep_MaxEnt
+method: grid
+metric:
+  goal: maximize
+  name: Episode Reward
+parameters:
+  update_timesteps:
+    values: [300, 1500, 3000, 4500]
+  reward_epochs:
+    values: [5, 100, 200]
