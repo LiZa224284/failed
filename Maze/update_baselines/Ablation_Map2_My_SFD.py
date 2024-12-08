@@ -143,8 +143,8 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 if __name__ == "__main__":
 
     wandb.init(
-        project="TrapMaze_1200",  
-        name='MyMethod_no_failed_demos_org',
+        project="Ablation_map1",  
+        name='My_SFD',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -334,19 +334,6 @@ if __name__ == "__main__":
                 print('Wrong!!!!!')
             traj = []
 
-            # if (t+1) % 3000 == 0:
-                # Train Reward Function
-            # if (t+1) % 1000 == 1:
-            #     epochs = 200
-            #     for epoch in range(epochs):
-            #         reward_net.train()
-            #         optimizer.zero_grad()
-            #         predictions = reward_net(X_tensor).squeeze()
-            #         loss = loss_fn(predictions, y_tensor)
-            #         loss.backward()
-            #         optimizer.step()
-            #         print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
-
         if (t+1) % 3000 == 1:
 
             epochs = 200
@@ -359,17 +346,17 @@ if __name__ == "__main__":
                 optimizer.step()
                 print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
 
-            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/mid_reward_{t+1}.pth'
-            torch.save(reward_net.state_dict(), save_path)
+            # save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/mid_reward_{t+1}.pth'
+            # torch.save(reward_net.state_dict(), save_path)
 
-            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/my_map2_rewardnet_{t+1}.png"
-            visualize_bcirl_reward_function(
-                reward_net_path=save_path,
-                state_dim=state_dim,
-                action_dim=action_dim,
-                device=device,
-                figure_save_path=fig_save_path
-            )
+            # fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/my_map2_rewardnet_{t+1}.png"
+            # visualize_bcirl_reward_function(
+            #     reward_net_path=save_path,
+            #     state_dim=state_dim,
+            #     action_dim=action_dim,
+            #     device=device,
+            #     figure_save_path=fig_save_path
+            # )
 
     wandb.finish()
     torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/myit_actor.pth")

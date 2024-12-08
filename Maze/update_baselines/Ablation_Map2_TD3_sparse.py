@@ -18,7 +18,7 @@ import random
 import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
 
-success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
+success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos.pkl'
 failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
 
 with open(success_demo_path, 'rb') as f:
@@ -143,8 +143,8 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 if __name__ == "__main__":
 
     wandb.init(
-        project="TrapMaze_1200",  
-        name='MyMethod_no_failed_demos_org',
+        project="Ablation_map1",  
+        name='TD3_sparse',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -192,8 +192,12 @@ if __name__ == "__main__":
     X_tensor = torch.tensor(X, dtype=torch.float32).to(device)
     y_tensor = torch.tensor(y, dtype=torch.float32).to(device)
     reward_net = RewardNetwork(input_dim=X.shape[1]).to(device)  # 将模型移动到 GPU
-    optimizer = torch.optim.Adam(reward_net.parameters(), lr=1e-3)
-    loss_fn = nn.MSELoss()
+    checkpoint_path = '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/my_reward_trained.pth'
+    state_dict = torch.load(checkpoint_path, map_location=device)
+    reward_net.load_state_dict(state_dict)
+    reward_net.eval()
+    # optimizer = torch.optim.Adam(reward_net.parameters(), lr=1e-3)
+    # loss_fn = nn.MSELoss()
 
     batch_size = 512
     # episodes = int(5e6)
@@ -254,7 +258,7 @@ if __name__ == "__main__":
         with torch.no_grad():
             pseudo_reward = reward_net(state_tensor)
             pseudo_reward = pseudo_reward.cpu().numpy()
-        replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
+        replay_buffer.add(state, action, next_state, reward, done_bool)
 
         '''
         traj.append([state,info])  #应该是字典 [{'state:'.., 'info':...}, {'state:'.., 'info':...}]
@@ -313,26 +317,26 @@ if __name__ == "__main__":
                 traj = [] # 清空 traj 以备储存新traj([state, info])  #应该是字典 [{'state:'.., 'info':...}, {'state:'.., 'info':...}]
             
             '''
-            if info['success'] == True:
-                success_states_new, success_rewards_new = extract_reward(traj, 1)
-                # X = np.concatenate((X, success_states_new), axis=0)
-                # y = np.concatenate((y, success_rewards_new), axis=0)
-                success_states_new_tensor = torch.tensor(success_states_new, dtype=torch.float32).to(device)
-                success_rewards_new_tensor = torch.tensor(success_rewards_new, dtype=torch.float32).to(device)
-                X_tensor = torch.cat((X_tensor, success_states_new_tensor), dim=0)
-                y_tensor = torch.cat((y_tensor, success_rewards_new_tensor), dim=0)
+            # if info['success'] == True:
+            #     success_states_new, success_rewards_new = extract_reward(traj, 1)
+            #     # X = np.concatenate((X, success_states_new), axis=0)
+            #     # y = np.concatenate((y, success_rewards_new), axis=0)
+            #     success_states_new_tensor = torch.tensor(success_states_new, dtype=torch.float32).to(device)
+            #     success_rewards_new_tensor = torch.tensor(success_rewards_new, dtype=torch.float32).to(device)
+            #     X_tensor = torch.cat((X_tensor, success_states_new_tensor), dim=0)
+            #     y_tensor = torch.cat((y_tensor, success_rewards_new_tensor), dim=0)
 
-            elif info['success'] == False:
-                failed_states_new, failed_rewards_new = extract_reward(traj, -1)
-                # X = np.concatenate((X, failed_states_new), axis=0)
-                # y = np.concatenate((y, failed_rewards_new), axis=0)
-                failed_states_new_tensor = torch.tensor(failed_states_new, dtype=torch.float32).to(device)
-                failed_rewards_new_tensor = torch.tensor(failed_rewards_new, dtype=torch.float32).to(device)   
-                X_tensor = torch.cat((X_tensor, failed_states_new_tensor), dim=0)
-                y_tensor = torch.cat((y_tensor, failed_rewards_new_tensor), dim=0)
-            else:
-                print('Wrong!!!!!')
-            traj = []
+            # elif info['success'] == False:
+            #     failed_states_new, failed_rewards_new = extract_reward(traj, -1)
+            #     # X = np.concatenate((X, failed_states_new), axis=0)
+            #     # y = np.concatenate((y, failed_rewards_new), axis=0)
+            #     failed_states_new_tensor = torch.tensor(failed_states_new, dtype=torch.float32).to(device)
+            #     failed_rewards_new_tensor = torch.tensor(failed_rewards_new, dtype=torch.float32).to(device)   
+            #     X_tensor = torch.cat((X_tensor, failed_states_new_tensor), dim=0)
+            #     y_tensor = torch.cat((y_tensor, failed_rewards_new_tensor), dim=0)
+            # else:
+            #     print('Wrong!!!!!')
+            # traj = []
 
             # if (t+1) % 3000 == 0:
                 # Train Reward Function
@@ -347,29 +351,29 @@ if __name__ == "__main__":
             #         optimizer.step()
             #         print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
 
-        if (t+1) % 3000 == 1:
+        # if (t+1) % 1000 == 1:
 
-            epochs = 200
-            for epoch in range(epochs):
-                reward_net.train()
-                optimizer.zero_grad()
-                predictions = reward_net(X_tensor).squeeze()
-                loss = loss_fn(predictions, y_tensor)
-                loss.backward()
-                optimizer.step()
-                print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
+        #     epochs = 200
+        #     for epoch in range(epochs):
+        #         reward_net.train()
+        #         optimizer.zero_grad()
+        #         predictions = reward_net(X_tensor).squeeze()
+        #         loss = loss_fn(predictions, y_tensor)
+        #         loss.backward()
+        #         optimizer.step()
+        #         print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
 
-            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/mid_reward_{t+1}.pth'
-            torch.save(reward_net.state_dict(), save_path)
+        #     save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid/mid_reward_{t+1}.pth'
+        #     torch.save(reward_net.state_dict(), save_path)
 
-            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/my_map2_rewardnet_{t+1}.png"
-            visualize_bcirl_reward_function(
-                reward_net_path=save_path,
-                state_dim=state_dim,
-                action_dim=action_dim,
-                device=device,
-                figure_save_path=fig_save_path
-            )
+        #     fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid/my_map2_rewardnet_{t+1}.png"
+        #     visualize_bcirl_reward_function(
+        #         reward_net_path=save_path,
+        #         state_dim=state_dim,
+        #         action_dim=action_dim,
+        #         device=device,
+        #         figure_save_path=fig_save_path
+        #     )
 
     wandb.finish()
     torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/myit_actor.pth")

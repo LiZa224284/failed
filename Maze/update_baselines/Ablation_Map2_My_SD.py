@@ -143,8 +143,8 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 if __name__ == "__main__":
 
     wandb.init(
-        project="TrapMaze_1200",  
-        name='MyMethod_no_failed_demos_org',
+        project="Ablation_map1",  
+        name='My_SD',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -322,30 +322,17 @@ if __name__ == "__main__":
                 X_tensor = torch.cat((X_tensor, success_states_new_tensor), dim=0)
                 y_tensor = torch.cat((y_tensor, success_rewards_new_tensor), dim=0)
 
-            elif info['success'] == False:
-                failed_states_new, failed_rewards_new = extract_reward(traj, -1)
-                # X = np.concatenate((X, failed_states_new), axis=0)
-                # y = np.concatenate((y, failed_rewards_new), axis=0)
-                failed_states_new_tensor = torch.tensor(failed_states_new, dtype=torch.float32).to(device)
-                failed_rewards_new_tensor = torch.tensor(failed_rewards_new, dtype=torch.float32).to(device)   
-                X_tensor = torch.cat((X_tensor, failed_states_new_tensor), dim=0)
-                y_tensor = torch.cat((y_tensor, failed_rewards_new_tensor), dim=0)
-            else:
-                print('Wrong!!!!!')
+            # elif info['success'] == False:
+            #     failed_states_new, failed_rewards_new = extract_reward(traj, -1)
+            #     # X = np.concatenate((X, failed_states_new), axis=0)
+            #     # y = np.concatenate((y, failed_rewards_new), axis=0)
+            #     failed_states_new_tensor = torch.tensor(failed_states_new, dtype=torch.float32).to(device)
+            #     failed_rewards_new_tensor = torch.tensor(failed_rewards_new, dtype=torch.float32).to(device)   
+            #     X_tensor = torch.cat((X_tensor, failed_states_new_tensor), dim=0)
+            #     y_tensor = torch.cat((y_tensor, failed_rewards_new_tensor), dim=0)
+            # else:
+            #     print('Wrong!!!!!')
             traj = []
-
-            # if (t+1) % 3000 == 0:
-                # Train Reward Function
-            # if (t+1) % 1000 == 1:
-            #     epochs = 200
-            #     for epoch in range(epochs):
-            #         reward_net.train()
-            #         optimizer.zero_grad()
-            #         predictions = reward_net(X_tensor).squeeze()
-            #         loss = loss_fn(predictions, y_tensor)
-            #         loss.backward()
-            #         optimizer.step()
-            #         print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
 
         if (t+1) % 3000 == 1:
 
@@ -359,17 +346,17 @@ if __name__ == "__main__":
                 optimizer.step()
                 print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
 
-            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/mid_reward_{t+1}.pth'
-            torch.save(reward_net.state_dict(), save_path)
+            # save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/mid_reward_{t+1}.pth'
+            # torch.save(reward_net.state_dict(), save_path)
 
-            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/my_map2_rewardnet_{t+1}.png"
-            visualize_bcirl_reward_function(
-                reward_net_path=save_path,
-                state_dim=state_dim,
-                action_dim=action_dim,
-                device=device,
-                figure_save_path=fig_save_path
-            )
+            # fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/mid_16/my_map2_rewardnet_{t+1}.png"
+            # visualize_bcirl_reward_function(
+            #     reward_net_path=save_path,
+            #     state_dim=state_dim,
+            #     action_dim=action_dim,
+            #     device=device,
+            #     figure_save_path=fig_save_path
+            # )
 
     wandb.finish()
     torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/myit_actor.pth")

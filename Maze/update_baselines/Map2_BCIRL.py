@@ -18,7 +18,7 @@ import random
 from TD3 import TD3, ReplayBuffer
 import matplotlib.pyplot as plt
 
-success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos.pkl'
+success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
 
 with open(success_demo_path, 'rb') as f:
@@ -235,18 +235,18 @@ if __name__ == "__main__":
             episode_timesteps = 0
             episode_num += 1 
 
-        if (t+1) % 3000 == 0:
+        if (t+1) % 1500 == 0:
 
-            reward_epochs = 200
+            reward_epochs = 100
             for _ in range(reward_epochs):
                 idx = np.random.choice(len(expert_states), batch_size)
                 expert_states_batch = torch.FloatTensor(expert_states[idx]).to(device)
                 expert_actions_batch = torch.FloatTensor(expert_actions[idx]).to(device)
 
-                # 策略动作预测
+            
                 pred_actions = td3_agent.actor(expert_states_batch)
 
-                # 行为克隆损失
+                
                 bc_loss = ((pred_actions - expert_actions_batch) ** 2).mean()
                 reward_optimizer.zero_grad()
                 bc_loss.backward()
@@ -254,11 +254,11 @@ if __name__ == "__main__":
 
                 wandb.log({"Discriminator Loss": bc_loss})
             
-
-            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid/mid_reward_{t+1}.pth'
+        if (t+1) % 3000 == 0:
+            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid_16/mid_reward_{t+1}.pth'
             torch.save(reward_net.state_dict(), save_path)
 
-            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid/bcirl_map2_rewardnet_{t+1}.png"
+            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid_16/bcirl_map2_rewardnet_{t+1}.png"
             visualize_bcirl_reward_function(
                 reward_net_path=save_path,
                 state_dim=state_dim,
