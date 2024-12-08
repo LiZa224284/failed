@@ -17,6 +17,7 @@ from collections import deque
 import random
 from TD3 import TD3, ReplayBuffer
 import matplotlib.pyplot as plt
+import argparse
 
 success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
@@ -117,8 +118,14 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
     plt.savefig(figure_save_path)
     plt.close()
 
-if __name__ == "__main__":
+def parse_args():
+    parser = argparse.ArgumentParser(description="Run kernel regression with specified parameters.")
+    parser.add_argument('--update_timesteps', type=int, default=3000)
+    parser.add_argument('--reward_epochs', type=int, default=200)
+    return parser.parse_args()
 
+if __name__ == "__main__":
+    args = parse_args()
     wandb.init(
         project="TrapMaze_1200",  # 替换为你的项目名称
         name='BCIRL',
@@ -235,9 +242,12 @@ if __name__ == "__main__":
             episode_timesteps = 0
             episode_num += 1 
 
-        if (t+1) % 1500 == 0:
+        # update_timesteps = 1500
+        update_timesteps = args.update_timesteps
+        if (t+1) % update_timesteps == 0:
 
-            reward_epochs = 100
+            # reward_epochs = 100
+            reward_epochs = args.reward_epochs
             for _ in range(reward_epochs):
                 idx = np.random.choice(len(expert_states), batch_size)
                 expert_states_batch = torch.FloatTensor(expert_states[idx]).to(device)
