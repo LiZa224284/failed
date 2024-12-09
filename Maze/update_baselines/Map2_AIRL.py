@@ -60,7 +60,7 @@ class Discriminator(nn.Module):
             nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(),
             nn.Linear(hidden_dim, 1),
-            nn.Sigmoid()  # 输出为 [0, 1] 概率
+            # nn.Sigmoid()  # 输出为 [0, 1] 概率
         )
 
     def forward(self, state, action):

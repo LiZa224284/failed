@@ -128,7 +128,7 @@ if __name__ == "__main__":
     args = parse_args()
     wandb.init(
         project="TrapMaze_1200_0",  # 替换为你的项目名称
-        name='BCIRL',
+        name='MaxEnt',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -144,7 +144,7 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     example_map = [
         [1, 1, 1, 1, 1, 1, 1],
@@ -160,21 +160,19 @@ if __name__ == "__main__":
     action_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
-    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6), device=device)  
+    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6),  device=device)  
     td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
     
     reward_net = RewardNetwork(state_dim, action_dim).to(device)
-    # # Path to your checkpoint file
-    # checkpoint_path = '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid_2/mid_reward_60000.pth'
-    # reward_net.load_state_dict(torch.load(checkpoint_path, map_location=device))
-
+    checkpoint_path = '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MaxEnt_models/save_checkpoints/mid_reward_33000.pth'
+    reward_net.load_state_dict(torch.load(checkpoint_path, map_location=device))
     reward_optimizer = optim.Adam(reward_net.parameters(), lr=3e-4)
     reward_scheduler = optim.lr_scheduler.StepLR(reward_optimizer, step_size=1000, gamma=0.9)
     reward_epochs = 200 #5
 
-    batch_size = 512 # 512
+    batch_size = 512
     # episodes = int(5e6)
-    max_timsteps = int(300e50) #int(6e4)
+    max_timsteps = int(300e10) #int(6e4)
     start_timesteps = 0 #100 #int(25e3)
     episode_timesteps = 0
     episode_reward = 0
@@ -186,7 +184,6 @@ if __name__ == "__main__":
     done, truncated = False, False
 
     success_buffer = []
-    bc_loss = nn.MSELoss()
 
     for t in range(max_timsteps):
         episode_timesteps += 1
@@ -217,7 +214,6 @@ if __name__ == "__main__":
         episode_reward += reward
         pseudo_episode_reward += pseudo_reward
 
-
         if t > start_timesteps:
             td3_agent.train()
         
@@ -239,6 +235,7 @@ if __name__ == "__main__":
                 print(f"Episode {episode_num+1}, Average Success Rate (last 10 eps): {avg_success:.2f}")
                 wandb.log({"Average Success Rate (last 10 eps)": avg_success})
 
+
             state, _ = env.reset()
             state = np.concatenate([state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
             done, truncated = False, False
@@ -246,33 +243,41 @@ if __name__ == "__main__":
             pseudo_episode_reward = 0
             episode_timesteps = 0
             episode_num += 1 
-        
 
-        update_timesteps = 100
-        # update_timesteps = args.update_timesteps
-        if (t+1) % update_timesteps == 0:
+        # update_timesteps = 4500
+        update_timesteps = args.update_timesteps
+        if (t+1) % update_timesteps == 1: # update reward net every 5 episoide 
 
-            reward_epochs = 200
-            # reward_epochs = args.reward_epochs
+            # reward_epochs = 100
+            reward_epochs = args.reward_epochs
             for _ in range(reward_epochs):
+
+                gen_states, gen_actions, rewards, next_states, done_bool = replay_buffer.sample(batch_size=512)
+
+                # Sample from Expert
                 idx = np.random.choice(len(expert_states), batch_size)
                 expert_states_batch = torch.FloatTensor(expert_states[idx]).to(device)
                 expert_actions_batch = torch.FloatTensor(expert_actions[idx]).to(device)
-            
-                pred_actions = td3_agent.actor(expert_states_batch)
-                
-                reward_loss = bc_loss(expert_actions_batch, pred_actions)
+
+                # RewardNet Loss
+                expert_rewards = reward_net(expert_states_batch, expert_actions_batch)
+                gen_rewards = reward_net(gen_states, gen_actions) 
+                reg_loss = 0.1 * torch.mean(gen_rewards**2 + expert_rewards**2)
+                # reward_loss = -torch.mean(expert_rewards) + torch.logsumexp(gen_rewards, dim=0) + reg_loss
+                reward_loss = -(torch.mean(expert_rewards) - (torch.logsumexp(gen_rewards, dim=0) - np.log(len(gen_rewards)))) + reg_loss
+
+                # 优化判别器
+                reward_scheduler.step()
                 reward_optimizer.zero_grad()
                 reward_loss.backward()
                 reward_optimizer.step()
-
                 wandb.log({"Discriminator Loss": reward_loss})
             
         if (t+1) % 3000 == 0:
-            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid2/mid_reward_{t+1}.pth'
+            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MaxEnt_models/mid_2/mid_reward_{t+1}.pth'
             torch.save(reward_net.state_dict(), save_path)
 
-            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid2/bcirl_map2_rewardnet_{t+1}.png"
+            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MaxEnt_models/mid_2/maxentl_map2_rewardnet_{t+1}.png"
             visualize_bcirl_reward_function(
                 reward_net_path=save_path,
                 state_dim=state_dim,
@@ -282,5 +287,5 @@ if __name__ == "__main__":
             )
 
     wandb.finish()
-    torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/bcirl_actor.pth")
-    torch.save(reward_net.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/bcirl_rewardnet.pth")
+    torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MaxEnt_models/maxent_actor.pth")
+    torch.save(reward_net.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MaxEnt_models/maxent_rewardnet.pth")

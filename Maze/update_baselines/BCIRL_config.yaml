@@ -1,4 +1,4 @@
-program: /home/yuxuanli/failed_IRL_new/Maze/update_baselines/Map2_BCIRL.py
+program: /home/yuxuanli/failed_IRL_new/Maze/update_baselines/BCIRL_reward_test.py
 name: sweep_BCIRL
 method: grid
 metric:
@@ -6,6 +6,6 @@ metric:
   name: Episode Reward
 parameters:
   update_timesteps:
-    values: [300, 1500, 3000, 4500]
+    values: [100, 300, 1500, 3000, 4500]
   reward_epochs:
     values: [5, 100, 200]
