@@ -17,7 +17,6 @@ from collections import deque
 import random
 import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
-import argparse
 
 success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
@@ -45,7 +44,8 @@ expert_states, expert_actions = extract_obs_and_actions(success_demos)
 def compute_gail_reward(state, action):
     with torch.no_grad():
         logits = discriminator(state, action)
-        reward = -torch.log(1 - logits + 1e-8)
+        # reward = -torch.log(1 - logits + 1e-8)
+        reward = torch.log(1 + torch.exp(-logits))  
     return reward
 
 
@@ -114,17 +114,11 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
     plt.savefig(figure_save_path)
     plt.close()
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="Run kernel regression with specified parameters.")
-    parser.add_argument('--update_timesteps', type=int, default=3000)
-    parser.add_argument('--reward_epochs', type=int, default=200)
-    return parser.parse_args()
-
 if __name__ == "__main__":
-    args = parse_args()
+
     wandb.init(
         project="TrapMaze_1200",  
-        name='GAIL',
+        name='AIRL',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -157,7 +151,7 @@ if __name__ == "__main__":
     action_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
-    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6),  device=device)  
+    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6), device=device)  
     td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
     
     discriminator = Discriminator(state_dim, action_dim).to(device)
@@ -168,7 +162,7 @@ if __name__ == "__main__":
 
     batch_size = 512
     # episodes = int(5e6)
-    max_timsteps = int(300e10) #int(2e4)
+    max_timsteps = int(300e100) #int(2e4)
     start_timesteps = 100 #int(25e3)
     episode_timesteps = 0
     episode_reward = 0
@@ -239,14 +233,10 @@ if __name__ == "__main__":
             episode_num += 1 
 
         # Train Discriminator
-        # update_timesteps = 4500
-        update_timesteps = args.update_timesteps
-        if (t+1) % update_timesteps == 1:
+        if (t+1) % 1500 == 1:
 
-            # disc_epochs = 5
-            # reward_epochs = 100
-            reward_epochs = args.reward_epochs
-            for _ in range(reward_epochs):
+            disc_epochs = 200
+            for _ in range(disc_epochs):
                 # Sample from Generator(Actor)
                 gen_states, gen_actions, rewards, next_states, done_bool = replay_buffer.sample(batch_size=512)
 
@@ -255,14 +245,19 @@ if __name__ == "__main__":
                 expert_states_batch = torch.FloatTensor(expert_states[idx]).to(device)
                 expert_actions_batch = torch.FloatTensor(expert_actions[idx]).to(device)
 
-                # 构造判别器标签
-                expert_labels = torch.ones((batch_size, 1)).to(device)
-                gen_labels = torch.zeros((batch_size, 1)).to(device)
+                # # 构造判别器标签
+                # expert_labels = torch.ones((batch_size, 1)).to(device)
+                # gen_labels = torch.zeros((batch_size, 1)).to(device)
 
-                # 计算判别器损失
-                expert_logits = discriminator(expert_states_batch, expert_actions_batch)
-                gen_logits = discriminator(gen_states, gen_actions)
-                disc_loss = bce_loss(expert_logits, expert_labels) + bce_loss(gen_logits, gen_labels)
+                # # 计算判别器损失
+                # expert_logits = discriminator(expert_states_batch, expert_actions_batch)
+                # gen_logits = discriminator(gen_states, gen_actions)
+                # disc_loss = bce_loss(expert_logits, expert_labels) + bce_loss(gen_logits, gen_labels)
+                gen_rewards = discriminator(gen_states, gen_actions)  # AIRL: 判别器直接输出奖励
+                expert_rewards = discriminator(expert_states_batch, expert_actions_batch)
+                reg_loss = 0.01 * torch.mean(gen_rewards**2 + expert_rewards**2)
+                disc_loss = torch.mean(torch.exp(-expert_rewards)) + torch.mean(gen_rewards) + reg_loss
+
 
                 # 优化判别器
                 disc_scheduler.step()
@@ -272,10 +267,11 @@ if __name__ == "__main__":
                 wandb.log({"Discriminator Loss": disc_loss})
 
         if (t+1) % 3000 == 1:
-            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/GAIL_models/mid_16/mid_reward_{t+1}.pth'
+
+            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/AIRL_models/mid_16/mid_reward_{t+1}.pth'
             torch.save(discriminator.state_dict(), save_path)
 
-            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/GAIL_models/mid_16/my_map2_rewardnet_{t+1}.png"
+            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/AIRL_models/mid_16/my_map2_rewardnet_{t+1}.png"
             visualize_bcirl_reward_function(
                 reward_net_path=save_path,
                 state_dim=state_dim,
@@ -286,5 +282,5 @@ if __name__ == "__main__":
 
     
     wandb.finish()
-    torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/GAIL_models/map2_gail_actor.pth")
-    torch.save(discriminator.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/GAIL_models/map2_gail_discriminator.pth")
+    torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/AIRL_models/map2_gail_actor.pth")
+    torch.save(discriminator.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/AIRL_models/map2_gail_discriminator.pth")

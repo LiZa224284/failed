@@ -160,7 +160,7 @@ if __name__ == "__main__":
     action_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
-    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6))  
+    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6),  device=device)  
     td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
     
     reward_net = RewardNetwork(state_dim, action_dim).to(device)
@@ -170,7 +170,7 @@ if __name__ == "__main__":
 
     batch_size = 512
     # episodes = int(5e6)
-    max_timsteps = int(300e100) #int(6e4)
+    max_timsteps = int(300e10) #int(6e4)
     start_timesteps = 0 #100 #int(25e3)
     episode_timesteps = 0
     episode_reward = 0
@@ -244,7 +244,7 @@ if __name__ == "__main__":
 
         # update_timesteps = 4500
         update_timesteps = args.update_timesteps
-        if (t+1) % update_timesteps == 0: # update reward net every 5 episoide 
+        if (t+1) % update_timesteps == 1: # update reward net every 5 episoide 
 
             # reward_epochs = 100
             reward_epochs = args.reward_epochs

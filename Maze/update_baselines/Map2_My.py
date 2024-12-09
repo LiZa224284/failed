@@ -177,7 +177,7 @@ if __name__ == "__main__":
     action_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
-    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6))  
+    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6),  device=device)  
     td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
     
     expert_states, expert_actions, success_rewards = extract_obs_and_actions(success_demos, 1, exp_k=1)

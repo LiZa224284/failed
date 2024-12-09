@@ -17,6 +17,7 @@ from collections import deque
 import random
 import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
+import argparse
 
 success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
@@ -45,7 +46,8 @@ def compute_gail_reward(state, action):
     with torch.no_grad():
         logits = discriminator(state, action)
         # reward = -torch.log(1 - logits + 1e-8)
-        reward = torch.log(1 + torch.exp(-logits))  
+        # reward = torch.log(1 + torch.exp(-logits))  
+        reward = -torch.log(1 - logits + 1e-8)
     return reward
 
 
@@ -114,8 +116,14 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
     plt.savefig(figure_save_path)
     plt.close()
 
-if __name__ == "__main__":
+def parse_args():
+    parser = argparse.ArgumentParser(description="Run kernel regression with specified parameters.")
+    parser.add_argument('--update_timesteps', type=int, default=3000)
+    parser.add_argument('--reward_epochs', type=int, default=200)
+    return parser.parse_args()
 
+if __name__ == "__main__":
+    args = parse_args()
     wandb.init(
         project="TrapMaze_1200",  
         name='AIRL',
@@ -134,7 +142,7 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
     example_map = [
         [1, 1, 1, 1, 1, 1, 1],
@@ -151,13 +159,13 @@ if __name__ == "__main__":
     action_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
-    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6))  
+    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6), device=device)  
     td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
     
     discriminator = Discriminator(state_dim, action_dim).to(device)
     disc_optimizer = optim.Adam(discriminator.parameters(), lr=1e-3)
     disc_scheduler = optim.lr_scheduler.StepLR(disc_optimizer, step_size=1000, gamma=0.9)
-    bce_loss = nn.BCELoss()
+    bce_loss = nn.BCEWithLogitsLoss() #nn.BCELoss()
     disc_epochs = 200 #5
 
     batch_size = 512
@@ -233,10 +241,13 @@ if __name__ == "__main__":
             episode_num += 1 
 
         # Train Discriminator
-        if (t+1) % 1500 == 1:
+        # update_timesteps = 1500 
+        update_timesteps = args.update_timesteps
+        if (t+1) % update_timesteps == 1:
 
-            disc_epochs = 200
-            for _ in range(disc_epochs):
+            reward_epochs = args.reward_epochs
+            # reward_epochs = 200
+            for _ in range(reward_epochs):
                 # Sample from Generator(Actor)
                 gen_states, gen_actions, rewards, next_states, done_bool = replay_buffer.sample(batch_size=512)
 
