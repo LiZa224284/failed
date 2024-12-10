@@ -143,7 +143,7 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 if __name__ == "__main__":
 
     wandb.init(
-        project="Ablation_map1",  
+        project="Ablation_map2",  
         name='My_SFD',
         config={
             "batch_size": 256,
@@ -165,7 +165,7 @@ if __name__ == "__main__":
     example_map = [
         [1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 0, 1, 0, 1],
+        [1, 0, 1, 1, 1, 0, 1],
         [1, 0, 1, 'g', 't', 0, 1],
         [1, 0, 't', 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1]
