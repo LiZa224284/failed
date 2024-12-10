@@ -45,9 +45,12 @@ expert_states, expert_actions = extract_obs_and_actions(success_demos)
 def compute_gail_reward(state, action):
     with torch.no_grad():
         logits = discriminator(state, action)
+        # logits = logits - (self.airl_reward_bonus * logits)
+        s = torch.sigmoid(logits)
+        eps = 1e-20
+        reward = (s + eps).log() - (1 - s + eps).log()
         # reward = -torch.log(1 - logits + 1e-8)
         # reward = torch.log(1 + torch.exp(-logits))  
-        reward = -torch.log(1 - logits + 1e-8)
     return reward
 
 
@@ -165,7 +168,7 @@ if __name__ == "__main__":
     discriminator = Discriminator(state_dim, action_dim).to(device)
     disc_optimizer = optim.Adam(discriminator.parameters(), lr=1e-3)
     disc_scheduler = optim.lr_scheduler.StepLR(disc_optimizer, step_size=1000, gamma=0.9)
-    bce_loss = nn.BCEWithLogitsLoss() #nn.BCELoss()
+    bce_loss = nn.BCELoss() #nn.BCEWithLogitsLoss() 
     disc_epochs = 200 #5
 
     batch_size = 512

@@ -6,6 +6,7 @@ metric:
   name: Episode Reward
 parameters:
   update_timesteps:
-    values: [100, 300, 1500, 3000, 4500]
+    values: [1, 100, 300, 1500, 3000, 4500]
   reward_epochs:
     values: [5, 100, 200]
+

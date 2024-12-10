@@ -120,8 +120,9 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run kernel regression with specified parameters.")
-    parser.add_argument('--update_timesteps', type=int, default=3000)
+    parser.add_argument('--update_timesteps', type=int, default=1)
     parser.add_argument('--reward_epochs', type=int, default=200)
+    parser.add_argument('--rew_lr', type=float, default=3e-4)
     return parser.parse_args()
 
 if __name__ == "__main__":
@@ -168,7 +169,7 @@ if __name__ == "__main__":
     # checkpoint_path = '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid_2/mid_reward_60000.pth'
     # reward_net.load_state_dict(torch.load(checkpoint_path, map_location=device))
 
-    reward_optimizer = optim.Adam(reward_net.parameters(), lr=3e-4)
+    reward_optimizer = optim.Adam(reward_net.parameters(), lr=args.rew_lr) #3e-4
     reward_scheduler = optim.lr_scheduler.StepLR(reward_optimizer, step_size=1000, gamma=0.9)
     reward_epochs = 200 #5
 
