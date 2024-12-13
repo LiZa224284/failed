@@ -15,8 +15,8 @@ import torch.optim as optim
 import numpy as np
 from collections import deque
 import random
-from TD3 import TD3, ReplayBuffer
 import matplotlib.pyplot as plt
+from TD3 import TD3, ReplayBuffer
 import argparse
 
 success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
@@ -42,32 +42,33 @@ def extract_obs_and_actions(demos):
 expert_states, expert_actions = extract_obs_and_actions(success_demos)
 
 
-# def compute_bcirl_reward(state, action):
-#     with torch.no_grad():
-#         reward = reward_net(state_tensor, action_tensor)
-#     return reward
+def compute_gail_reward(state, action):
+    with torch.no_grad():
+        logits = discriminator(state, action)
+        # logits = logits - (self.airl_reward_bonus * logits)
+        s = torch.sigmoid(logits)
+        eps = 1e-20
+        reward = (s + eps).log() - (1 - s + eps).log()
+        # reward = -torch.log(1 - logits + 1e-8)
+        # reward = torch.log(1 + torch.exp(-logits))  
+    return reward
 
 
-class RewardNetwork(nn.Module):
+class Discriminator(nn.Module):
     def __init__(self, state_dim, action_dim, hidden_dim=256):
-        super(RewardNetwork, self).__init__()
+        super(Discriminator, self).__init__()
         self.net = nn.Sequential(
             nn.Linear(state_dim + action_dim, hidden_dim),
             nn.ReLU(),
             nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(),
-            nn.Linear(hidden_dim, 1)  # 输出奖励值
+            nn.Linear(hidden_dim, 1),
+            # nn.Sigmoid()  # 输出为 [0, 1] 概率
         )
 
     def forward(self, state, action):
-        x = torch.cat([state, action], dim=1)
+        x = torch.cat([state, action], 1)
         return self.net(x)
-
-# 定义 BC-IRL Reward 计算函数
-def compute_bcirl_reward(reward_net, state, action):
-    with torch.no_grad():
-        reward = reward_net(state, action)
-    return reward
 
 def construct_obs(achieved_goal):
     observation = np.zeros(4)  # 初始化 observation
@@ -84,7 +85,7 @@ def construct_obs(achieved_goal):
 # 可视化 BC-IRL 奖励函数
 def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, device, figure_save_path):
     # 加载训练好的 Reward Network
-    reward_net = RewardNetwork(state_dim=8, action_dim=2).to(device)
+    reward_net = Discriminator(state_dim=8, action_dim=2).to(device)
     reward_net.load_state_dict(torch.load(reward_net_path, map_location=device))
     reward_net.eval()
 
@@ -106,7 +107,7 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
     actions_tensor = torch.zeros((obs_tensor.shape[0], action_dim), dtype=torch.float32).to(device)
     # 计算奖励
     with torch.no_grad():
-        rewards = compute_bcirl_reward(reward_net, obs_tensor,actions_tensor)
+        rewards = compute_gail_reward(obs_tensor,actions_tensor)
         rewards = rewards.cpu().numpy().reshape(xx.shape)  # 将结果移回 CPU
     # 绘制奖励函数
     plt.figure(figsize=(8, 6))
@@ -120,15 +121,15 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run kernel regression with specified parameters.")
-    parser.add_argument('--update_timesteps', type=int, default=3000)
-    parser.add_argument('--reward_epochs', type=int, default=200)
+    parser.add_argument('--update_timesteps', type=int, default=300)
+    parser.add_argument('--reward_epochs', type=int, default=100)
     return parser.parse_args()
 
 if __name__ == "__main__":
     args = parse_args()
     wandb.init(
-        project="TrapMaze_1200",  # 替换为你的项目名称
-        name='MaxEnt',
+        project="TrapMaze_1200",  
+        name='AIRL',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -144,34 +145,36 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
     example_map = [
         [1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 0, 1],
+        [1, 0, 1, 0, 1, 0, 1],
         [1, 0, 1, 'g', 't', 0, 1],
         [1, 0, 't', 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1]
     ]
     env = gym.make('TrapMazeEnv', maze_map=example_map, reward_type="sparse", render_mode="rgb_array", max_episode_steps=300, camera_name="topview")
 
+    # 定义状态维度和动作维度
     state_dim = sum([np.prod(space.shape) for space in env.observation_space.spaces.values()])
     action_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
-    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6),  device=device)  
+    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6), device=device)  
     td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
     
-    reward_net = RewardNetwork(state_dim, action_dim).to(device)
-    reward_optimizer = optim.Adam(reward_net.parameters(), lr=3e-4)
-    reward_scheduler = optim.lr_scheduler.StepLR(reward_optimizer, step_size=1000, gamma=0.9)
-    reward_epochs = 200 #5
+    discriminator = Discriminator(state_dim, action_dim).to(device)
+    disc_optimizer = optim.Adam(discriminator.parameters(), lr=1e-3)
+    disc_scheduler = optim.lr_scheduler.StepLR(disc_optimizer, step_size=1000, gamma=0.9)
+    bce_loss = nn.BCELoss() #nn.BCEWithLogitsLoss() 
+    disc_epochs = 200 #5
 
     batch_size = 512
     # episodes = int(5e6)
-    max_timsteps = int(300e10) #int(6e4)
-    start_timesteps = 0 #100 #int(25e3)
+    max_timsteps = int(300e100) #int(2e4)
+    start_timesteps = 100 #int(25e3)
     episode_timesteps = 0
     episode_reward = 0
     pseudo_episode_reward = 0
@@ -182,6 +185,7 @@ if __name__ == "__main__":
     done, truncated = False, False
 
     success_buffer = []
+    success_count = 0
 
     for t in range(max_timsteps):
         episode_timesteps += 1
@@ -201,11 +205,8 @@ if __name__ == "__main__":
 
         state_tensor = torch.from_numpy(state).float().to(device).unsqueeze(0)
         action_tensor = torch.from_numpy(action).float().to(device).unsqueeze(0)
-        pseudo_reward = compute_bcirl_reward(reward_net, state_tensor, action_tensor)
-        print(f'pseudo_r: {pseudo_reward}')
-        pseudo_reward = torch.clamp(pseudo_reward, min=-10, max=10)
+        pseudo_reward = compute_gail_reward(state_tensor, action_tensor)
         pseudo_reward = pseudo_reward.cpu().numpy()
-        print(f'clamp_pseudo_r: {pseudo_reward}')
         replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
 
         state = next_state
@@ -216,7 +217,7 @@ if __name__ == "__main__":
             td3_agent.train()
         
         if (done or truncated):
-            print(f"Total T: {t+1} Episode Num: {episode_num+1} Episode T: {episode_timesteps} Reward: {episode_reward:.3f}")
+            print(f"Total T: {t+1} Episode Num: {episode_num+1} Episode T: {episode_timesteps} Reward: {episode_reward:.3f} PseudoReward: {pseudo_episode_reward}")
             wandb.log({"Episode Reward": episode_reward})
             wandb.log({"Pseudo Episode Reward": pseudo_episode_reward})
 
@@ -242,14 +243,15 @@ if __name__ == "__main__":
             episode_timesteps = 0
             episode_num += 1 
 
-        # update_timesteps = 4500
+        # Train Discriminator
+        # update_timesteps = 1500 
         update_timesteps = args.update_timesteps
-        if (t+1) % update_timesteps == 1: # update reward net every 5 episoide 
+        if (t+1) % update_timesteps == 1:
 
-            # reward_epochs = 100
             reward_epochs = args.reward_epochs
+            # reward_epochs = 200
             for _ in range(reward_epochs):
-
+                # Sample from Generator(Actor)
                 gen_states, gen_actions, rewards, next_states, done_bool = replay_buffer.sample(batch_size=512)
 
                 # Sample from Expert
@@ -257,48 +259,42 @@ if __name__ == "__main__":
                 expert_states_batch = torch.FloatTensor(expert_states[idx]).to(device)
                 expert_actions_batch = torch.FloatTensor(expert_actions[idx]).to(device)
 
-                # RewardNet Loss
-                expert_rewards = reward_net(expert_states_batch, expert_actions_batch)
-                gen_rewards = reward_net(gen_states, gen_actions) 
-                reg_loss = 0.1 * torch.mean(gen_rewards**2 + expert_rewards**2)
-                # reward_loss = -torch.mean(expert_rewards) + torch.logsumexp(gen_rewards, dim=0) + reg_loss
-                reward_loss = -(torch.mean(expert_rewards) - (torch.logsumexp(gen_rewards, dim=0) - np.log(len(gen_rewards)))) + reg_loss
+                # # 构造判别器标签
+                # expert_labels = torch.ones((batch_size, 1)).to(device)
+                # gen_labels = torch.zeros((batch_size, 1)).to(device)
+
+                # # 计算判别器损失
+                # expert_logits = discriminator(expert_states_batch, expert_actions_batch)
+                # gen_logits = discriminator(gen_states, gen_actions)
+                # disc_loss = bce_loss(expert_logits, expert_labels) + bce_loss(gen_logits, gen_labels)
+                gen_rewards = discriminator(gen_states, gen_actions)  # AIRL: 判别器直接输出奖励
+                expert_rewards = discriminator(expert_states_batch, expert_actions_batch)
+                reg_loss = 0.01 * torch.mean(gen_rewards**2 + expert_rewards**2)
+                disc_loss = torch.mean(torch.exp(-expert_rewards)) + torch.mean(gen_rewards) + reg_loss
+
 
                 # 优化判别器
-                reward_scheduler.step()
-                reward_optimizer.zero_grad()
-                reward_loss.backward()
-                reward_optimizer.step()
-                wandb.log({"Discriminator Loss": reward_loss})
+                disc_scheduler.step()
+                disc_optimizer.zero_grad()
+                disc_loss.backward()
+                disc_optimizer.step()
+                wandb.log({"Discriminator Loss": disc_loss})
 
-                # idx = np.random.choice(len(expert_states), batch_size)
-                # expert_states_batch = torch.FloatTensor(expert_states[idx]).to(device)
-                # expert_actions_batch = torch.FloatTensor(expert_actions[idx]).to(device)
+        # if (t+1) % 3000 == 1:
 
-                # # 策略动作预测
-                # pred_actions = td3_agent.actor(expert_states_batch)
+        #     save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/AIRL_models/mid_16/mid_reward_{t+1}.pth'
+        #     torch.save(discriminator.state_dict(), save_path)
 
-                # # 行为克隆损失
-                # bc_loss = ((pred_actions - expert_actions_batch) ** 2).mean()
-                # reward_optimizer.zero_grad()
-                # bc_loss.backward()
-                # reward_optimizer.step()
+        #     fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/AIRL_models/mid_16/my_map2_rewardnet_{t+1}.png"
+        #     visualize_bcirl_reward_function(
+        #         reward_net_path=save_path,
+        #         state_dim=state_dim,
+        #         action_dim=action_dim,
+        #         device=device,
+        #         figure_save_path=fig_save_path
+        #     )
 
-                # wandb.log({"Discriminator Loss": bc_loss})
-            
-        if (t+1) % 3000 == 0:
-            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MaxEnt_models/mid_16/mid_reward_{t+1}.pth'
-            torch.save(reward_net.state_dict(), save_path)
-
-            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MaxEnt_models/mid_16/maxentl_map2_rewardnet_{t+1}.png"
-            visualize_bcirl_reward_function(
-                reward_net_path=save_path,
-                state_dim=state_dim,
-                action_dim=action_dim,
-                device=device,
-                figure_save_path=fig_save_path
-            )
-
+    
     wandb.finish()
-    torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MaxEnt_models/maxent_actor.pth")
-    torch.save(reward_net.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MaxEnt_models/maxent_rewardnet.pth")
+    torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/AIRL_models/map2_gail_actor.pth")
+    torch.save(discriminator.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/AIRL_models/map2_gail_discriminator.pth")

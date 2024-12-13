@@ -49,7 +49,7 @@ expert_states, expert_actions = extract_obs_and_actions(success_demos)
 
 
 class RewardNetwork(nn.Module):
-    def __init__(self, state_dim, action_dim, hidden_dim=256):
+    def __init__(self, state_dim, action_dim, hidden_dim=128):
         super(RewardNetwork, self).__init__()
         self.net = nn.Sequential(
             nn.Linear(state_dim + action_dim, hidden_dim),
@@ -127,8 +127,8 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     wandb.init(
-        project="TrapMaze_1200",  # 替换为你的项目名称
-        name='BCIRL',
+        project="TrapMaze_1200_0",  # 替换为你的项目名称
+        name='BCIRL_lr_test',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -150,7 +150,7 @@ if __name__ == "__main__":
         [1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 1],
         [1, 0, 1, 1, 1, 0, 1],
-        [1, 'r', 1, 'g', 't', 0, 1],
+        [1, 0, 1, 'g', 't', 0, 1],
         [1, 0, 't', 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1]
     ]
@@ -164,7 +164,7 @@ if __name__ == "__main__":
     td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
     
     reward_net = RewardNetwork(state_dim, action_dim).to(device)
-    reward_optimizer = optim.Adam(reward_net.parameters(), lr=3e-4)
+    reward_optimizer = optim.Adam(reward_net.parameters(), lr=1e-5)
     reward_scheduler = optim.lr_scheduler.StepLR(reward_optimizer, step_size=1000, gamma=0.9)
     reward_epochs = 200 #5
 
@@ -242,9 +242,9 @@ if __name__ == "__main__":
             episode_timesteps = 0
             episode_num += 1 
 
-        # update_timesteps = 1500
-        update_timesteps = args.update_timesteps
-        if (t+1) % update_timesteps == 1:
+        update_timesteps = 1
+        # update_timesteps = args.update_timesteps
+        if (t+1) % update_timesteps == 0:
 
             # reward_epochs = 100
             reward_epochs = args.reward_epochs
@@ -264,7 +264,7 @@ if __name__ == "__main__":
 
                 wandb.log({"Discriminator Loss": bc_loss})
             
-        if (t+1) % 3000 == 0:
+        if (t+1) % 1500 == 0:
             save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/BCIRL_models/mid_16/mid_reward_{t+1}.pth'
             torch.save(reward_net.state_dict(), save_path)
 

@@ -1,12 +1,12 @@
-program: /home/yuxuanli/failed_IRL_new/Maze/update_baselines/BCIRL_reward_test.py
+program: /home/yuxuanli/failed_IRL_new/Maze/update_baselines/BCIRL_v5.py
 name: sweep_BCIRL
 method: grid
 metric:
   goal: maximize
   name: Episode Reward
 parameters:
-  update_timesteps:
-    values: [1, 100, 300, 1500, 3000, 4500]
-  reward_epochs:
-    values: [5, 100, 200]
+  inner_steps:
+    values: [2, 5, 10]
+  batch_size:
+    values: [512, 1024, 128]
 
