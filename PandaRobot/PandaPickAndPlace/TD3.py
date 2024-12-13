@@ -116,10 +116,10 @@ class TD3:
         state_dim,
         action_dim,
         max_action,
-        actor_lr=1e-4, # 1e-3
+        actor_lr=1e-3, # 1e-3
         critic_lr=1e-3,
-        gamma=0.99,
-        tau=0.005,
+        gamma=0.95, # 0.99
+        tau=0.05, # 0.005
         noise_std=0.2,
         noise_clip=0.5,
         policy_delay=2,
@@ -215,7 +215,7 @@ class TD3:
 if __name__ == "__main__":
 
     wandb.init(
-        project="PandaReach",  # 替换为你的项目名称
+        project="PandaPickAndPlace",  # 替换为你的项目名称
         name='TD3_dense',
         config={
             "batch_size": 256,
@@ -225,7 +225,7 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # env_name = 'PandaReach-v3'
-    env_name = 'PandaReachDense-v3'
+    env_name = 'PandaPickAndPlaceDense-v3'
     env = gym.make(env_name)
 
     # example_map = [
@@ -249,9 +249,9 @@ if __name__ == "__main__":
 
     # ReplayBuffer
     
-    batch_size = 512
+    batch_size = 2048 #512
     # episodes = int(5e6)
-    max_timsteps = int(1e5)
+    max_timsteps = int(5e6)
     start_timesteps = 100 #int(25e3)
     episode_timesteps = 0
     episode_reward = 0

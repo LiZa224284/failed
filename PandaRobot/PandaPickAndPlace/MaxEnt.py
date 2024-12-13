@@ -141,7 +141,7 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:3" if torch.cuda.is_available() else "cpu")
 
     # example_map = [
     #     [1, 1, 1, 1, 1, 1, 1],

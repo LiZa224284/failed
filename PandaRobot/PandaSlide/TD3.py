@@ -215,7 +215,7 @@ class TD3:
 if __name__ == "__main__":
 
     wandb.init(
-        project="PandaReach",  # 替换为你的项目名称
+        project="PandaSlide",  # 替换为你的项目名称
         name='TD3_dense',
         config={
             "batch_size": 256,
@@ -225,7 +225,7 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # env_name = 'PandaReach-v3'
-    env_name = 'PandaReachDense-v3'
+    env_name = 'PandaSlideDense-v3'
     env = gym.make(env_name)
 
     # example_map = [
