@@ -16,7 +16,7 @@ expert = model.load(checkpoint, env)
 vec_env = model.get_env()
 demos = []
 
-for i in range(50):
+for i in range(500):
     obs = vec_env.reset()
     done = False
     expert_demo = []
@@ -38,5 +38,5 @@ for i in range(50):
     demos.append(expert_demo)
     
 
-with open('/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPickAndPlace/model/success_50.pkl', 'wb') as f:
+with open('/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPickAndPlace/model/success_500.pkl', 'wb') as f:
     pickle.dump(demos, f)

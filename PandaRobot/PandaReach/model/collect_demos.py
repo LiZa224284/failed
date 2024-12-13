@@ -10,13 +10,13 @@ from stable_baselines3.common.vec_env import DummyVecEnv
 
 env_name = 'PandaReach-v3'
 env = gym.make(env_name)
-checkpoint = '/home/yuxuanli/failed_IRL_new/logs/tqc/PandaReach-v3_1/PandaReach-v3.zip'
+checkpoint = '/home/yuxuanli/failed_IRL_new/PandaRobot/PandaReach/model/PandaReacher_TD3_model.zip'
 model = TQC("MultiInputPolicy", env, verbose=1, device="cuda")
 expert = model.load(checkpoint, env)
 vec_env = model.get_env()
 demos = []
 
-for i in range(50):
+for i in range(500):
     obs = vec_env.reset()
     done = False
     expert_demo = []
@@ -38,5 +38,5 @@ for i in range(50):
     demos.append(expert_demo)
     
 
-with open('/home/yuxuanli/failed_IRL_new/PandaRobot/PandaReach/model/success_50.pkl', 'wb') as f:
+with open('/home/yuxuanli/failed_IRL_new/PandaRobot/PandaReach/model/success_500.pkl', 'wb') as f:
     pickle.dump(demos, f)
