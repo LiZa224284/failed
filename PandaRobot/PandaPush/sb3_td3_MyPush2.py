@@ -7,10 +7,8 @@ from stable_baselines3.common.callbacks import BaseCallback
 import wandb
 import torch
 import os
-from sb3_contrib import TQC
 from stable_baselines3 import HerReplayBuffer
-from stable_baselines3.her.goal_selection_strategy import GoalSelectionStrategy
-from MyPush import MyPandaPushEnv
+from MyPush import MyPandaPushEnv_2
 
 class WandbCallback(BaseCallback):
     def __init__(self, log_dir, check_interval, verbose=1):
@@ -53,28 +51,23 @@ class WandbCallback(BaseCallback):
 
 wandb.init(
         project="PandaPush",  # 同一个项目
-        name=f"sb3_tqc_sparse_2",  # 根据算法和环境生成不同的 run name
+        name=f"My_2_sb3_td3_sparse_noHER",  # 根据算法和环境生成不同的 run name
         config={'total_timesteps': int(5e6),'check_interval': 10}
     )
 
 # env_name = 'PandaPush-v3'
-env_name = 'MyPandaPushEnv'
+env_name = 'MyPandaPushEnv_2'
 env = gym.make(env_name)    
 
-# policy_kwargs = dict(n_critics=2, n_quantiles=25)
-model = TQC("MultiInputPolicy", 
-            env, 
-            policy_kwargs=dict(net_arch=[512, 512, 512], n_critics=2),
+n_actions = env.action_space.shape[-1]
+action_noise = NormalActionNoise(mean=np.zeros(n_actions), sigma=0.1 * np.ones(n_actions))
+model = TD3('MultiInputPolicy', env, 
             replay_buffer_class=HerReplayBuffer, 
             replay_buffer_kwargs=dict(
             n_sampled_goal=4,
             goal_selection_strategy='future',
         ),
-            batch_size=2048, 
-            learning_rate=0.001, 
-            gamma=0.95, 
-            top_quantiles_to_drop_per_net=2, verbose=1, device='cuda')
-
+            batch_size=2048, learning_rate=0.001, gamma=0.95, tau=0.05, action_noise=action_noise, verbose=0, device="cuda:2" if torch.cuda.is_available() else "cpu")
 callback = WandbCallback(log_dir='/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPickAndPlace/log', check_interval=10)
-model.learn(total_timesteps=int(600e3), callback=callback)
-model.save("/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPush/model/MyPush_TQC_model.zip")
+
+model.learn(total_timesteps=int(5e6), callback=callback)

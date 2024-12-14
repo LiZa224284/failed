@@ -16,7 +16,7 @@ import random
 import matplotlib.pyplot as plts
 
 import panda_gym
-from MyPush import MyPandaPushEnv
+from MyPush import MyPandaPushEnv_2
 
 class Critic(nn.Module):
 	def __init__(self, state_dim, action_dim, hidden_dim=256):
@@ -217,7 +217,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="PandaPush",  # 替换为你的项目名称
-        name='MyPush_TD3_sparse',
+        name='MyPush_2_TD3_sparse',
         config={
             "batch_size": 256,
         },
@@ -225,7 +225,7 @@ if __name__ == "__main__":
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    env_name = 'MyPandaPushEnv'
+    env_name = 'MyPandaPushEnv_2'
     # env_name = 'PandaPush-v3'
     env = gym.make(env_name)
 
@@ -263,8 +263,6 @@ if __name__ == "__main__":
     # state = np.concatenate([state[key].flatten() for key in ['achieved_goal', 'desired_goal']])
     done, truncated = False, False
 
-    success_buffer = []
-
     for t in range(max_timsteps):
         episode_timesteps += 1
         if t < start_timesteps:
@@ -301,19 +299,6 @@ if __name__ == "__main__":
             episode_reward = 0
             episode_timesteps = 0
             episode_num += 1 
-
-            if info['is_success'] == True:
-                success_buffer.append(1)
-            elif info['is_success'] == False:
-                success_buffer.append(0)
-            else:
-                print('############### Wrong!! ##########################')
-            
-            # 每10个episode计算一次平均success rate
-            if (t + 1) % 10 == 0:
-                avg_success = np.mean(success_buffer[-10:])  # 最近10个episode的平均成功率
-                print(f"Episode {episode_num+1}, Average Success Rate (last 10 eps): {avg_success:.2f}")
-                wandb.log({"Average Success Rate (last 10 eps)": avg_success})
     
     wandb.finish()
     torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/PandaRobot/PandaReach/TD3.py/pandapush_td3_actor.pth")

@@ -8,6 +8,7 @@ import wandb
 import torch
 import os
 from stable_baselines3 import HerReplayBuffer
+from MyPush import MyPandaPushEnv
 
 class WandbCallback(BaseCallback):
     def __init__(self, log_dir, check_interval, verbose=1):
@@ -50,11 +51,12 @@ class WandbCallback(BaseCallback):
 
 wandb.init(
         project="PandaPush",  # 同一个项目
-        name=f"sb3_td3_sparse_noHER",  # 根据算法和环境生成不同的 run name
+        name=f"My_sb3_td3_sparse_noHER",  # 根据算法和环境生成不同的 run name
         config={'total_timesteps': int(5e6),'check_interval': 10}
     )
 
-env_name = 'PandaPush-v3'
+# env_name = 'PandaPush-v3'
+env_name = 'MyPandaPushEnv'
 env = gym.make(env_name)    
 
 n_actions = env.action_space.shape[-1]

@@ -95,7 +95,7 @@ class RandomPolicyModel(BaseAlgorithm):
 
 
 # Load rollouts from the .pkl file
-with open("/files1/Yuxuan_Li/failed_demos/Experiments/Robots/PandaPush/Rollout_visualize_tools/rollouts.pkl", "rb") as f:
+with open("/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPush/tools/VisualizeTools/rollouts.pkl", "rb") as f:
     rollouts = pickle.load(f)
 
 env_name = "PandaPush-v3"
@@ -120,5 +120,5 @@ for trajectory in rollouts:
 env.close()
 
 # Save frames to a video file
-imageio.mimsave("/files1/Yuxuan_Li/failed_demos/Experiments/Robots/PandaPush/Rollout_visualize_tools/rollout_video.mp4", frames, fps=30)
+imageio.mimsave("/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPush/tools/VisualizeTools/visualizeRollouts.py/rollout_video.mp4", frames, fps=30)
 
