@@ -51,12 +51,12 @@ class WandbCallback(BaseCallback):
         return True
 
 wandb.init(
-        project="PandaPickAndPlace",  # 同一个项目
-        name=f"sb3_tqc_her_sparse_2",  # 根据算法和环境生成不同的 run name
+        project="PandaPush",  # 同一个项目
+        name=f"sb3_tqc_sparse_2",  # 根据算法和环境生成不同的 run name
         config={'total_timesteps': int(5e6),'check_interval': 10}
     )
 
-env_name = 'PandaPickAndPlace-v3'
+env_name = 'PandaPush-v3'
 env = gym.make(env_name)    
 
 # policy_kwargs = dict(n_critics=2, n_quantiles=25)
@@ -71,7 +71,7 @@ model = TQC("MultiInputPolicy",
             batch_size=2048, 
             learning_rate=0.001, 
             gamma=0.95, 
-            top_quantiles_to_drop_per_net=2, verbose=1, device='cuda:1')
+            top_quantiles_to_drop_per_net=2, verbose=1, device='cuda:2')
 
 model.learn(total_timesteps=10_000, log_interval=4)
 

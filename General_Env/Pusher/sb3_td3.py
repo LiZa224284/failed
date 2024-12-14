@@ -7,9 +7,7 @@ from stable_baselines3.common.callbacks import BaseCallback
 import wandb
 import torch
 import os
-from sb3_contrib import TQC
 from stable_baselines3 import HerReplayBuffer
-from stable_baselines3.her.goal_selection_strategy import GoalSelectionStrategy
 
 class WandbCallback(BaseCallback):
     def __init__(self, log_dir, check_interval, verbose=1):
@@ -51,29 +49,24 @@ class WandbCallback(BaseCallback):
         return True
 
 wandb.init(
-        project="PandaPickAndPlace",  # 同一个项目
-        name=f"sb3_tqc_her_sparse_2",  # 根据算法和环境生成不同的 run name
+        project="PandaPush",  # 同一个项目
+        name=f"sb3_td3_GymPusher",  # 根据算法和环境生成不同的 run name
         config={'total_timesteps': int(5e6),'check_interval': 10}
     )
 
-env_name = 'PandaPickAndPlace-v3'
+env_name = 'Pusher-v5'
 env = gym.make(env_name)    
 
-# policy_kwargs = dict(n_critics=2, n_quantiles=25)
-model = TQC("MultiInputPolicy", 
-            env, 
+n_actions = env.action_space.shape[-1]
+action_noise = NormalActionNoise(mean=np.zeros(n_actions), sigma=0.1 * np.ones(n_actions))
+model = TD3('MlpPolicy', env, 
             policy_kwargs=dict(net_arch=[512, 512, 512], n_critics=2),
-            replay_buffer_class=HerReplayBuffer, 
-            replay_buffer_kwargs=dict(
-            n_sampled_goal=4,
-            goal_selection_strategy='future',
-        ),
-            batch_size=2048, 
-            learning_rate=0.001, 
-            gamma=0.95, 
-            top_quantiles_to_drop_per_net=2, verbose=1, device='cuda:1')
-
-model.learn(total_timesteps=10_000, log_interval=4)
-
+        #     replay_buffer_class=HerReplayBuffer, 
+        #     replay_buffer_kwargs=dict(
+        #     n_sampled_goal=4,
+        #     goal_selection_strategy='future',
+        # ),
+            batch_size=2048, learning_rate=0.001, gamma=0.95, tau=0.05, action_noise=action_noise, verbose=0, device="cuda:1" if torch.cuda.is_available() else "cpu")
 callback = WandbCallback(log_dir='/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPickAndPlace/log', check_interval=10)
+
 model.learn(total_timesteps=int(5e6), callback=callback)

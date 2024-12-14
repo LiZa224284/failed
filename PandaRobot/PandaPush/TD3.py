@@ -118,13 +118,13 @@ class TD3:
         max_action,
         actor_lr=1e-4, # 1e-3
         critic_lr=1e-3,
-        gamma=0.99,
-        tau=0.005,
+        gamma=0.95,
+        tau=0.05,
         noise_std=0.2,
         noise_clip=0.5,
         policy_delay=2,
         buffer_size=int(1e6),
-        batch_size=256,
+        batch_size=2048,
         device='cuda',
         ReplayBuffer=None,
     ):
@@ -216,7 +216,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="PandaPush",  # 替换为你的项目名称
-        name='TD3_dense',
+        name='TD3_sparse',
         config={
             "batch_size": 256,
         },
@@ -225,7 +225,7 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # env_name = 'PandaReach-v3'
-    env_name = 'PandaPushDense-v3'
+    env_name = 'PandaPush-v3'
     env = gym.make(env_name)
 
     # example_map = [
@@ -251,7 +251,7 @@ if __name__ == "__main__":
     
     batch_size = 512
     # episodes = int(5e6)
-    max_timsteps = int(1e5)
+    max_timsteps = int(6e6)
     start_timesteps = 100 #int(25e3)
     episode_timesteps = 0
     episode_reward = 0
