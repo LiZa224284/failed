@@ -10,6 +10,7 @@ import os
 from sb3_contrib import TQC
 from stable_baselines3 import HerReplayBuffer
 from stable_baselines3.her.goal_selection_strategy import GoalSelectionStrategy
+from MyPickAndPlace import MyPandaPickAndPlaceEnv
 
 class WandbCallback(BaseCallback):
     def __init__(self, log_dir, check_interval, verbose=1):
@@ -56,7 +57,7 @@ wandb.init(
         config={'total_timesteps': int(5e6),'check_interval': 10}
     )
 
-env_name = 'PandaPickAndPlace-v3'
+env_name = 'MyPandaPickAndPlaceEnv'
 env = gym.make(env_name)    
 
 # policy_kwargs = dict(n_critics=2, n_quantiles=25)
@@ -73,7 +74,6 @@ model = TQC("MultiInputPolicy",
             gamma=0.95, 
             top_quantiles_to_drop_per_net=2, verbose=1, device='cuda:1')
 
-model.learn(total_timesteps=10_000, log_interval=4)
-
 callback = WandbCallback(log_dir='/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPickAndPlace/log', check_interval=10)
-model.learn(total_timesteps=int(5e6), callback=callback)
+model.learn(total_timesteps=int(2e6), callback=callback)
+model.save('/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPickAndPlace/model/MyPandaPickAndPlace_TQC.py')

@@ -354,8 +354,8 @@ expert_states, expert_actions = extract_obs_and_actions(success_demos)
 if __name__ == "__main__":
     args = parse_args()
     wandb.init(
-        project="Map0",  # 替换为你的项目名称
-        name='BCIRL_lr_test',
+        project="TrapMaze_1200",  # 替换为你的项目名称
+        name='BCIRL_v5',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),

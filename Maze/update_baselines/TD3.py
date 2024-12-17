@@ -217,7 +217,7 @@ class TD3:
 if __name__ == "__main__":
 
     wandb.init(
-        project="TrapMaze_1205",  # 替换为你的项目名称
+        project="TrapMaze_1200",  # 替换为你的项目名称
         name='TD3_sparse',
         config={
             "batch_size": 256,
@@ -259,7 +259,7 @@ if __name__ == "__main__":
     
     batch_size = 512
     # episodes = int(5e6)
-    max_timsteps = int(1e5)
+    max_timsteps = int(500e3)
     start_timesteps = 100 #int(25e3)
     episode_timesteps = 0
     episode_reward = 0
@@ -269,6 +269,7 @@ if __name__ == "__main__":
     state = np.concatenate([state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
     # state = np.concatenate([state[key].flatten() for key in ['achieved_goal', 'desired_goal']])
     done, truncated = False, False
+    success_buffer = []
 
     for t in range(max_timsteps):
         episode_timesteps += 1
@@ -299,6 +300,21 @@ if __name__ == "__main__":
         if (done or truncated):
             print(f"Total T: {t+1} Episode Num: {episode_num+1} Episode T: {episode_timesteps} Reward: {episode_reward:.3f}")
             wandb.log({"Episode Reward": episode_reward})
+
+            if info['success'] == True:
+                success_buffer.append(1)
+            elif info['success'] == False:
+                success_buffer.append(0)
+            else:
+                print('############### Wrong!! ##########################')
+            
+            # 每10个episode计算一次平均success rate
+            if (t + 1) % 10 == 0:
+                avg_success = np.mean(success_buffer[-10:])  # 最近10个episode的平均成功率
+                print(f"Episode {episode_num+1}, Average Success Rate (last 10 eps): {avg_success:.2f}")
+                wandb.log({"Average Success Rate (last 10 eps)": avg_success})
+
+
             state, _ = env.reset()
             state = np.concatenate([state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
             # state = np.concatenate([state[key].flatten() for key in ['achieved_goal', 'desired_goal']])

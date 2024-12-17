@@ -117,12 +117,12 @@ class TD3:
         state_dim,
         action_dim,
         max_action,
-        actor_lr=1e-4, # 1e-3
+        actor_lr=1e-3, # 1e-3
         critic_lr=1e-3,
         gamma=0.95,
         tau=0.05,
-        noise_std=0.2,
-        noise_clip=0.5,
+        noise_std=0.2, #0.2
+        noise_clip=0.5, #0.5
         policy_delay=2,
         buffer_size=int(1e6),
         batch_size=2048,
@@ -202,7 +202,7 @@ class TD3:
             # Optimize Actor
             self.actor_optimizer.zero_grad()
             actor_loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.actor.parameters(), max_norm=1.0)
+            # torch.nn.utils.clip_grad_norm_(self.actor.parameters(), max_norm=1.0)
             self.actor_optimizer.step()
             wandb.log({"Actor Loss": actor_loss})
 
@@ -217,7 +217,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="PandaPush",  # 替换为你的项目名称
-        name='MyPush_TD3_sparse',
+        name='MyPush_TD3_new',
         config={
             "batch_size": 256,
         },
@@ -250,7 +250,7 @@ if __name__ == "__main__":
 
     # ReplayBuffer
     
-    batch_size = 512
+    batch_size = 2048
     # episodes = int(5e6)
     max_timsteps = int(6e6)
     start_timesteps = 100 #int(25e3)
@@ -262,7 +262,6 @@ if __name__ == "__main__":
     state = np.concatenate([state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
     # state = np.concatenate([state[key].flatten() for key in ['achieved_goal', 'desired_goal']])
     done, truncated = False, False
-
     success_buffer = []
 
     for t in range(max_timsteps):
@@ -294,13 +293,6 @@ if __name__ == "__main__":
         if (done or truncated):
             print(f"Total T: {t+1} Episode Num: {episode_num+1} Episode T: {episode_timesteps} Reward: {episode_reward:.3f}")
             wandb.log({"Episode Reward": episode_reward})
-            state, _ = env.reset()
-            state = np.concatenate([state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
-            # state = np.concatenate([state[key].flatten() for key in ['achieved_goal', 'desired_goal']])
-            done, truncated = False, False
-            episode_reward = 0
-            episode_timesteps = 0
-            episode_num += 1 
 
             if info['is_success'] == True:
                 success_buffer.append(1)
@@ -314,6 +306,14 @@ if __name__ == "__main__":
                 avg_success = np.mean(success_buffer[-10:])  # 最近10个episode的平均成功率
                 print(f"Episode {episode_num+1}, Average Success Rate (last 10 eps): {avg_success:.2f}")
                 wandb.log({"Average Success Rate (last 10 eps)": avg_success})
+
+            state, _ = env.reset()
+            state = np.concatenate([state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
+            # state = np.concatenate([state[key].flatten() for key in ['achieved_goal', 'desired_goal']])
+            done, truncated = False, False
+            episode_reward = 0
+            episode_timesteps = 0
+            episode_num += 1 
     
     wandb.finish()
     torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/PandaRobot/PandaReach/TD3.py/pandapush_td3_actor.pth")

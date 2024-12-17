@@ -127,8 +127,8 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     wandb.init(
-        project="TrapMaze_1200_0",  # 替换为你的项目名称
-        name='BCIRL_lr_test',
+        project="TrapMaze_1200",  # 替换为你的项目名称
+        name='BCIRL_org_r',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     example_map = [
         [1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 0, 1],
+        [1, 0, 1, 0, 1, 0, 1],
         [1, 0, 1, 'g', 't', 0, 1],
         [1, 0, 't', 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1]
@@ -206,6 +206,7 @@ if __name__ == "__main__":
         pseudo_reward = torch.clamp(pseudo_reward, min=-10, max=10)
         pseudo_reward = pseudo_reward.cpu().numpy()
         print(f'clamp_pseudo_r: {pseudo_reward}')
+        pseudo_reward += reward
         replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
 
         state = next_state

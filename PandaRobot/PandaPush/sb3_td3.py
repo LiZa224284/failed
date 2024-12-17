@@ -62,11 +62,11 @@ env = gym.make(env_name)
 n_actions = env.action_space.shape[-1]
 action_noise = NormalActionNoise(mean=np.zeros(n_actions), sigma=0.1 * np.ones(n_actions))
 model = TD3('MultiInputPolicy', env, 
-            replay_buffer_class=HerReplayBuffer, 
-            replay_buffer_kwargs=dict(
-            n_sampled_goal=4,
-            goal_selection_strategy='future',
-        ),
+            # replay_buffer_class=HerReplayBuffer, 
+            # replay_buffer_kwargs=dict(
+            # n_sampled_goal=4,
+            # goal_selection_strategy='future',
+        # ),
             batch_size=2048, learning_rate=0.001, gamma=0.95, tau=0.05, action_noise=action_noise, verbose=0, device="cuda:2" if torch.cuda.is_available() else "cpu")
 callback = WandbCallback(log_dir='/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPickAndPlace/log', check_interval=10)
 
