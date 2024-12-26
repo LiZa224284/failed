@@ -324,7 +324,7 @@ if __name__ == "__main__":
     algorithm_name = 'TD3_model_prepare'
     env_name = 'FL'
     total_timesteps = int(5e4)
-    log_dir = "/home/yuxuanli/failed_IRL_new/FL/logs"
+    log_dir = "/home/xlx9645/failed/FL/logs"
     check_interval = 10
     callback = WandbCallback(log_dir=log_dir, check_interval=check_interval)
     
@@ -350,7 +350,7 @@ if __name__ == "__main__":
     model = TD3('MlpPolicy', env, action_noise=action_noise, verbose=0, device="cuda" if torch.cuda.is_available() else "cpu")
     print("Model is using device:", model.device)
     model.learn(total_timesteps=total_timesteps, callback=callback)
-    model.save("/home/yuxuanli/failed_IRL_new/FL/models/FL_TD3_success")
+    model.save("/home/xlx9645/failed/FL/models/FL_TD3_success")
 
     # Evaluate Model
     mean_reward, std_reward = evaluate_policy(model, env, n_eval_episodes=10, deterministic=True)

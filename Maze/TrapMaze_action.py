@@ -220,7 +220,7 @@ class TrapMazeEnv(modifyPointMazeEnv):
         self.goal_threshould = goal_threshould
         self.trap_threshould = trap_threshould
         agent_xml_path = path.join(
-            path.dirname(path.realpath(__file__)), "/home/yuxuanli/failed_IRL_new/Maze/point.xml"
+            path.dirname(path.realpath(__file__)), "/home/xlx9645/failed/Maze/point.xml"
         )
         super().__init__(*args, agent_xml_path=agent_xml_path, **kwargs)
 
@@ -339,8 +339,8 @@ if __name__ == "__main__":
             obs, reward, done, truncated, info = env.step(action)
 
             frame = env.render()
-            frames.append(frame)
+    #         frames.append(frame)
 
-    imageio.mimsave('/home/yuxuanli/failed_IRL_new/Maze/simulation1.mp4', frames, fps=30)
+    # imageio.mimsave('/home/xlx9645/failed/Maze/simulation1.mp4', frames, fps=30)
 
     env.close()

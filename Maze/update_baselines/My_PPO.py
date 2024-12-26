@@ -16,7 +16,7 @@ import numpy as np
 from collections import deque
 import random
 import matplotlib.pyplot as plt
-from TD3 import TD3, ReplayBuffer
+from PPO import PPO, ReplayBuffer
 
 success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 failed_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
@@ -144,7 +144,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="TrapMaze_1225",  
-        name='MyMethod',
+        name='My_PPO',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -178,7 +178,7 @@ if __name__ == "__main__":
     max_action = env.action_space.high[0]
 
     replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6),  device=device)  
-    td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
+    td3_agent = PPO(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
     
     expert_states, expert_actions, success_rewards = extract_obs_and_actions(success_demos, 1, exp_k=1)
     failed_states, failed_actions, failed_rewards = extract_obs_and_actions(failed_demos, -1, exp_k=1)
@@ -252,8 +252,6 @@ if __name__ == "__main__":
 
         if t > start_timesteps:
             td3_agent.train()
-        
-        
 
         if (done or truncated):
             episode_rewards.append(episode_reward)
@@ -336,10 +334,10 @@ if __name__ == "__main__":
                 optimizer.step()
                 print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
 
-            save_path = f'/home/xlx9645/failed/Maze/update_baselines/models/MyMethod_models/mid_16/mid_reward_{t+1}.pth'
+            save_path = f'/home/xlx9645/failed/Maze/update_baselines/models/MyMethod_models/mid_16_on/mid_reward_{t+1}.pth'
             torch.save(reward_net.state_dict(), save_path)
 
-            fig_save_path = f"/home/xlx9645/failed/Maze/update_baselines/models/MyMethod_models/mid_16/my_map2_rewardnet_{t+1}.png"
+            fig_save_path = f"/home/xlx9645/failed/Maze/update_baselines/models/MyMethod_models/mid_16_on/my_map2_rewardnet_{t+1}.png"
             visualize_bcirl_reward_function(
                 reward_net_path=save_path,
                 state_dim=state_dim,
@@ -347,6 +345,7 @@ if __name__ == "__main__":
                 device=device,
                 figure_save_path=fig_save_path
             )
+            replay_buffer.clear()
 
     wandb.finish()
     torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/myit_actor.pth")

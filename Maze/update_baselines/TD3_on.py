@@ -99,17 +99,26 @@ class ReplayBuffer():
 
 
     def sample(self, batch_size):
+        # ind = np.random.randint(0, self.ptr, size=batch_size)
         ind = np.random.randint(0, self.size, size=batch_size)
         # effective_batch_size = min(batch_size, self.size)
         # ind = np.random.choice(self.size, size=effective_batch_size, replace=False)
 
-        return (
+        sampled_data =  (
         torch.FloatTensor(self.state[ind]).to(self.device),
         torch.FloatTensor(self.action[ind]).to(self.device),
         torch.FloatTensor(self.reward[ind]).to(self.device),
         torch.FloatTensor(self.next_state[ind]).to(self.device),
         torch.FloatTensor(self.done_bool[ind]).to(self.device),
         )
+    
+        # self.ptr = 0
+
+        return sampled_data
+    
+    def clear(self):
+        self.ptr = 0
+        self.size = 0
 
 # 定义 TD3 算法
 class TD3:
@@ -218,7 +227,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="TrapMaze_1225",  # 替换为你的项目名称
-        name='TD3',
+        name='TD3_on_policy',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -248,7 +257,6 @@ if __name__ == "__main__":
     # env = gym.make('InvertedPendulum-v4')
     # 定义状态维度和动作维度
     state_dim = sum([np.prod(space.shape) for space in env.observation_space.spaces.values()])
-    # state_dim = 4
     action_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
@@ -287,10 +295,8 @@ if __name__ == "__main__":
             
             next_state, reward, done, truncated, info = env.step(action)
             next_state = np.concatenate([next_state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
-            # next_state = np.concatenate([next_state[key].flatten() for key in ['achieved_goal', 'desired_goal']])
             done = torch.tensor(done, dtype=torch.bool)
             truncated = torch.tensor(truncated, dtype=torch.bool)
-            # done_bool = torch.logical_or(done, truncated).float()
             done_bool = done
 
             replay_buffer.add(state, action, next_state, reward, done_bool)
@@ -298,8 +304,9 @@ if __name__ == "__main__":
             state = next_state
             episode_reward += reward
 
-        if t > start_timesteps:
-            td3_agent.train()
+        # if t > start_timesteps:
+        td3_agent.train()
+        replay_buffer.clear()
         
         if (done or truncated):
             episode_rewards.append(episode_reward)

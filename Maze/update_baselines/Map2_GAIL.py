@@ -19,8 +19,8 @@ import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
 import argparse
 
-success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
-failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
+success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
+failed_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 
 with open(success_demo_path, 'rb') as f:
     success_demos = pickle.load(f)
@@ -123,7 +123,7 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     wandb.init(
-        project="TrapMaze_1200",  
+        project="TrapMaze_1225",  
         name='GAIL',
         config={
             "batch_size": 256,
@@ -181,37 +181,48 @@ if __name__ == "__main__":
 
     success_buffer = []
     success_count = 0
+    episode_rewards = []  # 用于存储最近的 episode 奖励
+    avg_episode_reward_window = 50
+    
 
     for t in range(max_timsteps):
         episode_timesteps += 1
-        if t < start_timesteps:
-            action = env.action_space.sample()
-        else:
-            noise = 0.2
-            action = action = td3_agent.select_action(state=state)
-            action += noise * np.random.normal(size=action.shape)
-            action = np.clip(action, -1.0, 1.0)
-        
-        next_state, reward, done, truncated, info = env.step(action)
-        next_state = np.concatenate([next_state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
-        done = torch.tensor(done, dtype=torch.bool)
-        truncated = torch.tensor(truncated, dtype=torch.bool)
-        done_bool = torch.logical_or(done, truncated).float()
 
-        state_tensor = torch.from_numpy(state).float().to(device).unsqueeze(0)
-        action_tensor = torch.from_numpy(action).float().to(device).unsqueeze(0)
-        pseudo_reward = compute_gail_reward(state_tensor, action_tensor)
-        pseudo_reward = pseudo_reward.cpu().numpy()
-        replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
+        for i in range(300):
+            if t < start_timesteps:
+                action = env.action_space.sample()
+            else:
+                noise = 0.2
+                action = action = td3_agent.select_action(state=state)
+                action += noise * np.random.normal(size=action.shape)
+                action = np.clip(action, -1.0, 1.0)
+            
+            next_state, reward, done, truncated, info = env.step(action)
+            next_state = np.concatenate([next_state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
+            done = torch.tensor(done, dtype=torch.bool)
+            truncated = torch.tensor(truncated, dtype=torch.bool)
+            done_bool = torch.logical_or(done, truncated).float()
 
-        state = next_state
-        episode_reward += reward
-        pseudo_episode_reward += pseudo_reward
+            state_tensor = torch.from_numpy(state).float().to(device).unsqueeze(0)
+            action_tensor = torch.from_numpy(action).float().to(device).unsqueeze(0)
+            pseudo_reward = compute_gail_reward(state_tensor, action_tensor)
+            pseudo_reward = pseudo_reward.cpu().numpy()
+            replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
+
+            state = next_state
+            episode_reward += reward
+            pseudo_episode_reward += pseudo_reward
 
         if t > start_timesteps:
             td3_agent.train()
         
         if (done or truncated):
+            episode_rewards.append(episode_reward)
+            if len(episode_rewards) > avg_episode_reward_window:
+                episode_rewards.pop(0)
+            avg_episode_reward = np.mean(episode_rewards)
+            wandb.log({"average Episode Reward": avg_episode_reward})
+
             print(f"Total T: {t+1} Episode Num: {episode_num+1} Episode T: {episode_timesteps} Reward: {episode_reward:.3f} PseudoReward: {pseudo_episode_reward}")
             wandb.log({"Episode Reward": episode_reward})
             wandb.log({"Pseudo Episode Reward": pseudo_episode_reward})
@@ -272,10 +283,10 @@ if __name__ == "__main__":
                 wandb.log({"Discriminator Loss": disc_loss})
 
         if (t+1) % 3000 == 1:
-            save_path = f'/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/GAIL_models/mid_16/mid_reward_{t+1}.pth'
+            save_path = f'/home/xlx9645/failed/Maze/update_baselines/models/GAIL/mid_16/mid_reward_{t+1}.pth'
             torch.save(discriminator.state_dict(), save_path)
 
-            fig_save_path = f"/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/GAIL_models/mid_16/my_map2_rewardnet_{t+1}.png"
+            fig_save_path = f"/home/xlx9645/failed/Maze/update_baselines/models/GAIL/mid_16/my_map2_rewardnet_{t+1}.png"
             visualize_bcirl_reward_function(
                 reward_net_path=save_path,
                 state_dim=state_dim,

@@ -220,7 +220,7 @@ class TrapMazeEnv(modifyPointMazeEnv):
         self.goal_threshould = goal_threshould
         self.trap_threshould = trap_threshould
         agent_xml_path = path.join(
-            path.dirname(path.realpath(__file__)), "/home/yuxuanli/failed_IRL_new/Maze/point.xml"
+            path.dirname(path.realpath(__file__)), "/home/xlx9645/failed/Maze/point.xml"
         )
         super().__init__(*args, agent_xml_path=agent_xml_path, **kwargs)
 

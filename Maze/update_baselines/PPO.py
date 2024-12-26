@@ -20,41 +20,18 @@ import random
 import matplotlib.pyplot as plts
 
 class Critic(nn.Module):
-	def __init__(self, state_dim, action_dim, hidden_dim=256):
-		super(Critic, self).__init__()
+    def __init__(self, state_dim, action_dim, hidden_dim=256):
+        super(Critic, self).__init__()
+        hidden_dim = int(hidden_dim)
+        self.net = nn.Sequential(
+            nn.Linear(state_dim, hidden_dim),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.Linear(hidden_dim, action_dim),
+        )
 
-		# Q1 architecture
-		self.l1 = nn.Linear(state_dim + action_dim, hidden_dim)
-		self.l2 = nn.Linear(hidden_dim, hidden_dim)
-		self.l3 = nn.Linear(hidden_dim, 1)
-
-		# Q2 architecture
-		self.l4 = nn.Linear(state_dim + action_dim, hidden_dim)
-		self.l5 = nn.Linear(hidden_dim, hidden_dim)
-		self.l6 = nn.Linear(hidden_dim, 1)
-
-
-	def forward(self, state, action):
-		sa = torch.cat([state, action], 1)
-
-		q1 = F.relu(self.l1(sa))
-		q1 = F.relu(self.l2(q1))
-		q1 = self.l3(q1)
-
-		q2 = F.relu(self.l4(sa))
-		q2 = F.relu(self.l5(q2))
-		q2 = self.l6(q2)
-		return q1, q2
-
-
-	def Q1(self, state, action):
-		sa = torch.cat([state, action], 1)
-
-		q1 = F.relu(self.l1(sa))
-		q1 = F.relu(self.l2(q1))
-		q1 = self.l3(q1)
-		return q1
-
+    def forward(self, state):
+        return  self.net(state)
+    
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action=1.0, hidden_dim=256):
         super(Actor, self).__init__()
@@ -99,20 +76,29 @@ class ReplayBuffer():
 
 
     def sample(self, batch_size):
+        # ind = np.random.randint(0, self.ptr, size=batch_size)
         ind = np.random.randint(0, self.size, size=batch_size)
         # effective_batch_size = min(batch_size, self.size)
         # ind = np.random.choice(self.size, size=effective_batch_size, replace=False)
 
-        return (
+        sampled_data =  (
         torch.FloatTensor(self.state[ind]).to(self.device),
         torch.FloatTensor(self.action[ind]).to(self.device),
         torch.FloatTensor(self.reward[ind]).to(self.device),
         torch.FloatTensor(self.next_state[ind]).to(self.device),
         torch.FloatTensor(self.done_bool[ind]).to(self.device),
         )
+    
+        # self.ptr = 0
+
+        return sampled_data
+    
+    def clear(self):
+        self.ptr = 0
+        self.size = 0
 
 # 定义 TD3 算法
-class TD3:
+class PPO:
     def __init__(
         self,
         state_dim,
@@ -121,7 +107,8 @@ class TD3:
         actor_lr=1e-4, # 1e-3
         critic_lr=1e-3,
         gamma=0.99,
-        tau=0.005,
+        # tau=0.005,
+        lmbda=0.95,
         noise_std=0.2,
         noise_clip=0.5,
         policy_delay=2,
@@ -135,11 +122,11 @@ class TD3:
         # Actor and Critic networks
         self.actor = Actor(state_dim, action_dim, max_action, hidden_dim=256).to(self.device)
         # self.actor_target = Actor(state_dim, action_dim, max_action).to(self.device)
-        self.actor_target = copy.deepcopy(self.actor)
-        self.actor_target.load_state_dict(self.actor.state_dict())
+        # self.actor_target = copy.deepcopy(self.actor)
+        # self.actor_target.load_state_dict(self.actor.state_dict())
 
         self.critic = Critic(state_dim, action_dim).to(self.device)
-        self.critic_target = copy.deepcopy(self.critic)
+        # self.critic_target = copy.deepcopy(self.critic)
 
         # Optimizers
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=actor_lr)
@@ -154,7 +141,8 @@ class TD3:
 
         # Training Parameters
         self.gamma = gamma
-        self.tau = tau
+        # self.tau = tau
+        self.lmbda = lmbda
         self.noise_std = noise_std
         self.noise_clip = noise_clip
         self.policy_delay = policy_delay
@@ -175,50 +163,47 @@ class TD3:
         # Sample batch from replay buffer
         states, actions, rewards, next_states, done_bool = self.replay_buffer.sample(self.batch_size)
 
-        with torch.no_grad():
-            # Target Policy Smoothing
-            noise = (torch.randn_like(actions) * self.noise_std).clamp(-self.noise_clip, self.noise_clip)
-            next_actions = (self.actor_target(next_states) + noise).clamp(-self.max_action, self.max_action)
+        td_target = rewards + self.gamma * self.critic(next_states) * (1 - done_bool)
+        td_delta = td_target - self.critic(states)
 
-            # Compute target Q-values
-            target_q1, target_q2 = self.critic_target(next_states, next_actions)
-            target_q = rewards + (1 - done_bool) * self.gamma * torch.min(target_q1, target_q2)
+        advantages = []
+        advantage = 0.0
+        td_delta = td_delta.cpu().detach().numpy()  # Convert to numpy for computation
+        for delta in reversed(td_delta):  # Iterate from the end to the beginning
+            advantage = delta + self.gamma * self.lmbda * advantage
+            advantages.insert(0, advantage)
+        advantages = torch.FloatTensor(advantages).to(self.device)
 
-        # Optimize Critic
-        current_q1, current_q2 = self.critic(states, actions)
-        critic_1_loss = nn.MSELoss()(current_q1, target_q.detach())
-        critic_2_loss = nn.MSELoss()(current_q2, target_q.detach())
-        critic_loss = critic_1_loss + critic_2_loss
+        log_std = torch.zeros_like(self.actor(states)) + 0.2  # 假设固定标准差
+        std = torch.exp(log_std)
+        dist = torch.distributions.Normal(self.actor(states), std)
+        old_log_probs = dist.log_prob(actions).sum(dim=-1, keepdim=True).detach()
 
-        self.critic_optimizer.zero_grad()
-        critic_loss.backward()
-        self.critic_optimizer.step()
-        wandb.log({"Critic Loss": critic_loss})
+        for i in range(50):
+            dist = torch.distributions.Normal(self.actor(states), std)
+            log_probs = dist.log_prob(actions).sum(dim=-1, keepdim=True)
+            ratio = torch.exp(log_probs - old_log_probs)
 
-        # Delayed Policy Updates
-        if self.total_it % self.policy_delay == 0:
+            surrogate1 = ratio * advantages
+            surrogate2 = torch.clamp(ratio, 1 - 0.2, 1 + 0.2) * advantages
+            actor_loss = -torch.min(surrogate1, surrogate2).mean()
+            critic_loss = F.mse_loss(self.critic(states), td_target.detach())
 
-            actor_loss = -self.critic.Q1(states, self.actor(states)).mean()
-
-            # Optimize Actor
             self.actor_optimizer.zero_grad()
             actor_loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.actor.parameters(), max_norm=1.0)
             self.actor_optimizer.step()
-            wandb.log({"Actor Loss": actor_loss})
-
-            # Update Target Networks
-            for param, target_param in zip(self.actor.parameters(), self.actor_target.parameters()):
-                target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+            self.critic_optimizer.zero_grad()
+            critic_loss.backward()
+            self.critic_optimizer.step()
             
-            for param, target_param in zip(self.critic.parameters(), self.critic_target.parameters()):
-                target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+
+
 
 if __name__ == "__main__":
 
     wandb.init(
         project="TrapMaze_1225",  # 替换为你的项目名称
-        name='TD3',
+        name='PPO',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -248,12 +233,11 @@ if __name__ == "__main__":
     # env = gym.make('InvertedPendulum-v4')
     # 定义状态维度和动作维度
     state_dim = sum([np.prod(space.shape) for space in env.observation_space.spaces.values()])
-    # state_dim = 4
     action_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
     replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6))  
-    td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
+    td3_agent = PPO(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
 
     # ReplayBuffer
     
@@ -287,10 +271,8 @@ if __name__ == "__main__":
             
             next_state, reward, done, truncated, info = env.step(action)
             next_state = np.concatenate([next_state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
-            # next_state = np.concatenate([next_state[key].flatten() for key in ['achieved_goal', 'desired_goal']])
             done = torch.tensor(done, dtype=torch.bool)
             truncated = torch.tensor(truncated, dtype=torch.bool)
-            # done_bool = torch.logical_or(done, truncated).float()
             done_bool = done
 
             replay_buffer.add(state, action, next_state, reward, done_bool)
@@ -298,8 +280,9 @@ if __name__ == "__main__":
             state = next_state
             episode_reward += reward
 
-        if t > start_timesteps:
-            td3_agent.train()
+        # if t > start_timesteps:
+        td3_agent.train()
+        replay_buffer.clear()
         
         if (done or truncated):
             episode_rewards.append(episode_reward)
