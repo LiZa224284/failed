@@ -67,14 +67,22 @@ class ReplayBuffer():
 
 
     def add(self, state, action, next_state, reward, done_bool, value, log_prob):
-        idx = self.ptr % self.max_size
-        self.state[idx] = state
-        self.action[idx] = action
-        self.next_state[idx] = next_state
-        self.reward[idx] = reward
-        self.done_bool[idx] = done_bool
-        self.value[idx] = value
-        self.log_prob[idx] = log_prob
+        # idx = self.ptr % self.max_size
+        # self.state[idx] = state
+        # self.action[idx] = action
+        # self.next_state[idx] = next_state
+        # self.reward[idx] = reward
+        # self.done_bool[idx] = done_bool
+        # self.value[idx] = value
+        # self.log_prob[idx] = log_prob
+
+        self.state[self.ptr] = state
+        self.action[self.ptr] = action
+        self.next_state[self.ptr] = next_state
+        self.reward[self.ptr] = reward
+        self.done_bool[self.ptr] = done_bool
+        self.value[self.ptr] = value
+        self.log_prob[self.ptr] = log_prob
 
         self.ptr = (self.ptr + 1) % self.max_size
         self.size = min(self.size + 1, self.max_size)
@@ -169,12 +177,12 @@ class PPO:
         self.critic_scheduler.step()
 
         # Sample batch from replay buffer
-        states, actions, rewards, next_states, done_bool, value, old_log_probs = self.replay_buffer.sample(self.batch_size)
-        # rewards = (rewards - rewards.mean()) / (rewards.std() + 1e-5)
-        next_values = torch.cat((value[1:], torch.zeros(1, 1).to(self.device)))
+        states, actions, rewards, next_states, done_bools, values, old_log_probs = self.replay_buffer.sample(self.batch_size)
+        rewards = (rewards - rewards.mean()) / (rewards.std() + 1e-5)
+        next_values = torch.cat((values[1:], torch.zeros(1, 1).to(self.device)))
         # next_values = self.critic(next_states)
-        advantages = self.compute_gae(rewards, value, done_bool, next_values)
-        td_target = rewards + self.gamma * next_values * (1 - done_bool)
+        advantages = self.compute_gae(rewards, values, done_bools, next_values)
+        td_target = rewards + self.gamma * next_values * (1 - done_bools)
 
         # td_target = rewards + self.gamma * self.critic(next_states) * (1 - done_bool)
         # td_delta = td_target - self.critic(states)
@@ -208,6 +216,8 @@ class PPO:
             self.critic_optimizer.zero_grad()
             critic_loss.backward()
             self.critic_optimizer.step()
+            wandb.log({"Critic Loss": critic_loss})
+            wandb.log({"Actor Loss": actor_loss})
             
 
 
@@ -272,8 +282,12 @@ if __name__ == "__main__":
 
     for t in range(max_timsteps):
         episode_timesteps += 1
-            
-        action = td3_agent.select_action(state=state)
+
+        if t < 10000:
+            action = env.action_space.sample()
+        else:
+            action = td3_agent.select_action(state=state)
+
         next_state, reward, done, truncated, info = env.step(action)
         next_state = np.concatenate([next_state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
         done = torch.tensor(done, dtype=torch.bool)
