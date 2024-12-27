@@ -169,7 +169,8 @@ if __name__ == "__main__":
     # X = expert_states
     # y = success_rewards
     success_demo_buffer= extract_obs_and_actions(success_demos)[0].tolist() 
-    failed_demo_buffer = extract_obs_and_actions(failed_demos)[0].tolist() 
+    # failed_demo_buffer = extract_obs_and_actions(failed_demos)[0].tolist() 
+    failed_demo_buffer = []
 
 
     batch_size = 512
@@ -192,8 +193,8 @@ if __name__ == "__main__":
     episode_rewards = []  # 用于存储最近的 episode 奖励
     avg_episode_reward_window = 50
 
-    success_demo_buffer = []  # 用于存储成功演示轨迹
-    failed_demo_buffer = []  
+    # success_demo_buffer = []  # 用于存储成功演示轨迹
+    # failed_demo_buffer = []  
     sasr_shaper = SASRRewardShaper(bandwidth=0.1)
  
     for t in range(max_timsteps):
@@ -275,7 +276,7 @@ if __name__ == "__main__":
             else:
                 print('Wrong!!!!!')
             traj = []
-            
+
             sasr_shaper.update_kde(success_demo_buffer, failed_demo_buffer)
 
         # if (t+1) % 3000 == 1:

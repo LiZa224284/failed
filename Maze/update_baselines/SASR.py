@@ -127,7 +127,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="TrapMaze_1225",  
-        name='SASR',
+        name='SASR1',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -192,8 +192,8 @@ if __name__ == "__main__":
     episode_rewards = []  # 用于存储最近的 episode 奖励
     avg_episode_reward_window = 50
 
-    success_demo_buffer = []  # 用于存储成功演示轨迹
-    failed_demo_buffer = []  
+    # success_demo_buffer = []  # 用于存储成功演示轨迹
+    # failed_demo_buffer = []  
     sasr_shaper = SASRRewardShaper(bandwidth=0.1)
  
     for t in range(max_timsteps):
@@ -276,7 +276,7 @@ if __name__ == "__main__":
                 print('Wrong!!!!!')
             traj = []
 
-        if (t+1) % 3000 == 1:
+        if (t+1) % 1500 == 1:
             sasr_shaper.update_kde(success_demo_buffer, failed_demo_buffer)
 
     wandb.finish()
