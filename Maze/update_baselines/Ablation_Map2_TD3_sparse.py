@@ -18,9 +18,8 @@ import random
 import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
 
-success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos.pkl'
-failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
-
+success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
+failed_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 with open(success_demo_path, 'rb') as f:
     success_demos = pickle.load(f)
 
@@ -143,8 +142,8 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 if __name__ == "__main__":
 
     wandb.init(
-        project="Ablation_map1",  
-        name='TD3_sparse',
+        project="Ablation_map2_1227",  
+        name='TD3',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -165,7 +164,7 @@ if __name__ == "__main__":
     example_map = [
         [1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 0, 1, 0, 1],
+        [1, 0, 1, 1, 1, 0, 1],
         [1, 0, 1, 'g', 't', 0, 1],
         [1, 0, 't', 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1]
@@ -193,9 +192,9 @@ if __name__ == "__main__":
     y_tensor = torch.tensor(y, dtype=torch.float32).to(device)
     reward_net = RewardNetwork(input_dim=X.shape[1]).to(device)  # 将模型移动到 GPU
     checkpoint_path = '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/my_reward_trained.pth'
-    state_dict = torch.load(checkpoint_path, map_location=device)
-    reward_net.load_state_dict(state_dict)
-    reward_net.eval()
+    # state_dict = torch.load(checkpoint_path, map_location=device)
+    # reward_net.load_state_dict(state_dict)
+    # reward_net.eval()
     # optimizer = torch.optim.Adam(reward_net.parameters(), lr=1e-3)
     # loss_fn = nn.MSELoss()
 
@@ -216,26 +215,8 @@ if __name__ == "__main__":
 
     success_buffer = []
     success_count = 0
-
-    # epochs = 200
-    # for epoch in range(epochs):
-    #     reward_net.train()
-    #     optimizer.zero_grad()
-    #     predictions = reward_net(X_tensor).squeeze()
-    #     loss = loss_fn(predictions, y_tensor)
-    #     loss.backward()
-    #     optimizer.step()
-    #     print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
-    # torch.save(reward_net.state_dict(), '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/my_reward.pth')
-
-    # fig_save_path = '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/My_visualize.png'
-    # visualize_bcirl_reward_function(
-    #             reward_net_path='/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/my_reward.pth',
-    #             state_dim=state_dim,
-    #             action_dim=action_dim,
-    #             device=device,
-    #             figure_save_path=fig_save_path
-    #         )
+    episode_rewards = []  # 用于存储最近的 episode 奖励
+    avg_episode_reward_window = 50
 
     for t in range(max_timsteps):
         episode_timesteps += 1
@@ -276,6 +257,12 @@ if __name__ == "__main__":
         
 
         if (done or truncated):
+            episode_rewards.append(episode_reward)
+            if len(episode_rewards) > avg_episode_reward_window:
+                episode_rewards.pop(0)
+            avg_episode_reward = np.mean(episode_rewards)
+            wandb.log({"average Episode Reward": avg_episode_reward})
+
             print(f"Total T: {t+1} Episode Num: {episode_num+1} Episode T: {episode_timesteps} Reward: {episode_reward:.3f} PseudoReward: {pseudo_episode_reward}")
             wandb.log({"Episode Reward": episode_reward})
             wandb.log({"Pseudo Episode Reward": pseudo_episode_reward})

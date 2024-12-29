@@ -30,33 +30,63 @@ with open(failed_demo_path, 'rb') as f:
     failed_demos = pickle.load(f)
 
 class SASRRewardShaper:
-    def __init__(self, bandwidth=0.1):
+    def __init__(self, input_dim, rff_dim=128, retention_rate=0.8, bandwidth=0.1):
+        # RFF 参数
+        self.rff_dim = rff_dim
+        self.retention_rate = retention_rate
+        self.bandwidth = bandwidth
+
+        # 随机 Fourier 参数
+        self.W = np.random.normal(size=(input_dim, rff_dim))
+        self.b = np.random.uniform(0, 2 * np.pi, size=rff_dim)
+
+        # 根据 Retention Rate 保留部分特征
+        selected_indices = np.random.choice(rff_dim, size=int(rff_dim * retention_rate), replace=False)
+        self.reduced_W = self.W[:, selected_indices]
+        self.reduced_b = self.b[selected_indices]
+
+        # KDE 初始化
         self.success_kde = KernelDensity(kernel="gaussian", bandwidth=bandwidth)
         self.failed_kde = KernelDensity(kernel="gaussian", bandwidth=bandwidth)
+
+        # 数据缓冲
         self.success_data = []
         self.failed_data = []
-    
+
+    def rff_transform(self, x):
+        """将输入状态映射到 RFF 空间"""
+        return np.sqrt(2 / self.reduced_W.shape[1]) * np.cos(np.dot(x, self.reduced_W) + self.reduced_b)
+
     def update_kde(self, success_states, failed_states):
+        """更新 KDE 模型"""
         if len(success_states) > 0:
-            self.success_data.extend(success_states)
+            transformed_success = np.array([self.rff_transform(s) for s in success_states])
+            self.success_data.extend(transformed_success)
             self.success_kde.fit(np.array(self.success_data))
-        
+
         if len(failed_states) > 0:
-            self.failed_data.extend(failed_states)
+            transformed_failed = np.array([self.rff_transform(s) for s in failed_states])
+            self.failed_data.extend(transformed_failed)
             self.failed_kde.fit(np.array(self.failed_data))
-    
+
     def compute_success_rate(self, state):
-        # 估计成功率
-        success_prob = np.exp(self.success_kde.score_samples([state])) if len(self.success_data) > 0 else 0.0
-        failed_prob = np.exp(self.failed_kde.score_samples([state])) if len(self.failed_data) > 0 else 0.0
+        """计算成功率"""
+        transformed_state = self.rff_transform(state)
+        success_prob = (
+            np.exp(self.success_kde.score_samples([transformed_state])) if len(self.success_data) > 0 else 0.0
+        )
+        failed_prob = (
+            np.exp(self.failed_kde.score_samples([transformed_state])) if len(self.failed_data) > 0 else 0.0
+        )
         alpha = success_prob + 1
         beta_val = failed_prob + 1
-        return beta(alpha, beta_val).mean()  # 使用 Beta 分布计算成功率
-    
-    def compute_shaped_reward(self, state, base_reward):
-        success_rate = self.compute_success_rate(state)
-        return base_reward + success_rate
+        return beta(alpha, beta_val).mean()
 
+    def compute_shaped_reward(self, state, base_reward):
+        """计算塑形奖励"""
+        success_rate = self.compute_success_rate(state)
+        return 0.4*base_reward + 0.6*success_rate
+    
 def extract_obs_and_actions(demos):
     obs = []
     actions = []
@@ -127,7 +157,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="TrapMaze_1200",  
-        name='SASR1_10',
+        name='SASR5_50',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -194,7 +224,8 @@ if __name__ == "__main__":
 
     # success_demo_buffer = []  # 用于存储成功演示轨迹
     # failed_demo_buffer = []  
-    sasr_shaper = SASRRewardShaper(bandwidth=0.1)
+    # sasr_shaper = SASRRewardShaper(bandwidth=0.1)
+    sasr_shaper = SASRRewardShaper(bandwidth=0.1, input_dim=state_dim, rff_dim=128, retention_rate=0.1)
  
     for t in range(max_timsteps):
         episode_timesteps += 1
@@ -276,7 +307,7 @@ if __name__ == "__main__":
                 print('Wrong!!!!!')
             traj = []
 
-        if (t+1) % 3000 == 1:
+        if (t+1) % 15000 == 1:
             sasr_shaper.update_kde(success_demo_buffer, failed_demo_buffer)
 
     wandb.finish()

@@ -17,10 +17,8 @@ from collections import deque
 import random
 import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
-
-success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
-failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
-
+success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
+failed_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 with open(success_demo_path, 'rb') as f:
     success_demos = pickle.load(f)
 
@@ -143,8 +141,8 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 if __name__ == "__main__":
 
     wandb.init(
-        project="Ablation_map1",  
-        name='My_FD',
+        project="Ablation_map2_1227",  
+        name='TWCRL_FD2',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -160,12 +158,12 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
     example_map = [
         [1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 0, 1, 0, 1],
+        [1, 0, 1, 1, 1, 0, 1],
         [1, 0, 1, 'g', 't', 0, 1],
         [1, 0, 't', 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1]
@@ -177,7 +175,7 @@ if __name__ == "__main__":
     action_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
-    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6))  
+    replay_buffer = ReplayBuffer(state_dim=state_dim, action_dim=action_dim, max_size=int(1e6),device=device)  
     td3_agent = TD3(state_dim, action_dim, max_action, device=device, ReplayBuffer=replay_buffer)
     
     expert_states, expert_actions, success_rewards = extract_obs_and_actions(success_demos, 1, exp_k=1)
@@ -188,7 +186,6 @@ if __name__ == "__main__":
     X = expert_states
     y = success_rewards
     # 转换为 PyTorch 张量并移动到 GPU
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     X_tensor = torch.tensor(X, dtype=torch.float32).to(device)
     y_tensor = torch.tensor(y, dtype=torch.float32).to(device)
     reward_net = RewardNetwork(input_dim=X.shape[1]).to(device)  # 将模型移动到 GPU
@@ -212,26 +209,8 @@ if __name__ == "__main__":
 
     success_buffer = []
     success_count = 0
-
-    # epochs = 200
-    # for epoch in range(epochs):
-    #     reward_net.train()
-    #     optimizer.zero_grad()
-    #     predictions = reward_net(X_tensor).squeeze()
-    #     loss = loss_fn(predictions, y_tensor)
-    #     loss.backward()
-    #     optimizer.step()
-    #     print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
-    # torch.save(reward_net.state_dict(), '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/my_reward.pth')
-
-    # fig_save_path = '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/My_visualize.png'
-    # visualize_bcirl_reward_function(
-    #             reward_net_path='/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/my_reward.pth',
-    #             state_dim=state_dim,
-    #             action_dim=action_dim,
-    #             device=device,
-    #             figure_save_path=fig_save_path
-    #         )
+    episode_rewards = []  # 用于存储最近的 episode 奖励
+    avg_episode_reward_window = 50
 
     for t in range(max_timsteps):
         episode_timesteps += 1
@@ -272,6 +251,12 @@ if __name__ == "__main__":
         
 
         if (done or truncated):
+            episode_rewards.append(episode_reward)
+            if len(episode_rewards) > avg_episode_reward_window:
+                episode_rewards.pop(0)
+            avg_episode_reward = np.mean(episode_rewards)
+            wandb.log({"average Episode Reward": avg_episode_reward})
+
             print(f"Total T: {t+1} Episode Num: {episode_num+1} Episode T: {episode_timesteps} Reward: {episode_reward:.3f} PseudoReward: {pseudo_episode_reward}")
             wandb.log({"Episode Reward": episode_reward})
             wandb.log({"Pseudo Episode Reward": pseudo_episode_reward})
