@@ -203,7 +203,7 @@ class TD3:
         critic_loss.backward()
         self.critic_optimizer.step()
         wandb.log({"Critic Loss": critic_loss})
-
+        self.replay_buffer.clear()
         # Delayed Policy Updates
         if self.total_it % self.policy_delay == 0:
 

@@ -1,0 +1,116 @@
+/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/gymnasium/envs/registration.py:642: UserWarning: [33mWARN: Overriding environment TrapMazeEnv already in registry.[0m
+  logger.warn(f"Overriding environment {new_spec.id} already in registry.")
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: yuxuanli2023 (yuxuanli2023-northwestern-university). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /home/xlx9645/failed/Maze/update_baselines/wandb/run-20241229_210357-x05wb0qx
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run GAIL
+wandb: ⭐️ View project at https://wandb.ai/yuxuanli2023-northwestern-university/Main_1229
+wandb: 🚀 View run at https://wandb.ai/yuxuanli2023-northwestern-university/Main_1229/runs/x05wb0qx
+/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/gymnasium/spaces/box.py:235: UserWarning: [33mWARN: Box low's precision lowered by casting to float32, current low.dtype=float64[0m
+  gym.logger.warn(
+/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/gymnasium/spaces/box.py:305: UserWarning: [33mWARN: Box high's precision lowered by casting to float32, current high.dtype=float64[0m
+  gym.logger.warn(
+/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/optim/lr_scheduler.py:224: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+/home/xlx9645/failed/Maze/update_baselines/Main_GAIL.py:84: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  reward_net.load_state_dict(torch.load(reward_net_path, map_location=device))
+/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/optim/lr_scheduler.py:224: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Total T: 300 Episode Num: 1 Episode T: 300 Reward: 0.000 PseudoReward: [[138.02184]]
+Episode 1, Average Success Rate (last 10 eps): 0.00
+Total T: 600 Episode Num: 2 Episode T: 300 Reward: 0.000 PseudoReward: [[136.82326]]
+Episode 2, Average Success Rate (last 10 eps): 0.00
+Total T: 900 Episode Num: 3 Episode T: 300 Reward: 0.000 PseudoReward: [[140.49687]]
+Episode 3, Average Success Rate (last 10 eps): 0.00
+Total T: 1200 Episode Num: 4 Episode T: 300 Reward: 0.000 PseudoReward: [[349.51318]]
+Episode 4, Average Success Rate (last 10 eps): 0.00
+Total T: 1500 Episode Num: 5 Episode T: 300 Reward: 0.000 PseudoReward: [[498.08878]]
+Episode 5, Average Success Rate (last 10 eps): 0.00
+Total T: 1800 Episode Num: 6 Episode T: 300 Reward: 0.000 PseudoReward: [[510.84662]]
+Episode 6, Average Success Rate (last 10 eps): 0.00
+Total T: 2100 Episode Num: 7 Episode T: 300 Reward: 0.000 PseudoReward: [[398.724]]
+Episode 7, Average Success Rate (last 10 eps): 0.00
+Total T: 2400 Episode Num: 8 Episode T: 300 Reward: 0.000 PseudoReward: [[500.1717]]
+Episode 8, Average Success Rate (last 10 eps): 0.00
+Total T: 2700 Episode Num: 9 Episode T: 300 Reward: 0.000 PseudoReward: [[411.31213]]
+Episode 9, Average Success Rate (last 10 eps): 0.00
+Total T: 3000 Episode Num: 10 Episode T: 300 Reward: 0.000 PseudoReward: [[473.8574]]
+Episode 10, Average Success Rate (last 10 eps): 0.00
+Total T: 3300 Episode Num: 11 Episode T: 300 Reward: 0.000 PseudoReward: [[255.0337]]
+Episode 11, Average Success Rate (last 10 eps): 0.00
+Total T: 3600 Episode Num: 12 Episode T: 300 Reward: 0.000 PseudoReward: [[263.2808]]
+Episode 12, Average Success Rate (last 10 eps): 0.00
+Total T: 3900 Episode Num: 13 Episode T: 300 Reward: 0.000 PseudoReward: [[326.89447]]
+Episode 13, Average Success Rate (last 10 eps): 0.00
+Total T: 4200 Episode Num: 14 Episode T: 300 Reward: 0.000 PseudoReward: [[329.83694]]
+Episode 14, Average Success Rate (last 10 eps): 0.00
+Total T: 4500 Episode Num: 15 Episode T: 300 Reward: 0.000 PseudoReward: [[338.32675]]
+Episode 15, Average Success Rate (last 10 eps): 0.00
+Total T: 4800 Episode Num: 16 Episode T: 300 Reward: 0.000 PseudoReward: [[329.91614]]
+Episode 16, Average Success Rate (last 10 eps): 0.00
+Total T: 5100 Episode Num: 17 Episode T: 300 Reward: 0.000 PseudoReward: [[326.01855]]
+Episode 17, Average Success Rate (last 10 eps): 0.00
+Total T: 5400 Episode Num: 18 Episode T: 300 Reward: 0.000 PseudoReward: [[336.557]]
+Episode 18, Average Success Rate (last 10 eps): 0.00
+Total T: 5700 Episode Num: 19 Episode T: 300 Reward: 0.000 PseudoReward: [[325.1339]]
+Episode 19, Average Success Rate (last 10 eps): 0.00
+Total T: 6000 Episode Num: 20 Episode T: 300 Reward: 0.000 PseudoReward: [[252.96649]]
+Episode 20, Average Success Rate (last 10 eps): 0.00
+Total T: 6300 Episode Num: 21 Episode T: 300 Reward: 0.000 PseudoReward: [[180.54718]]
+Episode 21, Average Success Rate (last 10 eps): 0.00
+Total T: 6600 Episode Num: 22 Episode T: 300 Reward: 0.000 PseudoReward: [[175.5468]]
+Episode 22, Average Success Rate (last 10 eps): 0.00
+Total T: 6900 Episode Num: 23 Episode T: 300 Reward: 0.000 PseudoReward: [[184.836]]
+Episode 23, Average Success Rate (last 10 eps): 0.00
+Total T: 7200 Episode Num: 24 Episode T: 300 Reward: 0.000 PseudoReward: [[137.34863]]
+Episode 24, Average Success Rate (last 10 eps): 0.00
+Total T: 7500 Episode Num: 25 Episode T: 300 Reward: 0.000 PseudoReward: [[184.91414]]
+Episode 25, Average Success Rate (last 10 eps): 0.00
+Total T: 7800 Episode Num: 26 Episode T: 300 Reward: 0.000 PseudoReward: [[181.55028]]
+Episode 26, Average Success Rate (last 10 eps): 0.00
+Total T: 8100 Episode Num: 27 Episode T: 300 Reward: 0.000 PseudoReward: [[135.77785]]
+Episode 27, Average Success Rate (last 10 eps): 0.00
+Total T: 8400 Episode Num: 28 Episode T: 300 Reward: 0.000 PseudoReward: [[182.83946]]
+Episode 28, Average Success Rate (last 10 eps): 0.00
+Total T: 8700 Episode Num: 29 Episode T: 300 Reward: 0.000 PseudoReward: [[182.40625]]
+Episode 29, Average Success Rate (last 10 eps): 0.00
+Total T: 9000 Episode Num: 30 Episode T: 300 Reward: 0.000 PseudoReward: [[188.72768]]
+Episode 30, Average Success Rate (last 10 eps): 0.00
+Total T: 9300 Episode Num: 31 Episode T: 300 Reward: 0.000 PseudoReward: [[84.07589]]
+Episode 31, Average Success Rate (last 10 eps): 0.00
+Total T: 9600 Episode Num: 32 Episode T: 300 Reward: 0.000 PseudoReward: [[115.69584]]
+Episode 32, Average Success Rate (last 10 eps): 0.00
+Total T: 9900 Episode Num: 33 Episode T: 300 Reward: 0.000 PseudoReward: [[112.54408]]
+Episode 33, Average Success Rate (last 10 eps): 0.00
+Total T: 10200 Episode Num: 34 Episode T: 300 Reward: 0.000 PseudoReward: [[111.85604]]
+Episode 34, Average Success Rate (last 10 eps): 0.00
+Total T: 10500 Episode Num: 35 Episode T: 300 Reward: 0.000 PseudoReward: [[79.065834]]
+Episode 35, Average Success Rate (last 10 eps): 0.00
+Total T: 10800 Episode Num: 36 Episode T: 300 Reward: 0.000 PseudoReward: [[79.79893]]
+Episode 36, Average Success Rate (last 10 eps): 0.00
+Total T: 11100 Episode Num: 37 Episode T: 300 Reward: 0.000 PseudoReward: [[116.50745]]
+Episode 37, Average Success Rate (last 10 eps): 0.00
+Total T: 11400 Episode Num: 38 Episode T: 300 Reward: 0.000 PseudoReward: [[111.29506]]
+Episode 38, Average Success Rate (last 10 eps): 0.00
+Total T: 11700 Episode Num: 39 Episode T: 300 Reward: 0.000 PseudoReward: [[116.489746]]
+Episode 39, Average Success Rate (last 10 eps): 0.00
+Total T: 12000 Episode Num: 40 Episode T: 300 Reward: 0.000 PseudoReward: [[120.08696]]
+Episode 40, Average Success Rate (last 10 eps): 0.00
+Traceback (most recent call last):
+  File "/home/xlx9645/failed/Maze/update_baselines/Main_GAIL.py", line 290, in <module>
+    visualize_bcirl_reward_function(
+  File "/home/xlx9645/failed/Maze/update_baselines/Main_GAIL.py", line 84, in visualize_bcirl_reward_function
+    reward_net.load_state_dict(torch.load(reward_net_path, map_location=device))
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/serialization.py", line 1360, in load
+    return _load(
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/serialization.py", line 1848, in _load
+    result = unpickler.load()
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/serialization.py", line 1812, in persistent_load
+    typed_storage = load_tensor(
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/serialization.py", line 1772, in load_tensor
+    zip_file.get_storage_from_record(name, numel, torch.UntypedStorage)
+RuntimeError: PytorchStreamReader failed reading file data/1: file read failed
+[1;34mwandb[0m: 🚀 View run [33mGAIL[0m at: [34mhttps://wandb.ai/yuxuanli2023-northwestern-university/Main_1229/runs/x05wb0qx[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20241229_210357-x05wb0qx/logs[0m

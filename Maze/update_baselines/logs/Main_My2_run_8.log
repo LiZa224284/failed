@@ -1,0 +1,40 @@
+/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/gymnasium/envs/registration.py:642: UserWarning: [33mWARN: Overriding environment TrapMazeEnv already in registry.[0m
+  logger.warn(f"Overriding environment {new_spec.id} already in registry.")
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: yuxuanli2023 (yuxuanli2023-northwestern-university). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.1
+wandb: Run data is saved locally in /home/xlx9645/failed/Maze/update_baselines/wandb/run-20241229_180439-5mh5ecfx
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run MyMethod_2
+wandb: ⭐️ View project at https://wandb.ai/yuxuanli2023-northwestern-university/Main_1229
+wandb: 🚀 View run at https://wandb.ai/yuxuanli2023-northwestern-university/Main_1229/runs/5mh5ecfx
+/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/gymnasium/spaces/box.py:235: UserWarning: [33mWARN: Box low's precision lowered by casting to float32, current low.dtype=float64[0m
+  gym.logger.warn(
+/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/gymnasium/spaces/box.py:305: UserWarning: [33mWARN: Box high's precision lowered by casting to float32, current high.dtype=float64[0m
+  gym.logger.warn(
+Traceback (most recent call last):
+  File "/home/xlx9645/failed/Maze/update_baselines/Main_My2.py", line 225, in <module>
+    action = action = td3_agent.select_action(state=state)
+  File "/home/xlx9645/failed/Maze/update_baselines/TD3.py", line 166, in select_action
+    action = self.actor(state).cpu().data.numpy().flatten()
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xlx9645/failed/Maze/update_baselines/TD3.py", line 73, in forward
+    return self.max_action * self.net(state)
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: CUDA error: CUBLAS_STATUS_ALLOC_FAILED when calling `cublasCreate(handle)`
+[1;34mwandb[0m: 🚀 View run [33mMyMethod_2[0m at: [34mhttps://wandb.ai/yuxuanli2023-northwestern-university/Main_1229/runs/5mh5ecfx[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20241229_180439-5mh5ecfx/logs[0m

@@ -157,7 +157,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="TrapMaze_1200",  
-        name='SASR5_50',
+        name='SASR5_100',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -307,7 +307,7 @@ if __name__ == "__main__":
                 print('Wrong!!!!!')
             traj = []
 
-        if (t+1) % 15000 == 1:
+        if (t+1) % 30000 == 1:
             sasr_shaper.update_kde(success_demo_buffer, failed_demo_buffer)
 
     wandb.finish()
