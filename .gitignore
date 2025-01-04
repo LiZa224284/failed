@@ -4,6 +4,10 @@
 *.txt
 !requirements.txt
 *.mp4
-wandb/
+wandb*/
 *.png
 *.csv
+*.pkl
+*.joblib
+*.log
+*.npz
