@@ -106,6 +106,7 @@ import torch
 from sb3_contrib import TQC
 from huggingface_sb3 import load_from_hub
 from stable_baselines3 import SAC
+from MyPush import MyPandaPushEnv_2
 
 class RandomPolicyModel(BaseAlgorithm):
     def __init__(self, policy, env, verbose=0):
@@ -132,7 +133,7 @@ class RandomPolicyModel(BaseAlgorithm):
         # 从文件加载模型状态，但随机策略不需要这样做
         return self
 
-env = gym.make('PandaPush-v3', render_mode="rgb_array")
+env = gym.make('MyPandaPushEnv_2', render_mode="rgb_array")
 
 # model = TQC("MultiInputPolicy", env)
 # checkpoint = load_from_hub(
@@ -143,7 +144,7 @@ env = gym.make('PandaPush-v3', render_mode="rgb_array")
 
 # rollout_model = TD3("MlpPolicy", env, verbose=1)
 rollout_model = TQC("MultiInputPolicy", env)
-model = rollout_model.load("/files1/Yuxuan_Li/failed_demos/Experiments/Robots/PandaPush/PandaPush_TQC_model.zip", env) 
+model = rollout_model.load("/home/xlx9645/failed/PandaRobot/PandaPush/model/PandaPush_TQC_3_model.zip", env) 
 
 # model = RandomPolicyModel(policy=None, env=env)
 # checkpoint = load_from_hub(
@@ -171,4 +172,4 @@ for episode in range(num_episodes):
     print('record one episode')
 
 env.close()
-imageio.mimsave('/files1/Yuxuan_Li/failed_demos/Experiments/Robots/PandaPush/Rollout_visualize_tools/MyPandaPush.mp4', frames, fps=10)
+imageio.mimsave('/home/xlx9645/failed/PandaRobot/PandaPush/tools/VisualizeTools/MyPandaPush.mp4', frames, fps=10)

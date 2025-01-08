@@ -18,7 +18,7 @@ import random
 import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
 
-success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_189.pkl'
+success_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 failed_demo_path = '/home/yuxuanli/failed_IRL_new/Maze/demo_generate/demos/action_trapMaze/all_failed_demos.pkl'
 
 with open(success_demo_path, 'rb') as f:
@@ -164,7 +164,7 @@ if __name__ == "__main__":
 
     wandb.init(
         project="MultiGoal_3",  
-        name='My_SFD_v3_189_random_goal',
+        name='My',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -180,14 +180,14 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 
     example_map = [
         [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 0, 1],
-        [1, 0, 1, 0, 't', 0, 1],
-        [1, 0, 't', 0, 0, 0, 1],
+        [1, 'g', 0, 0, 0, 0, 1],
+        [1, 0, 1, 0, 1, 0, 1],
+        [1, 0, 1, 'g', 't', 0, 1],
+        [1, 0, 't', 0, 0, 'g', 1],
         [1, 1, 1, 1, 1, 1, 1]
     ]
     env = gym.make('TrapMazeEnv', maze_map=example_map, reward_type="sparse", render_mode="rgb_array", max_episode_steps=300, camera_name="topview")

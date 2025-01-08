@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # 定义 Python 文件列表
-PYTHON_SCRIPTS=("Main_My2.py")
+PYTHON_SCRIPTS=("Main_My.py")
 
 # 定义日志目录
 LOG_DIR="logs"
 mkdir -p $LOG_DIR  # 创建日志文件夹（如果不存在）
 
 # 定义每个文件运行的次数
-RUN_TIMES=7
+RUN_TIMES=10
 
 # 遍历 Python 文件
 for script in "${PYTHON_SCRIPTS[@]}"; do

@@ -127,7 +127,7 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     wandb.init(
-        project="Main_1229",  # 替换为你的项目名称
+        project="mul3",  # 替换为你的项目名称
         name='MaxEnt',
         config={
             "batch_size": 256,
@@ -148,10 +148,10 @@ if __name__ == "__main__":
 
     example_map = [
         [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
+        [1, 'g', 0, 0, 0, 0, 1],
         [1, 0, 1, 1, 1, 0, 1],
         [1, 0, 1, 'g', 't', 0, 1],
-        [1, 0, 't', 0, 0, 0, 1],
+        [1, 0, 't', 0, 0, 'g', 1],
         [1, 1, 1, 1, 1, 1, 1]
     ]
     env = gym.make('TrapMazeEnv', maze_map=example_map, reward_type="sparse", render_mode="rgb_array", max_episode_steps=300, camera_name="topview")

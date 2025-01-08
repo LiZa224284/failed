@@ -71,6 +71,7 @@ from huggingface_sb3 import load_from_hub
 from stable_baselines3 import SAC
 import panda_gym
 from sb3_contrib import TQC
+from MyPush import MyPandaPushEnv_2
 
 class RandomPolicyModel(BaseAlgorithm):
     def __init__(self, policy, env, verbose=0):
@@ -95,10 +96,10 @@ class RandomPolicyModel(BaseAlgorithm):
 
 
 # Load rollouts from the .pkl file
-with open("/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPush/tools/VisualizeTools/rollouts.pkl", "rb") as f:
+with open("/home/xlx9645/failed/PandaRobot/PandaPush/model/success_5_2.pkl", "rb") as f:
     rollouts = pickle.load(f)
 
-env_name = "PandaPush-v3"
+env_name = "MyPandaPushEnv_2"
 env = gym.make(env_name, render_mode="rgb_array")  # Replace "YourEnv-v3" with the environment you used for rollouts
 
 frames = []

@@ -3,14 +3,2260 @@
 wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
 wandb: Currently logged in as: yuxuanli2023 (yuxuanli2023-northwestern-university). Use `wandb login --relogin` to force relogin
 wandb: Tracking run with wandb version 0.19.1
-wandb: Run data is saved locally in /home/xlx9645/failed/Maze/update_baselines/wandb/run-20241230_145541-xr93zb1c
+wandb: Run data is saved locally in /home/xlx9645/failed/Maze/update_baselines/wandb/run-20250107_195036-n3o91tvt
 wandb: Run `wandb offline` to turn off syncing.
 wandb: Syncing run TD3
-wandb: ⭐️ View project at https://wandb.ai/yuxuanli2023-northwestern-university/Main_1229
-wandb: 🚀 View run at https://wandb.ai/yuxuanli2023-northwestern-university/Main_1229/runs/xr93zb1c
+wandb: ⭐️ View project at https://wandb.ai/yuxuanli2023-northwestern-university/Main_Umaze
+wandb: 🚀 View run at https://wandb.ai/yuxuanli2023-northwestern-university/Main_Umaze/runs/n3o91tvt
 /home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/gymnasium/spaces/box.py:235: UserWarning: [33mWARN: Box low's precision lowered by casting to float32, current low.dtype=float64[0m
   gym.logger.warn(
 /home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/gymnasium/spaces/box.py:305: UserWarning: [33mWARN: Box high's precision lowered by casting to float32, current high.dtype=float64[0m
   gym.logger.warn(
 /home/xlx9645/miniconda3/envs/maze/lib/python3.9/site-packages/torch/optim/lr_scheduler.py:224: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
   warnings.warn(
+Total T: 300 Episode Num: 1 Episode T: 300 Reward: 291.000 PseudoReward: [[18.95215]]
+Episode 1, Average Success Rate (last 10 eps): 1.00
+Total T: 600 Episode Num: 2 Episode T: 300 Reward: 272.000 PseudoReward: [[29.730648]]
+Episode 2, Average Success Rate (last 10 eps): 1.00
+Total T: 900 Episode Num: 3 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.81937116]]
+Episode 3, Average Success Rate (last 10 eps): 0.67
+Total T: 1200 Episode Num: 4 Episode T: 300 Reward: 256.000 PseudoReward: [[29.392532]]
+Episode 4, Average Success Rate (last 10 eps): 0.75
+Total T: 1500 Episode Num: 5 Episode T: 300 Reward: 284.000 PseudoReward: [[33.154613]]
+Episode 5, Average Success Rate (last 10 eps): 0.80
+Total T: 1800 Episode Num: 6 Episode T: 300 Reward: 0.000 PseudoReward: [[26.995316]]
+Episode 6, Average Success Rate (last 10 eps): 0.67
+Total T: 2100 Episode Num: 7 Episode T: 300 Reward: 0.000 PseudoReward: [[19.373096]]
+Episode 7, Average Success Rate (last 10 eps): 0.57
+Total T: 2400 Episode Num: 8 Episode T: 300 Reward: 0.000 PseudoReward: [[-1.6536458]]
+Episode 8, Average Success Rate (last 10 eps): 0.50
+Total T: 2700 Episode Num: 9 Episode T: 300 Reward: 255.000 PseudoReward: [[15.829516]]
+Episode 9, Average Success Rate (last 10 eps): 0.56
+Total T: 3000 Episode Num: 10 Episode T: 300 Reward: 0.000 PseudoReward: [[16.740911]]
+Episode 10, Average Success Rate (last 10 eps): 0.50
+Total T: 3300 Episode Num: 11 Episode T: 300 Reward: 251.000 PseudoReward: [[18.666527]]
+Episode 11, Average Success Rate (last 10 eps): 0.50
+Total T: 3600 Episode Num: 12 Episode T: 300 Reward: 259.000 PseudoReward: [[30.835112]]
+Episode 12, Average Success Rate (last 10 eps): 0.50
+Total T: 3900 Episode Num: 13 Episode T: 300 Reward: 0.000 PseudoReward: [[0.3476256]]
+Episode 13, Average Success Rate (last 10 eps): 0.50
+Total T: 4200 Episode Num: 14 Episode T: 300 Reward: 0.000 PseudoReward: [[4.0023136]]
+Episode 14, Average Success Rate (last 10 eps): 0.40
+Total T: 4500 Episode Num: 15 Episode T: 300 Reward: 0.000 PseudoReward: [[7.359251]]
+Episode 15, Average Success Rate (last 10 eps): 0.30
+Total T: 4800 Episode Num: 16 Episode T: 300 Reward: 205.000 PseudoReward: [[7.2734556]]
+Episode 16, Average Success Rate (last 10 eps): 0.40
+Total T: 5100 Episode Num: 17 Episode T: 300 Reward: 206.000 PseudoReward: [[37.055313]]
+Episode 17, Average Success Rate (last 10 eps): 0.50
+Total T: 5400 Episode Num: 18 Episode T: 300 Reward: 282.000 PseudoReward: [[27.764751]]
+Episode 18, Average Success Rate (last 10 eps): 0.60
+Total T: 5700 Episode Num: 19 Episode T: 300 Reward: 0.000 PseudoReward: [[10.364881]]
+Episode 19, Average Success Rate (last 10 eps): 0.50
+Total T: 6000 Episode Num: 20 Episode T: 300 Reward: 269.000 PseudoReward: [[34.151676]]
+Episode 20, Average Success Rate (last 10 eps): 0.60
+Total T: 6300 Episode Num: 21 Episode T: 300 Reward: 42.000 PseudoReward: [[14.073894]]
+Episode 21, Average Success Rate (last 10 eps): 0.60
+Total T: 6600 Episode Num: 22 Episode T: 300 Reward: 282.000 PseudoReward: [[-2.0507681]]
+Episode 22, Average Success Rate (last 10 eps): 0.60
+Total T: 6900 Episode Num: 23 Episode T: 300 Reward: 286.000 PseudoReward: [[8.556514]]
+Episode 23, Average Success Rate (last 10 eps): 0.70
+Total T: 7200 Episode Num: 24 Episode T: 300 Reward: 0.000 PseudoReward: [[-3.8346665]]
+Episode 24, Average Success Rate (last 10 eps): 0.70
+Total T: 7500 Episode Num: 25 Episode T: 300 Reward: 257.000 PseudoReward: [[-7.2808895]]
+Episode 25, Average Success Rate (last 10 eps): 0.80
+Total T: 7800 Episode Num: 26 Episode T: 300 Reward: 288.000 PseudoReward: [[20.991589]]
+Episode 26, Average Success Rate (last 10 eps): 0.80
+Total T: 8100 Episode Num: 27 Episode T: 300 Reward: 279.000 PseudoReward: [[6.293075]]
+Episode 27, Average Success Rate (last 10 eps): 0.80
+Total T: 8400 Episode Num: 28 Episode T: 300 Reward: 260.000 PseudoReward: [[-11.421234]]
+Episode 28, Average Success Rate (last 10 eps): 0.80
+Total T: 8700 Episode Num: 29 Episode T: 300 Reward: 290.000 PseudoReward: [[-9.278102]]
+Episode 29, Average Success Rate (last 10 eps): 0.90
+Total T: 9000 Episode Num: 30 Episode T: 300 Reward: 279.000 PseudoReward: [[8.113595]]
+Episode 30, Average Success Rate (last 10 eps): 0.90
+Total T: 9300 Episode Num: 31 Episode T: 300 Reward: 287.000 PseudoReward: [[21.013918]]
+Episode 31, Average Success Rate (last 10 eps): 0.90
+Total T: 9600 Episode Num: 32 Episode T: 300 Reward: 247.000 PseudoReward: [[24.762983]]
+Episode 32, Average Success Rate (last 10 eps): 0.90
+Total T: 9900 Episode Num: 33 Episode T: 300 Reward: 288.000 PseudoReward: [[-4.5263147]]
+Episode 33, Average Success Rate (last 10 eps): 0.90
+Total T: 10200 Episode Num: 34 Episode T: 300 Reward: 0.000 PseudoReward: [[7.697899]]
+Episode 34, Average Success Rate (last 10 eps): 0.90
+Total T: 10500 Episode Num: 35 Episode T: 300 Reward: 0.000 PseudoReward: [[20.93637]]
+Episode 35, Average Success Rate (last 10 eps): 0.80
+Total T: 10800 Episode Num: 36 Episode T: 300 Reward: 0.000 PseudoReward: [[3.2304075]]
+Episode 36, Average Success Rate (last 10 eps): 0.70
+Total T: 11100 Episode Num: 37 Episode T: 300 Reward: 265.000 PseudoReward: [[27.585491]]
+Episode 37, Average Success Rate (last 10 eps): 0.70
+Total T: 11400 Episode Num: 38 Episode T: 300 Reward: 0.000 PseudoReward: [[11.878542]]
+Episode 38, Average Success Rate (last 10 eps): 0.60
+Total T: 11700 Episode Num: 39 Episode T: 300 Reward: 290.000 PseudoReward: [[-4.265923]]
+Episode 39, Average Success Rate (last 10 eps): 0.60
+Total T: 12000 Episode Num: 40 Episode T: 300 Reward: 265.000 PseudoReward: [[46.4501]]
+Episode 40, Average Success Rate (last 10 eps): 0.60
+Total T: 12300 Episode Num: 41 Episode T: 300 Reward: 0.000 PseudoReward: [[23.70277]]
+Episode 41, Average Success Rate (last 10 eps): 0.50
+Total T: 12600 Episode Num: 42 Episode T: 300 Reward: 296.000 PseudoReward: [[21.676884]]
+Episode 42, Average Success Rate (last 10 eps): 0.50
+Total T: 12900 Episode Num: 43 Episode T: 300 Reward: 0.000 PseudoReward: [[-1.9753739]]
+Episode 43, Average Success Rate (last 10 eps): 0.40
+Total T: 13200 Episode Num: 44 Episode T: 300 Reward: 288.000 PseudoReward: [[21.638243]]
+Episode 44, Average Success Rate (last 10 eps): 0.50
+Total T: 13500 Episode Num: 45 Episode T: 300 Reward: 0.000 PseudoReward: [[24.728514]]
+Episode 45, Average Success Rate (last 10 eps): 0.50
+Total T: 13800 Episode Num: 46 Episode T: 300 Reward: 0.000 PseudoReward: [[25.220146]]
+Episode 46, Average Success Rate (last 10 eps): 0.50
+Total T: 14100 Episode Num: 47 Episode T: 300 Reward: 296.000 PseudoReward: [[5.908334]]
+Episode 47, Average Success Rate (last 10 eps): 0.50
+Total T: 14400 Episode Num: 48 Episode T: 300 Reward: 278.000 PseudoReward: [[29.13227]]
+Episode 48, Average Success Rate (last 10 eps): 0.60
+Total T: 14700 Episode Num: 49 Episode T: 300 Reward: 272.000 PseudoReward: [[3.5734878]]
+Episode 49, Average Success Rate (last 10 eps): 0.60
+Total T: 15000 Episode Num: 50 Episode T: 300 Reward: 267.000 PseudoReward: [[9.724375]]
+Episode 50, Average Success Rate (last 10 eps): 0.60
+Total T: 15300 Episode Num: 51 Episode T: 300 Reward: 293.000 PseudoReward: [[6.9813027]]
+Episode 51, Average Success Rate (last 10 eps): 0.70
+Total T: 15600 Episode Num: 52 Episode T: 300 Reward: 290.000 PseudoReward: [[7.373675]]
+Episode 52, Average Success Rate (last 10 eps): 0.70
+Total T: 15900 Episode Num: 53 Episode T: 300 Reward: 292.000 PseudoReward: [[4.7703733]]
+Episode 53, Average Success Rate (last 10 eps): 0.80
+Total T: 16200 Episode Num: 54 Episode T: 300 Reward: 232.000 PseudoReward: [[6.729384]]
+Episode 54, Average Success Rate (last 10 eps): 0.80
+Total T: 16500 Episode Num: 55 Episode T: 300 Reward: 0.000 PseudoReward: [[5.005832]]
+Episode 55, Average Success Rate (last 10 eps): 0.80
+Total T: 16800 Episode Num: 56 Episode T: 300 Reward: 0.000 PseudoReward: [[32.66652]]
+Episode 56, Average Success Rate (last 10 eps): 0.80
+Total T: 17100 Episode Num: 57 Episode T: 300 Reward: 83.000 PseudoReward: [[-3.4163585]]
+Episode 57, Average Success Rate (last 10 eps): 0.80
+Total T: 17400 Episode Num: 58 Episode T: 300 Reward: 283.000 PseudoReward: [[21.002882]]
+Episode 58, Average Success Rate (last 10 eps): 0.80
+Total T: 17700 Episode Num: 59 Episode T: 300 Reward: 275.000 PseudoReward: [[19.434893]]
+Episode 59, Average Success Rate (last 10 eps): 0.80
+Total T: 18000 Episode Num: 60 Episode T: 300 Reward: 274.000 PseudoReward: [[8.913061]]
+Episode 60, Average Success Rate (last 10 eps): 0.80
+Total T: 18300 Episode Num: 61 Episode T: 300 Reward: 259.000 PseudoReward: [[-6.45064]]
+Episode 61, Average Success Rate (last 10 eps): 0.80
+Total T: 18600 Episode Num: 62 Episode T: 300 Reward: 272.000 PseudoReward: [[6.6572742]]
+Episode 62, Average Success Rate (last 10 eps): 0.80
+Total T: 18900 Episode Num: 63 Episode T: 300 Reward: 63.000 PseudoReward: [[4.5216756]]
+Episode 63, Average Success Rate (last 10 eps): 0.80
+Total T: 19200 Episode Num: 64 Episode T: 300 Reward: 284.000 PseudoReward: [[2.4349785]]
+Episode 64, Average Success Rate (last 10 eps): 0.80
+Total T: 19500 Episode Num: 65 Episode T: 300 Reward: 217.000 PseudoReward: [[-0.18720707]]
+Episode 65, Average Success Rate (last 10 eps): 0.90
+Total T: 19800 Episode Num: 66 Episode T: 300 Reward: 171.000 PseudoReward: [[29.659369]]
+Episode 66, Average Success Rate (last 10 eps): 1.00
+Total T: 20100 Episode Num: 67 Episode T: 300 Reward: 292.000 PseudoReward: [[24.904837]]
+Episode 67, Average Success Rate (last 10 eps): 1.00
+Total T: 20400 Episode Num: 68 Episode T: 300 Reward: 285.000 PseudoReward: [[20.094427]]
+Episode 68, Average Success Rate (last 10 eps): 1.00
+Total T: 20700 Episode Num: 69 Episode T: 300 Reward: 252.000 PseudoReward: [[4.428409]]
+Episode 69, Average Success Rate (last 10 eps): 1.00
+Total T: 21000 Episode Num: 70 Episode T: 300 Reward: 285.000 PseudoReward: [[24.132774]]
+Episode 70, Average Success Rate (last 10 eps): 1.00
+Total T: 21300 Episode Num: 71 Episode T: 300 Reward: 262.000 PseudoReward: [[40.498203]]
+Episode 71, Average Success Rate (last 10 eps): 1.00
+Total T: 21600 Episode Num: 72 Episode T: 300 Reward: 0.000 PseudoReward: [[26.851202]]
+Episode 72, Average Success Rate (last 10 eps): 0.90
+Total T: 21900 Episode Num: 73 Episode T: 300 Reward: 297.000 PseudoReward: [[8.024769]]
+Episode 73, Average Success Rate (last 10 eps): 0.90
+Total T: 22200 Episode Num: 74 Episode T: 300 Reward: 277.000 PseudoReward: [[21.03053]]
+Episode 74, Average Success Rate (last 10 eps): 0.90
+Total T: 22500 Episode Num: 75 Episode T: 300 Reward: 282.000 PseudoReward: [[46.279236]]
+Episode 75, Average Success Rate (last 10 eps): 0.90
+Total T: 22800 Episode Num: 76 Episode T: 300 Reward: 244.000 PseudoReward: [[40.380283]]
+Episode 76, Average Success Rate (last 10 eps): 0.90
+Total T: 23100 Episode Num: 77 Episode T: 300 Reward: 238.000 PseudoReward: [[25.636469]]
+Episode 77, Average Success Rate (last 10 eps): 0.90
+Total T: 23400 Episode Num: 78 Episode T: 300 Reward: 252.000 PseudoReward: [[17.454073]]
+Episode 78, Average Success Rate (last 10 eps): 0.90
+Total T: 23700 Episode Num: 79 Episode T: 300 Reward: 0.000 PseudoReward: [[0.79745805]]
+Episode 79, Average Success Rate (last 10 eps): 0.80
+Total T: 24000 Episode Num: 80 Episode T: 300 Reward: 254.000 PseudoReward: [[37.619663]]
+Episode 80, Average Success Rate (last 10 eps): 0.80
+Total T: 24300 Episode Num: 81 Episode T: 300 Reward: 0.000 PseudoReward: [[31.649065]]
+Episode 81, Average Success Rate (last 10 eps): 0.70
+Total T: 24600 Episode Num: 82 Episode T: 300 Reward: 0.000 PseudoReward: [[29.394371]]
+Episode 82, Average Success Rate (last 10 eps): 0.70
+Total T: 24900 Episode Num: 83 Episode T: 300 Reward: 283.000 PseudoReward: [[41.375458]]
+Episode 83, Average Success Rate (last 10 eps): 0.70
+Total T: 25200 Episode Num: 84 Episode T: 300 Reward: 230.000 PseudoReward: [[3.2762272]]
+Episode 84, Average Success Rate (last 10 eps): 0.70
+Total T: 25500 Episode Num: 85 Episode T: 300 Reward: 202.000 PseudoReward: [[5.20634]]
+Episode 85, Average Success Rate (last 10 eps): 0.70
+Total T: 25800 Episode Num: 86 Episode T: 300 Reward: 242.000 PseudoReward: [[7.7313647]]
+Episode 86, Average Success Rate (last 10 eps): 0.70
+Total T: 26100 Episode Num: 87 Episode T: 300 Reward: 274.000 PseudoReward: [[4.0514154]]
+Episode 87, Average Success Rate (last 10 eps): 0.70
+Total T: 26400 Episode Num: 88 Episode T: 300 Reward: 0.000 PseudoReward: [[28.408642]]
+Episode 88, Average Success Rate (last 10 eps): 0.60
+Total T: 26700 Episode Num: 89 Episode T: 300 Reward: 283.000 PseudoReward: [[24.534153]]
+Episode 89, Average Success Rate (last 10 eps): 0.70
+Total T: 27000 Episode Num: 90 Episode T: 300 Reward: 298.000 PseudoReward: [[-4.9414945]]
+Episode 90, Average Success Rate (last 10 eps): 0.70
+Total T: 27300 Episode Num: 91 Episode T: 300 Reward: 263.000 PseudoReward: [[29.42794]]
+Episode 91, Average Success Rate (last 10 eps): 0.80
+Total T: 27600 Episode Num: 92 Episode T: 300 Reward: 288.000 PseudoReward: [[24.765295]]
+Episode 92, Average Success Rate (last 10 eps): 0.90
+Total T: 27900 Episode Num: 93 Episode T: 300 Reward: 252.000 PseudoReward: [[19.344805]]
+Episode 93, Average Success Rate (last 10 eps): 0.90
+Total T: 28200 Episode Num: 94 Episode T: 300 Reward: 0.000 PseudoReward: [[4.5808043]]
+Episode 94, Average Success Rate (last 10 eps): 0.80
+Total T: 28500 Episode Num: 95 Episode T: 300 Reward: 268.000 PseudoReward: [[5.997332]]
+Episode 95, Average Success Rate (last 10 eps): 0.80
+Total T: 28800 Episode Num: 96 Episode T: 300 Reward: 251.000 PseudoReward: [[-5.258114]]
+Episode 96, Average Success Rate (last 10 eps): 0.80
+Total T: 29100 Episode Num: 97 Episode T: 300 Reward: 0.000 PseudoReward: [[30.181368]]
+Episode 97, Average Success Rate (last 10 eps): 0.70
+Total T: 29400 Episode Num: 98 Episode T: 300 Reward: 278.000 PseudoReward: [[23.769121]]
+Episode 98, Average Success Rate (last 10 eps): 0.80
+Total T: 29700 Episode Num: 99 Episode T: 300 Reward: 253.000 PseudoReward: [[18.014626]]
+Episode 99, Average Success Rate (last 10 eps): 0.80
+Total T: 30000 Episode Num: 100 Episode T: 300 Reward: 0.000 PseudoReward: [[31.743307]]
+Episode 100, Average Success Rate (last 10 eps): 0.70
+Total T: 30300 Episode Num: 101 Episode T: 300 Reward: 296.000 PseudoReward: [[4.7841105]]
+Episode 101, Average Success Rate (last 10 eps): 0.70
+Total T: 30600 Episode Num: 102 Episode T: 300 Reward: 0.000 PseudoReward: [[-2.690214]]
+Episode 102, Average Success Rate (last 10 eps): 0.60
+Total T: 30900 Episode Num: 103 Episode T: 300 Reward: 282.000 PseudoReward: [[23.13601]]
+Episode 103, Average Success Rate (last 10 eps): 0.60
+Total T: 31200 Episode Num: 104 Episode T: 300 Reward: 0.000 PseudoReward: [[-2.358517]]
+Episode 104, Average Success Rate (last 10 eps): 0.60
+Total T: 31500 Episode Num: 105 Episode T: 300 Reward: 265.000 PseudoReward: [[17.749134]]
+Episode 105, Average Success Rate (last 10 eps): 0.60
+Total T: 31800 Episode Num: 106 Episode T: 300 Reward: 296.000 PseudoReward: [[42.424583]]
+Episode 106, Average Success Rate (last 10 eps): 0.60
+Total T: 32100 Episode Num: 107 Episode T: 300 Reward: 0.000 PseudoReward: [[28.18797]]
+Episode 107, Average Success Rate (last 10 eps): 0.60
+Total T: 32400 Episode Num: 108 Episode T: 300 Reward: 269.000 PseudoReward: [[18.939573]]
+Episode 108, Average Success Rate (last 10 eps): 0.60
+Total T: 32700 Episode Num: 109 Episode T: 300 Reward: 297.000 PseudoReward: [[15.10728]]
+Episode 109, Average Success Rate (last 10 eps): 0.60
+Total T: 33000 Episode Num: 110 Episode T: 300 Reward: 0.000 PseudoReward: [[1.292011]]
+Episode 110, Average Success Rate (last 10 eps): 0.60
+Total T: 33300 Episode Num: 111 Episode T: 300 Reward: 0.000 PseudoReward: [[2.3926458]]
+Episode 111, Average Success Rate (last 10 eps): 0.50
+Total T: 33600 Episode Num: 112 Episode T: 300 Reward: 0.000 PseudoReward: [[-2.932377]]
+Episode 112, Average Success Rate (last 10 eps): 0.50
+Total T: 33900 Episode Num: 113 Episode T: 300 Reward: 0.000 PseudoReward: [[28.029203]]
+Episode 113, Average Success Rate (last 10 eps): 0.40
+Total T: 34200 Episode Num: 114 Episode T: 300 Reward: 268.000 PseudoReward: [[28.751001]]
+Episode 114, Average Success Rate (last 10 eps): 0.50
+Total T: 34500 Episode Num: 115 Episode T: 300 Reward: 270.000 PseudoReward: [[22.41635]]
+Episode 115, Average Success Rate (last 10 eps): 0.50
+Total T: 34800 Episode Num: 116 Episode T: 300 Reward: 267.000 PseudoReward: [[-0.9295667]]
+Episode 116, Average Success Rate (last 10 eps): 0.50
+Total T: 35100 Episode Num: 117 Episode T: 300 Reward: 290.000 PseudoReward: [[-3.1842635]]
+Episode 117, Average Success Rate (last 10 eps): 0.60
+Total T: 35400 Episode Num: 118 Episode T: 300 Reward: 210.000 PseudoReward: [[24.640017]]
+Episode 118, Average Success Rate (last 10 eps): 0.60
+Total T: 35700 Episode Num: 119 Episode T: 300 Reward: 257.000 PseudoReward: [[-7.520061]]
+Episode 119, Average Success Rate (last 10 eps): 0.60
+Total T: 36000 Episode Num: 120 Episode T: 300 Reward: 297.000 PseudoReward: [[18.983156]]
+Episode 120, Average Success Rate (last 10 eps): 0.70
+Total T: 36300 Episode Num: 121 Episode T: 300 Reward: 255.000 PseudoReward: [[7.1905317]]
+Episode 121, Average Success Rate (last 10 eps): 0.80
+Total T: 36600 Episode Num: 122 Episode T: 300 Reward: 283.000 PseudoReward: [[42.41505]]
+Episode 122, Average Success Rate (last 10 eps): 0.90
+Total T: 36900 Episode Num: 123 Episode T: 300 Reward: 274.000 PseudoReward: [[1.7684631]]
+Episode 123, Average Success Rate (last 10 eps): 1.00
+Total T: 37200 Episode Num: 124 Episode T: 300 Reward: 272.000 PseudoReward: [[-7.5219593]]
+Episode 124, Average Success Rate (last 10 eps): 1.00
+Total T: 37500 Episode Num: 125 Episode T: 300 Reward: 294.000 PseudoReward: [[29.02355]]
+Episode 125, Average Success Rate (last 10 eps): 1.00
+Total T: 37800 Episode Num: 126 Episode T: 300 Reward: 290.000 PseudoReward: [[23.083364]]
+Episode 126, Average Success Rate (last 10 eps): 1.00
+Total T: 38100 Episode Num: 127 Episode T: 300 Reward: 0.000 PseudoReward: [[31.928]]
+Episode 127, Average Success Rate (last 10 eps): 0.90
+Total T: 38400 Episode Num: 128 Episode T: 300 Reward: 283.000 PseudoReward: [[16.256027]]
+Episode 128, Average Success Rate (last 10 eps): 0.90
+Total T: 38700 Episode Num: 129 Episode T: 300 Reward: 270.000 PseudoReward: [[7.4485917]]
+Episode 129, Average Success Rate (last 10 eps): 0.90
+Total T: 39000 Episode Num: 130 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.1365991]]
+Episode 130, Average Success Rate (last 10 eps): 0.80
+Total T: 39300 Episode Num: 131 Episode T: 300 Reward: 293.000 PseudoReward: [[35.174942]]
+Episode 131, Average Success Rate (last 10 eps): 0.80
+Total T: 39600 Episode Num: 132 Episode T: 300 Reward: 286.000 PseudoReward: [[-2.7308183]]
+Episode 132, Average Success Rate (last 10 eps): 0.80
+Total T: 39900 Episode Num: 133 Episode T: 300 Reward: 263.000 PseudoReward: [[26.054548]]
+Episode 133, Average Success Rate (last 10 eps): 0.80
+Total T: 40200 Episode Num: 134 Episode T: 300 Reward: 0.000 PseudoReward: [[31.73197]]
+Episode 134, Average Success Rate (last 10 eps): 0.70
+Total T: 40500 Episode Num: 135 Episode T: 300 Reward: 280.000 PseudoReward: [[5.5729995]]
+Episode 135, Average Success Rate (last 10 eps): 0.70
+Total T: 40800 Episode Num: 136 Episode T: 300 Reward: 0.000 PseudoReward: [[4.4305606]]
+Episode 136, Average Success Rate (last 10 eps): 0.60
+Total T: 41100 Episode Num: 137 Episode T: 300 Reward: 286.000 PseudoReward: [[18.548285]]
+Episode 137, Average Success Rate (last 10 eps): 0.70
+Total T: 41400 Episode Num: 138 Episode T: 300 Reward: 293.000 PseudoReward: [[3.8732443]]
+Episode 138, Average Success Rate (last 10 eps): 0.70
+Total T: 41700 Episode Num: 139 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.35153213]]
+Episode 139, Average Success Rate (last 10 eps): 0.60
+Total T: 42000 Episode Num: 140 Episode T: 300 Reward: 282.000 PseudoReward: [[-1.4176168]]
+Episode 140, Average Success Rate (last 10 eps): 0.70
+Total T: 42300 Episode Num: 141 Episode T: 300 Reward: 269.000 PseudoReward: [[24.438778]]
+Episode 141, Average Success Rate (last 10 eps): 0.70
+Total T: 42600 Episode Num: 142 Episode T: 300 Reward: 275.000 PseudoReward: [[27.528345]]
+Episode 142, Average Success Rate (last 10 eps): 0.70
+Total T: 42900 Episode Num: 143 Episode T: 300 Reward: 0.000 PseudoReward: [[28.786875]]
+Episode 143, Average Success Rate (last 10 eps): 0.60
+Total T: 43200 Episode Num: 144 Episode T: 300 Reward: 0.000 PseudoReward: [[-1.0574065]]
+Episode 144, Average Success Rate (last 10 eps): 0.60
+Total T: 43500 Episode Num: 145 Episode T: 300 Reward: 282.000 PseudoReward: [[21.247768]]
+Episode 145, Average Success Rate (last 10 eps): 0.60
+Total T: 43800 Episode Num: 146 Episode T: 300 Reward: 274.000 PseudoReward: [[7.1920137]]
+Episode 146, Average Success Rate (last 10 eps): 0.70
+Total T: 44100 Episode Num: 147 Episode T: 300 Reward: 0.000 PseudoReward: [[32.655468]]
+Episode 147, Average Success Rate (last 10 eps): 0.60
+Total T: 44400 Episode Num: 148 Episode T: 300 Reward: 255.000 PseudoReward: [[32.86371]]
+Episode 148, Average Success Rate (last 10 eps): 0.60
+Total T: 44700 Episode Num: 149 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.38991186]]
+Episode 149, Average Success Rate (last 10 eps): 0.60
+Total T: 45000 Episode Num: 150 Episode T: 300 Reward: 249.000 PseudoReward: [[19.223969]]
+Episode 150, Average Success Rate (last 10 eps): 0.60
+Total T: 45300 Episode Num: 151 Episode T: 300 Reward: 256.000 PseudoReward: [[7.1341877]]
+Episode 151, Average Success Rate (last 10 eps): 0.60
+Total T: 45600 Episode Num: 152 Episode T: 300 Reward: 0.000 PseudoReward: [[26.027601]]
+Episode 152, Average Success Rate (last 10 eps): 0.50
+Total T: 45900 Episode Num: 153 Episode T: 300 Reward: 285.000 PseudoReward: [[41.284477]]
+Episode 153, Average Success Rate (last 10 eps): 0.60
+Total T: 46200 Episode Num: 154 Episode T: 300 Reward: 0.000 PseudoReward: [[31.725199]]
+Episode 154, Average Success Rate (last 10 eps): 0.60
+Total T: 46500 Episode Num: 155 Episode T: 300 Reward: 211.000 PseudoReward: [[27.61348]]
+Episode 155, Average Success Rate (last 10 eps): 0.60
+Total T: 46800 Episode Num: 156 Episode T: 300 Reward: 274.000 PseudoReward: [[38.236656]]
+Episode 156, Average Success Rate (last 10 eps): 0.60
+Total T: 47100 Episode Num: 157 Episode T: 300 Reward: 0.000 PseudoReward: [[-4.458984]]
+Episode 157, Average Success Rate (last 10 eps): 0.60
+Total T: 47400 Episode Num: 158 Episode T: 300 Reward: 261.000 PseudoReward: [[21.48498]]
+Episode 158, Average Success Rate (last 10 eps): 0.60
+Total T: 47700 Episode Num: 159 Episode T: 300 Reward: 0.000 PseudoReward: [[29.065147]]
+Episode 159, Average Success Rate (last 10 eps): 0.60
+Total T: 48000 Episode Num: 160 Episode T: 300 Reward: 0.000 PseudoReward: [[28.815475]]
+Episode 160, Average Success Rate (last 10 eps): 0.50
+Total T: 48300 Episode Num: 161 Episode T: 300 Reward: 275.000 PseudoReward: [[-8.974968]]
+Episode 161, Average Success Rate (last 10 eps): 0.50
+Total T: 48600 Episode Num: 162 Episode T: 300 Reward: 293.000 PseudoReward: [[33.238834]]
+Episode 162, Average Success Rate (last 10 eps): 0.60
+Total T: 48900 Episode Num: 163 Episode T: 300 Reward: 0.000 PseudoReward: [[-1.2805696]]
+Episode 163, Average Success Rate (last 10 eps): 0.50
+Total T: 49200 Episode Num: 164 Episode T: 300 Reward: 295.000 PseudoReward: [[-3.5776591]]
+Episode 164, Average Success Rate (last 10 eps): 0.60
+Total T: 49500 Episode Num: 165 Episode T: 300 Reward: 200.000 PseudoReward: [[21.569263]]
+Episode 165, Average Success Rate (last 10 eps): 0.60
+Total T: 49800 Episode Num: 166 Episode T: 300 Reward: 295.000 PseudoReward: [[17.565685]]
+Episode 166, Average Success Rate (last 10 eps): 0.60
+Total T: 50100 Episode Num: 167 Episode T: 300 Reward: 273.000 PseudoReward: [[39.55797]]
+Episode 167, Average Success Rate (last 10 eps): 0.70
+Total T: 50400 Episode Num: 168 Episode T: 300 Reward: 0.000 PseudoReward: [[35.127934]]
+Episode 168, Average Success Rate (last 10 eps): 0.60
+Total T: 50700 Episode Num: 169 Episode T: 300 Reward: 281.000 PseudoReward: [[41.443497]]
+Episode 169, Average Success Rate (last 10 eps): 0.70
+Total T: 51000 Episode Num: 170 Episode T: 300 Reward: 279.000 PseudoReward: [[5.221478]]
+Episode 170, Average Success Rate (last 10 eps): 0.80
+Total T: 51300 Episode Num: 171 Episode T: 300 Reward: 275.000 PseudoReward: [[7.7035103]]
+Episode 171, Average Success Rate (last 10 eps): 0.80
+Total T: 51600 Episode Num: 172 Episode T: 300 Reward: 0.000 PseudoReward: [[29.67411]]
+Episode 172, Average Success Rate (last 10 eps): 0.70
+Total T: 51900 Episode Num: 173 Episode T: 300 Reward: 225.000 PseudoReward: [[22.150375]]
+Episode 173, Average Success Rate (last 10 eps): 0.80
+Total T: 52200 Episode Num: 174 Episode T: 300 Reward: 0.000 PseudoReward: [[30.876348]]
+Episode 174, Average Success Rate (last 10 eps): 0.70
+Total T: 52500 Episode Num: 175 Episode T: 300 Reward: 281.000 PseudoReward: [[39.96367]]
+Episode 175, Average Success Rate (last 10 eps): 0.70
+Total T: 52800 Episode Num: 176 Episode T: 300 Reward: 0.000 PseudoReward: [[27.767704]]
+Episode 176, Average Success Rate (last 10 eps): 0.60
+Total T: 53100 Episode Num: 177 Episode T: 300 Reward: 0.000 PseudoReward: [[-3.2745085]]
+Episode 177, Average Success Rate (last 10 eps): 0.50
+Total T: 53400 Episode Num: 178 Episode T: 300 Reward: 292.000 PseudoReward: [[24.006622]]
+Episode 178, Average Success Rate (last 10 eps): 0.60
+Total T: 53700 Episode Num: 179 Episode T: 300 Reward: 294.000 PseudoReward: [[29.74922]]
+Episode 179, Average Success Rate (last 10 eps): 0.60
+Total T: 54000 Episode Num: 180 Episode T: 300 Reward: 257.000 PseudoReward: [[20.103662]]
+Episode 180, Average Success Rate (last 10 eps): 0.60
+Total T: 54300 Episode Num: 181 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.9241953]]
+Episode 181, Average Success Rate (last 10 eps): 0.50
+Total T: 54600 Episode Num: 182 Episode T: 300 Reward: 293.000 PseudoReward: [[10.4914875]]
+Episode 182, Average Success Rate (last 10 eps): 0.60
+Total T: 54900 Episode Num: 183 Episode T: 300 Reward: 292.000 PseudoReward: [[1.474739]]
+Episode 183, Average Success Rate (last 10 eps): 0.60
+Total T: 55200 Episode Num: 184 Episode T: 300 Reward: 294.000 PseudoReward: [[23.963938]]
+Episode 184, Average Success Rate (last 10 eps): 0.70
+Total T: 55500 Episode Num: 185 Episode T: 300 Reward: 237.000 PseudoReward: [[-8.527725]]
+Episode 185, Average Success Rate (last 10 eps): 0.70
+Total T: 55800 Episode Num: 186 Episode T: 300 Reward: 291.000 PseudoReward: [[-1.2589786]]
+Episode 186, Average Success Rate (last 10 eps): 0.80
+Total T: 56100 Episode Num: 187 Episode T: 300 Reward: 292.000 PseudoReward: [[28.521063]]
+Episode 187, Average Success Rate (last 10 eps): 0.90
+Total T: 56400 Episode Num: 188 Episode T: 300 Reward: 290.000 PseudoReward: [[7.72744]]
+Episode 188, Average Success Rate (last 10 eps): 0.90
+Total T: 56700 Episode Num: 189 Episode T: 300 Reward: 295.000 PseudoReward: [[4.393821]]
+Episode 189, Average Success Rate (last 10 eps): 0.90
+Total T: 57000 Episode Num: 190 Episode T: 300 Reward: 248.000 PseudoReward: [[25.26634]]
+Episode 190, Average Success Rate (last 10 eps): 0.90
+Total T: 57300 Episode Num: 191 Episode T: 300 Reward: 279.000 PseudoReward: [[-4.785118]]
+Episode 191, Average Success Rate (last 10 eps): 1.00
+Total T: 57600 Episode Num: 192 Episode T: 300 Reward: 0.000 PseudoReward: [[0.16938744]]
+Episode 192, Average Success Rate (last 10 eps): 0.90
+Total T: 57900 Episode Num: 193 Episode T: 300 Reward: 287.000 PseudoReward: [[5.339972]]
+Episode 193, Average Success Rate (last 10 eps): 0.90
+Total T: 58200 Episode Num: 194 Episode T: 300 Reward: 0.000 PseudoReward: [[30.307138]]
+Episode 194, Average Success Rate (last 10 eps): 0.80
+Total T: 58500 Episode Num: 195 Episode T: 300 Reward: 283.000 PseudoReward: [[7.7322693]]
+Episode 195, Average Success Rate (last 10 eps): 0.80
+Total T: 58800 Episode Num: 196 Episode T: 300 Reward: 290.000 PseudoReward: [[20.887669]]
+Episode 196, Average Success Rate (last 10 eps): 0.80
+Total T: 59100 Episode Num: 197 Episode T: 300 Reward: 251.000 PseudoReward: [[18.8643]]
+Episode 197, Average Success Rate (last 10 eps): 0.80
+Total T: 59400 Episode Num: 198 Episode T: 300 Reward: 0.000 PseudoReward: [[21.489897]]
+Episode 198, Average Success Rate (last 10 eps): 0.70
+Total T: 59700 Episode Num: 199 Episode T: 300 Reward: 252.000 PseudoReward: [[-0.7386736]]
+Episode 199, Average Success Rate (last 10 eps): 0.70
+Total T: 60000 Episode Num: 200 Episode T: 300 Reward: 0.000 PseudoReward: [[29.645184]]
+Episode 200, Average Success Rate (last 10 eps): 0.60
+Total T: 60300 Episode Num: 201 Episode T: 300 Reward: 292.000 PseudoReward: [[20.380827]]
+Episode 201, Average Success Rate (last 10 eps): 0.60
+Total T: 60600 Episode Num: 202 Episode T: 300 Reward: 237.000 PseudoReward: [[26.039082]]
+Episode 202, Average Success Rate (last 10 eps): 0.70
+Total T: 60900 Episode Num: 203 Episode T: 300 Reward: 260.000 PseudoReward: [[22.782026]]
+Episode 203, Average Success Rate (last 10 eps): 0.70
+Total T: 61200 Episode Num: 204 Episode T: 300 Reward: 283.000 PseudoReward: [[20.159124]]
+Episode 204, Average Success Rate (last 10 eps): 0.80
+Total T: 61500 Episode Num: 205 Episode T: 300 Reward: 278.000 PseudoReward: [[-12.121393]]
+Episode 205, Average Success Rate (last 10 eps): 0.80
+Total T: 61800 Episode Num: 206 Episode T: 300 Reward: 266.000 PseudoReward: [[6.26315]]
+Episode 206, Average Success Rate (last 10 eps): 0.80
+Total T: 62100 Episode Num: 207 Episode T: 300 Reward: 0.000 PseudoReward: [[-2.9452994]]
+Episode 207, Average Success Rate (last 10 eps): 0.70
+Total T: 62400 Episode Num: 208 Episode T: 300 Reward: 0.000 PseudoReward: [[31.330675]]
+Episode 208, Average Success Rate (last 10 eps): 0.70
+Total T: 62700 Episode Num: 209 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.52662754]]
+Episode 209, Average Success Rate (last 10 eps): 0.60
+Total T: 63000 Episode Num: 210 Episode T: 300 Reward: 283.000 PseudoReward: [[-10.41464]]
+Episode 210, Average Success Rate (last 10 eps): 0.70
+Total T: 63300 Episode Num: 211 Episode T: 300 Reward: 287.000 PseudoReward: [[15.888232]]
+Episode 211, Average Success Rate (last 10 eps): 0.70
+Total T: 63600 Episode Num: 212 Episode T: 300 Reward: 282.000 PseudoReward: [[-5.6371703]]
+Episode 212, Average Success Rate (last 10 eps): 0.70
+Total T: 63900 Episode Num: 213 Episode T: 300 Reward: 244.000 PseudoReward: [[40.12919]]
+Episode 213, Average Success Rate (last 10 eps): 0.70
+Total T: 64200 Episode Num: 214 Episode T: 300 Reward: 272.000 PseudoReward: [[27.531664]]
+Episode 214, Average Success Rate (last 10 eps): 0.70
+Total T: 64500 Episode Num: 215 Episode T: 300 Reward: 269.000 PseudoReward: [[6.014735]]
+Episode 215, Average Success Rate (last 10 eps): 0.70
+Total T: 64800 Episode Num: 216 Episode T: 300 Reward: 294.000 PseudoReward: [[6.265268]]
+Episode 216, Average Success Rate (last 10 eps): 0.70
+Total T: 65100 Episode Num: 217 Episode T: 300 Reward: 284.000 PseudoReward: [[-5.894433]]
+Episode 217, Average Success Rate (last 10 eps): 0.80
+Total T: 65400 Episode Num: 218 Episode T: 300 Reward: 275.000 PseudoReward: [[7.6104937]]
+Episode 218, Average Success Rate (last 10 eps): 0.90
+Total T: 65700 Episode Num: 219 Episode T: 300 Reward: 276.000 PseudoReward: [[-4.3417997]]
+Episode 219, Average Success Rate (last 10 eps): 1.00
+Total T: 66000 Episode Num: 220 Episode T: 300 Reward: 292.000 PseudoReward: [[22.088877]]
+Episode 220, Average Success Rate (last 10 eps): 1.00
+Total T: 66300 Episode Num: 221 Episode T: 300 Reward: 227.000 PseudoReward: [[-3.4483469]]
+Episode 221, Average Success Rate (last 10 eps): 1.00
+Total T: 66600 Episode Num: 222 Episode T: 300 Reward: 288.000 PseudoReward: [[-2.8215253]]
+Episode 222, Average Success Rate (last 10 eps): 1.00
+Total T: 66900 Episode Num: 223 Episode T: 300 Reward: 0.000 PseudoReward: [[26.974636]]
+Episode 223, Average Success Rate (last 10 eps): 0.90
+Total T: 67200 Episode Num: 224 Episode T: 300 Reward: 290.000 PseudoReward: [[-6.5717435]]
+Episode 224, Average Success Rate (last 10 eps): 0.90
+Total T: 67500 Episode Num: 225 Episode T: 300 Reward: 294.000 PseudoReward: [[-10.88338]]
+Episode 225, Average Success Rate (last 10 eps): 0.90
+Total T: 67800 Episode Num: 226 Episode T: 300 Reward: 291.000 PseudoReward: [[36.06285]]
+Episode 226, Average Success Rate (last 10 eps): 0.90
+Total T: 68100 Episode Num: 227 Episode T: 300 Reward: 280.000 PseudoReward: [[32.434425]]
+Episode 227, Average Success Rate (last 10 eps): 0.90
+Total T: 68400 Episode Num: 228 Episode T: 300 Reward: 0.000 PseudoReward: [[33.97356]]
+Episode 228, Average Success Rate (last 10 eps): 0.80
+Total T: 68700 Episode Num: 229 Episode T: 300 Reward: 272.000 PseudoReward: [[-7.1542273]]
+Episode 229, Average Success Rate (last 10 eps): 0.80
+Total T: 69000 Episode Num: 230 Episode T: 300 Reward: 285.000 PseudoReward: [[33.348484]]
+Episode 230, Average Success Rate (last 10 eps): 0.80
+Total T: 69300 Episode Num: 231 Episode T: 300 Reward: 271.000 PseudoReward: [[19.21537]]
+Episode 231, Average Success Rate (last 10 eps): 0.80
+Total T: 69600 Episode Num: 232 Episode T: 300 Reward: 283.000 PseudoReward: [[24.940283]]
+Episode 232, Average Success Rate (last 10 eps): 0.80
+Total T: 69900 Episode Num: 233 Episode T: 300 Reward: 294.000 PseudoReward: [[4.9271355]]
+Episode 233, Average Success Rate (last 10 eps): 0.90
+Total T: 70200 Episode Num: 234 Episode T: 300 Reward: 0.000 PseudoReward: [[28.546728]]
+Episode 234, Average Success Rate (last 10 eps): 0.80
+Total T: 70500 Episode Num: 235 Episode T: 300 Reward: 286.000 PseudoReward: [[20.708746]]
+Episode 235, Average Success Rate (last 10 eps): 0.80
+Total T: 70800 Episode Num: 236 Episode T: 300 Reward: 280.000 PseudoReward: [[7.075949]]
+Episode 236, Average Success Rate (last 10 eps): 0.80
+Total T: 71100 Episode Num: 237 Episode T: 300 Reward: 278.000 PseudoReward: [[22.688288]]
+Episode 237, Average Success Rate (last 10 eps): 0.80
+Total T: 71400 Episode Num: 238 Episode T: 300 Reward: 215.000 PseudoReward: [[21.75702]]
+Episode 238, Average Success Rate (last 10 eps): 0.90
+Total T: 71700 Episode Num: 239 Episode T: 300 Reward: 273.000 PseudoReward: [[19.433523]]
+Episode 239, Average Success Rate (last 10 eps): 0.90
+Total T: 72000 Episode Num: 240 Episode T: 300 Reward: 259.000 PseudoReward: [[4.8016615]]
+Episode 240, Average Success Rate (last 10 eps): 0.90
+Total T: 72300 Episode Num: 241 Episode T: 300 Reward: 293.000 PseudoReward: [[22.379467]]
+Episode 241, Average Success Rate (last 10 eps): 0.90
+Total T: 72600 Episode Num: 242 Episode T: 300 Reward: 244.000 PseudoReward: [[7.688917]]
+Episode 242, Average Success Rate (last 10 eps): 0.90
+Total T: 72900 Episode Num: 243 Episode T: 300 Reward: 285.000 PseudoReward: [[27.939]]
+Episode 243, Average Success Rate (last 10 eps): 0.90
+Total T: 73200 Episode Num: 244 Episode T: 300 Reward: 287.000 PseudoReward: [[37.16612]]
+Episode 244, Average Success Rate (last 10 eps): 1.00
+Total T: 73500 Episode Num: 245 Episode T: 300 Reward: 286.000 PseudoReward: [[-8.2415905]]
+Episode 245, Average Success Rate (last 10 eps): 1.00
+Total T: 73800 Episode Num: 246 Episode T: 300 Reward: 285.000 PseudoReward: [[-4.1677203]]
+Episode 246, Average Success Rate (last 10 eps): 1.00
+Total T: 74100 Episode Num: 247 Episode T: 300 Reward: 256.000 PseudoReward: [[39.303432]]
+Episode 247, Average Success Rate (last 10 eps): 1.00
+Total T: 74400 Episode Num: 248 Episode T: 300 Reward: 292.000 PseudoReward: [[22.53294]]
+Episode 248, Average Success Rate (last 10 eps): 1.00
+Total T: 74700 Episode Num: 249 Episode T: 300 Reward: 0.000 PseudoReward: [[-1.3791537]]
+Episode 249, Average Success Rate (last 10 eps): 0.90
+Total T: 75000 Episode Num: 250 Episode T: 300 Reward: 0.000 PseudoReward: [[-2.587173]]
+Episode 250, Average Success Rate (last 10 eps): 0.80
+Total T: 75300 Episode Num: 251 Episode T: 300 Reward: 259.000 PseudoReward: [[21.685585]]
+Episode 251, Average Success Rate (last 10 eps): 0.80
+Total T: 75600 Episode Num: 252 Episode T: 300 Reward: 270.000 PseudoReward: [[33.088932]]
+Episode 252, Average Success Rate (last 10 eps): 0.80
+Total T: 75900 Episode Num: 253 Episode T: 300 Reward: 0.000 PseudoReward: [[-2.8495276]]
+Episode 253, Average Success Rate (last 10 eps): 0.70
+Total T: 76200 Episode Num: 254 Episode T: 300 Reward: 208.000 PseudoReward: [[37.48402]]
+Episode 254, Average Success Rate (last 10 eps): 0.70
+Total T: 76500 Episode Num: 255 Episode T: 300 Reward: 293.000 PseudoReward: [[5.883597]]
+Episode 255, Average Success Rate (last 10 eps): 0.70
+Total T: 76800 Episode Num: 256 Episode T: 300 Reward: 297.000 PseudoReward: [[-3.170886]]
+Episode 256, Average Success Rate (last 10 eps): 0.70
+Total T: 77100 Episode Num: 257 Episode T: 300 Reward: 287.000 PseudoReward: [[22.533863]]
+Episode 257, Average Success Rate (last 10 eps): 0.70
+Total T: 77400 Episode Num: 258 Episode T: 300 Reward: 290.000 PseudoReward: [[41.099552]]
+Episode 258, Average Success Rate (last 10 eps): 0.70
+Total T: 77700 Episode Num: 259 Episode T: 300 Reward: 259.000 PseudoReward: [[4.893284]]
+Episode 259, Average Success Rate (last 10 eps): 0.80
+Total T: 78000 Episode Num: 260 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.08937889]]
+Episode 260, Average Success Rate (last 10 eps): 0.80
+Total T: 78300 Episode Num: 261 Episode T: 300 Reward: 0.000 PseudoReward: [[31.977314]]
+Episode 261, Average Success Rate (last 10 eps): 0.70
+Total T: 78600 Episode Num: 262 Episode T: 300 Reward: 240.000 PseudoReward: [[24.322998]]
+Episode 262, Average Success Rate (last 10 eps): 0.70
+Total T: 78900 Episode Num: 263 Episode T: 300 Reward: 0.000 PseudoReward: [[-4.4858413]]
+Episode 263, Average Success Rate (last 10 eps): 0.70
+Total T: 79200 Episode Num: 264 Episode T: 300 Reward: 289.000 PseudoReward: [[36.89384]]
+Episode 264, Average Success Rate (last 10 eps): 0.70
+Total T: 79500 Episode Num: 265 Episode T: 300 Reward: 0.000 PseudoReward: [[-4.8663]]
+Episode 265, Average Success Rate (last 10 eps): 0.60
+Total T: 79800 Episode Num: 266 Episode T: 300 Reward: 273.000 PseudoReward: [[35.633556]]
+Episode 266, Average Success Rate (last 10 eps): 0.60
+Total T: 80100 Episode Num: 267 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.752838]]
+Episode 267, Average Success Rate (last 10 eps): 0.50
+Total T: 80400 Episode Num: 268 Episode T: 300 Reward: 268.000 PseudoReward: [[8.448912]]
+Episode 268, Average Success Rate (last 10 eps): 0.50
+Total T: 80700 Episode Num: 269 Episode T: 300 Reward: 268.000 PseudoReward: [[5.4564013]]
+Episode 269, Average Success Rate (last 10 eps): 0.50
+Total T: 81000 Episode Num: 270 Episode T: 300 Reward: 264.000 PseudoReward: [[33.535423]]
+Episode 270, Average Success Rate (last 10 eps): 0.60
+Total T: 81300 Episode Num: 271 Episode T: 300 Reward: 281.000 PseudoReward: [[17.636143]]
+Episode 271, Average Success Rate (last 10 eps): 0.70
+Total T: 81600 Episode Num: 272 Episode T: 300 Reward: 0.000 PseudoReward: [[32.656536]]
+Episode 272, Average Success Rate (last 10 eps): 0.60
+Total T: 81900 Episode Num: 273 Episode T: 300 Reward: 296.000 PseudoReward: [[-8.639353]]
+Episode 273, Average Success Rate (last 10 eps): 0.70
+Total T: 82200 Episode Num: 274 Episode T: 300 Reward: 282.000 PseudoReward: [[38.665005]]
+Episode 274, Average Success Rate (last 10 eps): 0.70
+Total T: 82500 Episode Num: 275 Episode T: 300 Reward: 279.000 PseudoReward: [[-12.252359]]
+Episode 275, Average Success Rate (last 10 eps): 0.80
+Total T: 82800 Episode Num: 276 Episode T: 300 Reward: 0.000 PseudoReward: [[29.258314]]
+Episode 276, Average Success Rate (last 10 eps): 0.70
+Total T: 83100 Episode Num: 277 Episode T: 300 Reward: 273.000 PseudoReward: [[6.004064]]
+Episode 277, Average Success Rate (last 10 eps): 0.80
+Total T: 83400 Episode Num: 278 Episode T: 300 Reward: 278.000 PseudoReward: [[23.220215]]
+Episode 278, Average Success Rate (last 10 eps): 0.80
+Total T: 83700 Episode Num: 279 Episode T: 300 Reward: 296.000 PseudoReward: [[17.848932]]
+Episode 279, Average Success Rate (last 10 eps): 0.80
+Total T: 84000 Episode Num: 280 Episode T: 300 Reward: 297.000 PseudoReward: [[23.076723]]
+Episode 280, Average Success Rate (last 10 eps): 0.80
+Total T: 84300 Episode Num: 281 Episode T: 300 Reward: 275.000 PseudoReward: [[8.176375]]
+Episode 281, Average Success Rate (last 10 eps): 0.80
+Total T: 84600 Episode Num: 282 Episode T: 300 Reward: 293.000 PseudoReward: [[-12.1186075]]
+Episode 282, Average Success Rate (last 10 eps): 0.90
+Total T: 84900 Episode Num: 283 Episode T: 300 Reward: 288.000 PseudoReward: [[20.280064]]
+Episode 283, Average Success Rate (last 10 eps): 0.90
+Total T: 85200 Episode Num: 284 Episode T: 300 Reward: 0.000 PseudoReward: [[30.358576]]
+Episode 284, Average Success Rate (last 10 eps): 0.80
+Total T: 85500 Episode Num: 285 Episode T: 300 Reward: 287.000 PseudoReward: [[6.989455]]
+Episode 285, Average Success Rate (last 10 eps): 0.80
+Total T: 85800 Episode Num: 286 Episode T: 300 Reward: 264.000 PseudoReward: [[-0.16432378]]
+Episode 286, Average Success Rate (last 10 eps): 0.90
+Total T: 86100 Episode Num: 287 Episode T: 300 Reward: 290.000 PseudoReward: [[41.697613]]
+Episode 287, Average Success Rate (last 10 eps): 0.90
+Total T: 86400 Episode Num: 288 Episode T: 300 Reward: 282.000 PseudoReward: [[15.193347]]
+Episode 288, Average Success Rate (last 10 eps): 0.90
+Total T: 86700 Episode Num: 289 Episode T: 300 Reward: 292.000 PseudoReward: [[21.321447]]
+Episode 289, Average Success Rate (last 10 eps): 0.90
+Total T: 87000 Episode Num: 290 Episode T: 300 Reward: 272.000 PseudoReward: [[39.849583]]
+Episode 290, Average Success Rate (last 10 eps): 0.90
+Total T: 87300 Episode Num: 291 Episode T: 300 Reward: 0.000 PseudoReward: [[30.090153]]
+Episode 291, Average Success Rate (last 10 eps): 0.80
+Total T: 87600 Episode Num: 292 Episode T: 300 Reward: 298.000 PseudoReward: [[-5.680797]]
+Episode 292, Average Success Rate (last 10 eps): 0.80
+Total T: 87900 Episode Num: 293 Episode T: 300 Reward: 294.000 PseudoReward: [[-10.986725]]
+Episode 293, Average Success Rate (last 10 eps): 0.80
+Total T: 88200 Episode Num: 294 Episode T: 300 Reward: 274.000 PseudoReward: [[35.513668]]
+Episode 294, Average Success Rate (last 10 eps): 0.90
+Total T: 88500 Episode Num: 295 Episode T: 300 Reward: 298.000 PseudoReward: [[20.824091]]
+Episode 295, Average Success Rate (last 10 eps): 0.90
+Total T: 88800 Episode Num: 296 Episode T: 300 Reward: 277.000 PseudoReward: [[35.245968]]
+Episode 296, Average Success Rate (last 10 eps): 0.90
+Total T: 89100 Episode Num: 297 Episode T: 300 Reward: 280.000 PseudoReward: [[7.527015]]
+Episode 297, Average Success Rate (last 10 eps): 0.90
+Total T: 89400 Episode Num: 298 Episode T: 300 Reward: 287.000 PseudoReward: [[21.056059]]
+Episode 298, Average Success Rate (last 10 eps): 0.90
+Total T: 89700 Episode Num: 299 Episode T: 300 Reward: 284.000 PseudoReward: [[2.3835037]]
+Episode 299, Average Success Rate (last 10 eps): 0.90
+Total T: 90000 Episode Num: 300 Episode T: 300 Reward: 288.000 PseudoReward: [[36.210358]]
+Episode 300, Average Success Rate (last 10 eps): 0.90
+Total T: 90300 Episode Num: 301 Episode T: 300 Reward: 261.000 PseudoReward: [[23.686193]]
+Episode 301, Average Success Rate (last 10 eps): 1.00
+Total T: 90600 Episode Num: 302 Episode T: 300 Reward: 263.000 PseudoReward: [[18.206934]]
+Episode 302, Average Success Rate (last 10 eps): 1.00
+Total T: 90900 Episode Num: 303 Episode T: 300 Reward: 268.000 PseudoReward: [[33.521378]]
+Episode 303, Average Success Rate (last 10 eps): 1.00
+Total T: 91200 Episode Num: 304 Episode T: 300 Reward: 0.000 PseudoReward: [[-2.785451]]
+Episode 304, Average Success Rate (last 10 eps): 0.90
+Total T: 91500 Episode Num: 305 Episode T: 300 Reward: 242.000 PseudoReward: [[2.2449052]]
+Episode 305, Average Success Rate (last 10 eps): 0.90
+Total T: 91800 Episode Num: 306 Episode T: 300 Reward: 284.000 PseudoReward: [[10.393342]]
+Episode 306, Average Success Rate (last 10 eps): 0.90
+Total T: 92100 Episode Num: 307 Episode T: 300 Reward: 262.000 PseudoReward: [[37.055794]]
+Episode 307, Average Success Rate (last 10 eps): 0.90
+Total T: 92400 Episode Num: 308 Episode T: 300 Reward: 0.000 PseudoReward: [[32.65759]]
+Episode 308, Average Success Rate (last 10 eps): 0.80
+Total T: 92700 Episode Num: 309 Episode T: 300 Reward: 283.000 PseudoReward: [[-14.18024]]
+Episode 309, Average Success Rate (last 10 eps): 0.80
+Total T: 93000 Episode Num: 310 Episode T: 300 Reward: 0.000 PseudoReward: [[37.954838]]
+Episode 310, Average Success Rate (last 10 eps): 0.70
+Total T: 93300 Episode Num: 311 Episode T: 300 Reward: 279.000 PseudoReward: [[4.6123548]]
+Episode 311, Average Success Rate (last 10 eps): 0.70
+Total T: 93600 Episode Num: 312 Episode T: 300 Reward: 0.000 PseudoReward: [[30.054218]]
+Episode 312, Average Success Rate (last 10 eps): 0.60
+Total T: 93900 Episode Num: 313 Episode T: 300 Reward: 288.000 PseudoReward: [[25.569027]]
+Episode 313, Average Success Rate (last 10 eps): 0.60
+Total T: 94200 Episode Num: 314 Episode T: 300 Reward: 0.000 PseudoReward: [[35.706486]]
+Episode 314, Average Success Rate (last 10 eps): 0.60
+Total T: 94500 Episode Num: 315 Episode T: 300 Reward: 296.000 PseudoReward: [[14.586876]]
+Episode 315, Average Success Rate (last 10 eps): 0.60
+Total T: 94800 Episode Num: 316 Episode T: 300 Reward: 280.000 PseudoReward: [[8.003849]]
+Episode 316, Average Success Rate (last 10 eps): 0.60
+Total T: 95100 Episode Num: 317 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.69164413]]
+Episode 317, Average Success Rate (last 10 eps): 0.50
+Total T: 95400 Episode Num: 318 Episode T: 300 Reward: 272.000 PseudoReward: [[37.756573]]
+Episode 318, Average Success Rate (last 10 eps): 0.60
+Total T: 95700 Episode Num: 319 Episode T: 300 Reward: 0.000 PseudoReward: [[2.3861659]]
+Episode 319, Average Success Rate (last 10 eps): 0.50
+Total T: 96000 Episode Num: 320 Episode T: 300 Reward: 275.000 PseudoReward: [[19.81552]]
+Episode 320, Average Success Rate (last 10 eps): 0.60
+Total T: 96300 Episode Num: 321 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.66309434]]
+Episode 321, Average Success Rate (last 10 eps): 0.50
+Total T: 96600 Episode Num: 322 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.17628329]]
+Episode 322, Average Success Rate (last 10 eps): 0.50
+Total T: 96900 Episode Num: 323 Episode T: 300 Reward: 250.000 PseudoReward: [[-1.4440877]]
+Episode 323, Average Success Rate (last 10 eps): 0.50
+Total T: 97200 Episode Num: 324 Episode T: 300 Reward: 0.000 PseudoReward: [[36.506447]]
+Episode 324, Average Success Rate (last 10 eps): 0.50
+Total T: 97500 Episode Num: 325 Episode T: 300 Reward: 273.000 PseudoReward: [[27.835608]]
+Episode 325, Average Success Rate (last 10 eps): 0.50
+Total T: 97800 Episode Num: 326 Episode T: 300 Reward: 263.000 PseudoReward: [[1.7463069]]
+Episode 326, Average Success Rate (last 10 eps): 0.50
+Total T: 98100 Episode Num: 327 Episode T: 300 Reward: 0.000 PseudoReward: [[0.11451232]]
+Episode 327, Average Success Rate (last 10 eps): 0.50
+Total T: 98400 Episode Num: 328 Episode T: 300 Reward: 264.000 PseudoReward: [[27.957186]]
+Episode 328, Average Success Rate (last 10 eps): 0.50
+Total T: 98700 Episode Num: 329 Episode T: 300 Reward: 284.000 PseudoReward: [[8.028903]]
+Episode 329, Average Success Rate (last 10 eps): 0.60
+Total T: 99000 Episode Num: 330 Episode T: 300 Reward: 294.000 PseudoReward: [[36.223824]]
+Episode 330, Average Success Rate (last 10 eps): 0.60
+Total T: 99300 Episode Num: 331 Episode T: 300 Reward: 253.000 PseudoReward: [[34.621727]]
+Episode 331, Average Success Rate (last 10 eps): 0.70
+Total T: 99600 Episode Num: 332 Episode T: 300 Reward: 288.000 PseudoReward: [[-1.0190637]]
+Episode 332, Average Success Rate (last 10 eps): 0.80
+Total T: 99900 Episode Num: 333 Episode T: 300 Reward: 268.000 PseudoReward: [[25.451477]]
+Episode 333, Average Success Rate (last 10 eps): 0.80
+Total T: 100200 Episode Num: 334 Episode T: 300 Reward: 294.000 PseudoReward: [[11.069761]]
+Episode 334, Average Success Rate (last 10 eps): 0.90
+Total T: 100500 Episode Num: 335 Episode T: 300 Reward: 0.000 PseudoReward: [[26.288855]]
+Episode 335, Average Success Rate (last 10 eps): 0.80
+Total T: 100800 Episode Num: 336 Episode T: 300 Reward: 0.000 PseudoReward: [[35.482635]]
+Episode 336, Average Success Rate (last 10 eps): 0.70
+Total T: 101100 Episode Num: 337 Episode T: 300 Reward: 256.000 PseudoReward: [[-8.229863]]
+Episode 337, Average Success Rate (last 10 eps): 0.80
+Total T: 101400 Episode Num: 338 Episode T: 300 Reward: 288.000 PseudoReward: [[40.490223]]
+Episode 338, Average Success Rate (last 10 eps): 0.80
+Total T: 101700 Episode Num: 339 Episode T: 300 Reward: 245.000 PseudoReward: [[21.533163]]
+Episode 339, Average Success Rate (last 10 eps): 0.80
+Total T: 102000 Episode Num: 340 Episode T: 300 Reward: 290.000 PseudoReward: [[-3.8956962]]
+Episode 340, Average Success Rate (last 10 eps): 0.80
+Total T: 102300 Episode Num: 341 Episode T: 300 Reward: 275.000 PseudoReward: [[32.49519]]
+Episode 341, Average Success Rate (last 10 eps): 0.80
+Total T: 102600 Episode Num: 342 Episode T: 300 Reward: 284.000 PseudoReward: [[28.157555]]
+Episode 342, Average Success Rate (last 10 eps): 0.80
+Total T: 102900 Episode Num: 343 Episode T: 300 Reward: 290.000 PseudoReward: [[-4.5442967]]
+Episode 343, Average Success Rate (last 10 eps): 0.80
+Total T: 103200 Episode Num: 344 Episode T: 300 Reward: 292.000 PseudoReward: [[-10.6532345]]
+Episode 344, Average Success Rate (last 10 eps): 0.80
+Total T: 103500 Episode Num: 345 Episode T: 300 Reward: 291.000 PseudoReward: [[-9.071482]]
+Episode 345, Average Success Rate (last 10 eps): 0.90
+Total T: 103800 Episode Num: 346 Episode T: 300 Reward: 265.000 PseudoReward: [[-0.899367]]
+Episode 346, Average Success Rate (last 10 eps): 1.00
+Total T: 104100 Episode Num: 347 Episode T: 300 Reward: 282.000 PseudoReward: [[36.566788]]
+Episode 347, Average Success Rate (last 10 eps): 1.00
+Total T: 104400 Episode Num: 348 Episode T: 300 Reward: 0.000 PseudoReward: [[34.956886]]
+Episode 348, Average Success Rate (last 10 eps): 0.90
+Total T: 104700 Episode Num: 349 Episode T: 300 Reward: 247.000 PseudoReward: [[32.75137]]
+Episode 349, Average Success Rate (last 10 eps): 0.90
+Total T: 105000 Episode Num: 350 Episode T: 300 Reward: 275.000 PseudoReward: [[-5.3549767]]
+Episode 350, Average Success Rate (last 10 eps): 0.90
+Total T: 105300 Episode Num: 351 Episode T: 300 Reward: 0.000 PseudoReward: [[35.970284]]
+Episode 351, Average Success Rate (last 10 eps): 0.80
+Total T: 105600 Episode Num: 352 Episode T: 300 Reward: 233.000 PseudoReward: [[30.364874]]
+Episode 352, Average Success Rate (last 10 eps): 0.80
+Total T: 105900 Episode Num: 353 Episode T: 300 Reward: 0.000 PseudoReward: [[33.497204]]
+Episode 353, Average Success Rate (last 10 eps): 0.70
+Total T: 106200 Episode Num: 354 Episode T: 300 Reward: 268.000 PseudoReward: [[-6.5424113]]
+Episode 354, Average Success Rate (last 10 eps): 0.70
+Total T: 106500 Episode Num: 355 Episode T: 300 Reward: 271.000 PseudoReward: [[42.34966]]
+Episode 355, Average Success Rate (last 10 eps): 0.70
+Total T: 106800 Episode Num: 356 Episode T: 300 Reward: 294.000 PseudoReward: [[-2.3858485]]
+Episode 356, Average Success Rate (last 10 eps): 0.70
+Total T: 107100 Episode Num: 357 Episode T: 300 Reward: 276.000 PseudoReward: [[21.970718]]
+Episode 357, Average Success Rate (last 10 eps): 0.70
+Total T: 107400 Episode Num: 358 Episode T: 300 Reward: 260.000 PseudoReward: [[2.926708]]
+Episode 358, Average Success Rate (last 10 eps): 0.80
+Total T: 107700 Episode Num: 359 Episode T: 300 Reward: 254.000 PseudoReward: [[2.660168]]
+Episode 359, Average Success Rate (last 10 eps): 0.80
+Total T: 108000 Episode Num: 360 Episode T: 300 Reward: 278.000 PseudoReward: [[13.647266]]
+Episode 360, Average Success Rate (last 10 eps): 0.80
+Total T: 108300 Episode Num: 361 Episode T: 300 Reward: 0.000 PseudoReward: [[-3.2330592]]
+Episode 361, Average Success Rate (last 10 eps): 0.80
+Total T: 108600 Episode Num: 362 Episode T: 300 Reward: 0.000 PseudoReward: [[34.848335]]
+Episode 362, Average Success Rate (last 10 eps): 0.70
+Total T: 108900 Episode Num: 363 Episode T: 300 Reward: 0.000 PseudoReward: [[-2.7795773]]
+Episode 363, Average Success Rate (last 10 eps): 0.70
+Total T: 109200 Episode Num: 364 Episode T: 300 Reward: 0.000 PseudoReward: [[-2.1497476]]
+Episode 364, Average Success Rate (last 10 eps): 0.60
+Total T: 109500 Episode Num: 365 Episode T: 300 Reward: 0.000 PseudoReward: [[32.262222]]
+Episode 365, Average Success Rate (last 10 eps): 0.50
+Total T: 109800 Episode Num: 366 Episode T: 300 Reward: 272.000 PseudoReward: [[-10.558597]]
+Episode 366, Average Success Rate (last 10 eps): 0.50
+Total T: 110100 Episode Num: 367 Episode T: 300 Reward: 273.000 PseudoReward: [[0.02178394]]
+Episode 367, Average Success Rate (last 10 eps): 0.50
+Total T: 110400 Episode Num: 368 Episode T: 300 Reward: 0.000 PseudoReward: [[40.6013]]
+Episode 368, Average Success Rate (last 10 eps): 0.40
+Total T: 110700 Episode Num: 369 Episode T: 300 Reward: 0.000 PseudoReward: [[36.14134]]
+Episode 369, Average Success Rate (last 10 eps): 0.30
+Total T: 111000 Episode Num: 370 Episode T: 300 Reward: 281.000 PseudoReward: [[22.917599]]
+Episode 370, Average Success Rate (last 10 eps): 0.30
+Total T: 111300 Episode Num: 371 Episode T: 300 Reward: 0.000 PseudoReward: [[39.42633]]
+Episode 371, Average Success Rate (last 10 eps): 0.30
+Total T: 111600 Episode Num: 372 Episode T: 300 Reward: 267.000 PseudoReward: [[7.622231]]
+Episode 372, Average Success Rate (last 10 eps): 0.40
+Total T: 111900 Episode Num: 373 Episode T: 300 Reward: 0.000 PseudoReward: [[36.40117]]
+Episode 373, Average Success Rate (last 10 eps): 0.40
+Total T: 112200 Episode Num: 374 Episode T: 300 Reward: 281.000 PseudoReward: [[32.801414]]
+Episode 374, Average Success Rate (last 10 eps): 0.50
+Total T: 112500 Episode Num: 375 Episode T: 300 Reward: 0.000 PseudoReward: [[27.708605]]
+Episode 375, Average Success Rate (last 10 eps): 0.50
+Total T: 112800 Episode Num: 376 Episode T: 300 Reward: 0.000 PseudoReward: [[2.4197605]]
+Episode 376, Average Success Rate (last 10 eps): 0.40
+Total T: 113100 Episode Num: 377 Episode T: 300 Reward: 263.000 PseudoReward: [[9.259336]]
+Episode 377, Average Success Rate (last 10 eps): 0.40
+Total T: 113400 Episode Num: 378 Episode T: 300 Reward: 0.000 PseudoReward: [[35.025116]]
+Episode 378, Average Success Rate (last 10 eps): 0.40
+Total T: 113700 Episode Num: 379 Episode T: 300 Reward: 278.000 PseudoReward: [[6.065433]]
+Episode 379, Average Success Rate (last 10 eps): 0.50
+Total T: 114000 Episode Num: 380 Episode T: 300 Reward: 244.000 PseudoReward: [[23.405842]]
+Episode 380, Average Success Rate (last 10 eps): 0.50
+Total T: 114300 Episode Num: 381 Episode T: 300 Reward: 0.000 PseudoReward: [[32.910664]]
+Episode 381, Average Success Rate (last 10 eps): 0.50
+Total T: 114600 Episode Num: 382 Episode T: 300 Reward: 266.000 PseudoReward: [[31.187922]]
+Episode 382, Average Success Rate (last 10 eps): 0.50
+Total T: 114900 Episode Num: 383 Episode T: 300 Reward: 0.000 PseudoReward: [[33.992496]]
+Episode 383, Average Success Rate (last 10 eps): 0.50
+Total T: 115200 Episode Num: 384 Episode T: 300 Reward: 294.000 PseudoReward: [[-11.093664]]
+Episode 384, Average Success Rate (last 10 eps): 0.50
+Total T: 115500 Episode Num: 385 Episode T: 300 Reward: 279.000 PseudoReward: [[42.384834]]
+Episode 385, Average Success Rate (last 10 eps): 0.60
+Total T: 115800 Episode Num: 386 Episode T: 300 Reward: 236.000 PseudoReward: [[17.182505]]
+Episode 386, Average Success Rate (last 10 eps): 0.70
+Total T: 116100 Episode Num: 387 Episode T: 300 Reward: 292.000 PseudoReward: [[17.35343]]
+Episode 387, Average Success Rate (last 10 eps): 0.70
+Total T: 116400 Episode Num: 388 Episode T: 300 Reward: 269.000 PseudoReward: [[-9.654983]]
+Episode 388, Average Success Rate (last 10 eps): 0.80
+Total T: 116700 Episode Num: 389 Episode T: 300 Reward: 294.000 PseudoReward: [[-0.78798187]]
+Episode 389, Average Success Rate (last 10 eps): 0.80
+Total T: 117000 Episode Num: 390 Episode T: 300 Reward: 283.000 PseudoReward: [[-7.558628]]
+Episode 390, Average Success Rate (last 10 eps): 0.80
+Total T: 117300 Episode Num: 391 Episode T: 300 Reward: 0.000 PseudoReward: [[30.806952]]
+Episode 391, Average Success Rate (last 10 eps): 0.80
+Total T: 117600 Episode Num: 392 Episode T: 300 Reward: 285.000 PseudoReward: [[17.222614]]
+Episode 392, Average Success Rate (last 10 eps): 0.80
+Total T: 117900 Episode Num: 393 Episode T: 300 Reward: 0.000 PseudoReward: [[37.418095]]
+Episode 393, Average Success Rate (last 10 eps): 0.80
+Total T: 118200 Episode Num: 394 Episode T: 300 Reward: 286.000 PseudoReward: [[7.770839]]
+Episode 394, Average Success Rate (last 10 eps): 0.80
+Total T: 118500 Episode Num: 395 Episode T: 300 Reward: 0.000 PseudoReward: [[38.327908]]
+Episode 395, Average Success Rate (last 10 eps): 0.70
+Total T: 118800 Episode Num: 396 Episode T: 300 Reward: 293.000 PseudoReward: [[2.1653032]]
+Episode 396, Average Success Rate (last 10 eps): 0.70
+Total T: 119100 Episode Num: 397 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.28881383]]
+Episode 397, Average Success Rate (last 10 eps): 0.60
+Total T: 119400 Episode Num: 398 Episode T: 300 Reward: 299.000 PseudoReward: [[7.27178]]
+Episode 398, Average Success Rate (last 10 eps): 0.60
+Total T: 119700 Episode Num: 399 Episode T: 300 Reward: 0.000 PseudoReward: [[-1.4835376]]
+Episode 399, Average Success Rate (last 10 eps): 0.50
+Total T: 120000 Episode Num: 400 Episode T: 300 Reward: 243.000 PseudoReward: [[-12.7697]]
+Episode 400, Average Success Rate (last 10 eps): 0.50
+Total T: 120300 Episode Num: 401 Episode T: 300 Reward: 0.000 PseudoReward: [[36.40246]]
+Episode 401, Average Success Rate (last 10 eps): 0.50
+Total T: 120600 Episode Num: 402 Episode T: 300 Reward: 287.000 PseudoReward: [[-2.98428]]
+Episode 402, Average Success Rate (last 10 eps): 0.50
+Total T: 120900 Episode Num: 403 Episode T: 300 Reward: 291.000 PseudoReward: [[36.83541]]
+Episode 403, Average Success Rate (last 10 eps): 0.60
+Total T: 121200 Episode Num: 404 Episode T: 300 Reward: 270.000 PseudoReward: [[16.496212]]
+Episode 404, Average Success Rate (last 10 eps): 0.60
+Total T: 121500 Episode Num: 405 Episode T: 300 Reward: 265.000 PseudoReward: [[21.454464]]
+Episode 405, Average Success Rate (last 10 eps): 0.70
+Total T: 121800 Episode Num: 406 Episode T: 300 Reward: 269.000 PseudoReward: [[33.44255]]
+Episode 406, Average Success Rate (last 10 eps): 0.70
+Total T: 122100 Episode Num: 407 Episode T: 300 Reward: 291.000 PseudoReward: [[24.044931]]
+Episode 407, Average Success Rate (last 10 eps): 0.80
+Total T: 122400 Episode Num: 408 Episode T: 300 Reward: 299.000 PseudoReward: [[21.216112]]
+Episode 408, Average Success Rate (last 10 eps): 0.80
+Total T: 122700 Episode Num: 409 Episode T: 300 Reward: 277.000 PseudoReward: [[-4.595667]]
+Episode 409, Average Success Rate (last 10 eps): 0.90
+Total T: 123000 Episode Num: 410 Episode T: 300 Reward: 270.000 PseudoReward: [[-2.199286]]
+Episode 410, Average Success Rate (last 10 eps): 0.90
+Total T: 123300 Episode Num: 411 Episode T: 300 Reward: 284.000 PseudoReward: [[23.952795]]
+Episode 411, Average Success Rate (last 10 eps): 1.00
+Total T: 123600 Episode Num: 412 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.48851636]]
+Episode 412, Average Success Rate (last 10 eps): 0.90
+Total T: 123900 Episode Num: 413 Episode T: 300 Reward: 292.000 PseudoReward: [[41.734497]]
+Episode 413, Average Success Rate (last 10 eps): 0.90
+Total T: 124200 Episode Num: 414 Episode T: 300 Reward: 290.000 PseudoReward: [[7.197094]]
+Episode 414, Average Success Rate (last 10 eps): 0.90
+Total T: 124500 Episode Num: 415 Episode T: 300 Reward: 277.000 PseudoReward: [[23.421877]]
+Episode 415, Average Success Rate (last 10 eps): 0.90
+Total T: 124800 Episode Num: 416 Episode T: 300 Reward: 249.000 PseudoReward: [[-6.796065]]
+Episode 416, Average Success Rate (last 10 eps): 0.90
+Total T: 125100 Episode Num: 417 Episode T: 300 Reward: 0.000 PseudoReward: [[36.847557]]
+Episode 417, Average Success Rate (last 10 eps): 0.80
+Total T: 125400 Episode Num: 418 Episode T: 300 Reward: 0.000 PseudoReward: [[31.403652]]
+Episode 418, Average Success Rate (last 10 eps): 0.70
+Total T: 125700 Episode Num: 419 Episode T: 300 Reward: 263.000 PseudoReward: [[7.754716]]
+Episode 419, Average Success Rate (last 10 eps): 0.70
+Total T: 126000 Episode Num: 420 Episode T: 300 Reward: 0.000 PseudoReward: [[32.36228]]
+Episode 420, Average Success Rate (last 10 eps): 0.60
+Total T: 126300 Episode Num: 421 Episode T: 300 Reward: 294.000 PseudoReward: [[39.466118]]
+Episode 421, Average Success Rate (last 10 eps): 0.60
+Total T: 126600 Episode Num: 422 Episode T: 300 Reward: 279.000 PseudoReward: [[14.357713]]
+Episode 422, Average Success Rate (last 10 eps): 0.70
+Total T: 126900 Episode Num: 423 Episode T: 300 Reward: 293.000 PseudoReward: [[17.32811]]
+Episode 423, Average Success Rate (last 10 eps): 0.70
+Total T: 127200 Episode Num: 424 Episode T: 300 Reward: 287.000 PseudoReward: [[-14.777945]]
+Episode 424, Average Success Rate (last 10 eps): 0.70
+Total T: 127500 Episode Num: 425 Episode T: 300 Reward: 279.000 PseudoReward: [[1.7216027]]
+Episode 425, Average Success Rate (last 10 eps): 0.70
+Total T: 127800 Episode Num: 426 Episode T: 300 Reward: 0.000 PseudoReward: [[31.18279]]
+Episode 426, Average Success Rate (last 10 eps): 0.60
+Total T: 128100 Episode Num: 427 Episode T: 300 Reward: 295.000 PseudoReward: [[21.066973]]
+Episode 427, Average Success Rate (last 10 eps): 0.70
+Total T: 128400 Episode Num: 428 Episode T: 300 Reward: 290.000 PseudoReward: [[46.74126]]
+Episode 428, Average Success Rate (last 10 eps): 0.80
+Total T: 128700 Episode Num: 429 Episode T: 300 Reward: 263.000 PseudoReward: [[5.1213274]]
+Episode 429, Average Success Rate (last 10 eps): 0.80
+Total T: 129000 Episode Num: 430 Episode T: 300 Reward: 0.000 PseudoReward: [[36.42566]]
+Episode 430, Average Success Rate (last 10 eps): 0.80
+Total T: 129300 Episode Num: 431 Episode T: 300 Reward: 281.000 PseudoReward: [[21.559023]]
+Episode 431, Average Success Rate (last 10 eps): 0.80
+Total T: 129600 Episode Num: 432 Episode T: 300 Reward: 254.000 PseudoReward: [[-1.7961032]]
+Episode 432, Average Success Rate (last 10 eps): 0.80
+Total T: 129900 Episode Num: 433 Episode T: 300 Reward: 286.000 PseudoReward: [[8.051572]]
+Episode 433, Average Success Rate (last 10 eps): 0.80
+Total T: 130200 Episode Num: 434 Episode T: 300 Reward: 287.000 PseudoReward: [[11.546649]]
+Episode 434, Average Success Rate (last 10 eps): 0.80
+Total T: 130500 Episode Num: 435 Episode T: 300 Reward: 292.000 PseudoReward: [[20.8756]]
+Episode 435, Average Success Rate (last 10 eps): 0.80
+Total T: 130800 Episode Num: 436 Episode T: 300 Reward: 278.000 PseudoReward: [[-7.6290574]]
+Episode 436, Average Success Rate (last 10 eps): 0.90
+Total T: 131100 Episode Num: 437 Episode T: 300 Reward: 254.000 PseudoReward: [[-3.9737923]]
+Episode 437, Average Success Rate (last 10 eps): 0.90
+Total T: 131400 Episode Num: 438 Episode T: 300 Reward: 278.000 PseudoReward: [[37.41864]]
+Episode 438, Average Success Rate (last 10 eps): 0.90
+Total T: 131700 Episode Num: 439 Episode T: 300 Reward: 252.000 PseudoReward: [[0.7249944]]
+Episode 439, Average Success Rate (last 10 eps): 0.90
+Total T: 132000 Episode Num: 440 Episode T: 300 Reward: 277.000 PseudoReward: [[-1.7000449]]
+Episode 440, Average Success Rate (last 10 eps): 1.00
+Total T: 132300 Episode Num: 441 Episode T: 300 Reward: 278.000 PseudoReward: [[0.5214609]]
+Episode 441, Average Success Rate (last 10 eps): 1.00
+Total T: 132600 Episode Num: 442 Episode T: 300 Reward: 249.000 PseudoReward: [[-0.6498001]]
+Episode 442, Average Success Rate (last 10 eps): 1.00
+Total T: 132900 Episode Num: 443 Episode T: 300 Reward: 292.000 PseudoReward: [[10.450688]]
+Episode 443, Average Success Rate (last 10 eps): 1.00
+Total T: 133200 Episode Num: 444 Episode T: 300 Reward: 283.000 PseudoReward: [[-0.23094422]]
+Episode 444, Average Success Rate (last 10 eps): 1.00
+Total T: 133500 Episode Num: 445 Episode T: 300 Reward: 282.000 PseudoReward: [[3.3241827]]
+Episode 445, Average Success Rate (last 10 eps): 1.00
+Total T: 133800 Episode Num: 446 Episode T: 300 Reward: 284.000 PseudoReward: [[21.732304]]
+Episode 446, Average Success Rate (last 10 eps): 1.00
+Total T: 134100 Episode Num: 447 Episode T: 300 Reward: 273.000 PseudoReward: [[30.679815]]
+Episode 447, Average Success Rate (last 10 eps): 1.00
+Total T: 134400 Episode Num: 448 Episode T: 300 Reward: 271.000 PseudoReward: [[-0.73029214]]
+Episode 448, Average Success Rate (last 10 eps): 1.00
+Total T: 134700 Episode Num: 449 Episode T: 300 Reward: 237.000 PseudoReward: [[-3.2129397]]
+Episode 449, Average Success Rate (last 10 eps): 1.00
+Total T: 135000 Episode Num: 450 Episode T: 300 Reward: 289.000 PseudoReward: [[1.2711334]]
+Episode 450, Average Success Rate (last 10 eps): 1.00
+Total T: 135300 Episode Num: 451 Episode T: 300 Reward: 280.000 PseudoReward: [[14.56258]]
+Episode 451, Average Success Rate (last 10 eps): 1.00
+Total T: 135600 Episode Num: 452 Episode T: 300 Reward: 286.000 PseudoReward: [[40.712566]]
+Episode 452, Average Success Rate (last 10 eps): 1.00
+Total T: 135900 Episode Num: 453 Episode T: 300 Reward: 261.000 PseudoReward: [[5.980784]]
+Episode 453, Average Success Rate (last 10 eps): 1.00
+Total T: 136200 Episode Num: 454 Episode T: 300 Reward: 283.000 PseudoReward: [[7.356605]]
+Episode 454, Average Success Rate (last 10 eps): 1.00
+Total T: 136500 Episode Num: 455 Episode T: 300 Reward: 281.000 PseudoReward: [[27.444708]]
+Episode 455, Average Success Rate (last 10 eps): 1.00
+Total T: 136800 Episode Num: 456 Episode T: 300 Reward: 289.000 PseudoReward: [[-2.2140718]]
+Episode 456, Average Success Rate (last 10 eps): 1.00
+Total T: 137100 Episode Num: 457 Episode T: 300 Reward: 281.000 PseudoReward: [[-1.2366303]]
+Episode 457, Average Success Rate (last 10 eps): 1.00
+Total T: 137400 Episode Num: 458 Episode T: 300 Reward: 263.000 PseudoReward: [[4.062357]]
+Episode 458, Average Success Rate (last 10 eps): 1.00
+Total T: 137700 Episode Num: 459 Episode T: 300 Reward: 297.000 PseudoReward: [[41.30669]]
+Episode 459, Average Success Rate (last 10 eps): 1.00
+Total T: 138000 Episode Num: 460 Episode T: 300 Reward: 266.000 PseudoReward: [[-7.4637933]]
+Episode 460, Average Success Rate (last 10 eps): 1.00
+Total T: 138300 Episode Num: 461 Episode T: 300 Reward: 276.000 PseudoReward: [[-8.67135]]
+Episode 461, Average Success Rate (last 10 eps): 1.00
+Total T: 138600 Episode Num: 462 Episode T: 300 Reward: 280.000 PseudoReward: [[36.64127]]
+Episode 462, Average Success Rate (last 10 eps): 1.00
+Total T: 138900 Episode Num: 463 Episode T: 300 Reward: 269.000 PseudoReward: [[13.263568]]
+Episode 463, Average Success Rate (last 10 eps): 1.00
+Total T: 139200 Episode Num: 464 Episode T: 300 Reward: 262.000 PseudoReward: [[26.304958]]
+Episode 464, Average Success Rate (last 10 eps): 1.00
+Total T: 139500 Episode Num: 465 Episode T: 300 Reward: 0.000 PseudoReward: [[33.338264]]
+Episode 465, Average Success Rate (last 10 eps): 0.90
+Total T: 139800 Episode Num: 466 Episode T: 300 Reward: 282.000 PseudoReward: [[26.014196]]
+Episode 466, Average Success Rate (last 10 eps): 0.90
+Total T: 140100 Episode Num: 467 Episode T: 300 Reward: 287.000 PseudoReward: [[6.437385]]
+Episode 467, Average Success Rate (last 10 eps): 0.90
+Total T: 140400 Episode Num: 468 Episode T: 300 Reward: 281.000 PseudoReward: [[17.685293]]
+Episode 468, Average Success Rate (last 10 eps): 0.90
+Total T: 140700 Episode Num: 469 Episode T: 300 Reward: 245.000 PseudoReward: [[-3.7136137]]
+Episode 469, Average Success Rate (last 10 eps): 0.90
+Total T: 141000 Episode Num: 470 Episode T: 300 Reward: 282.000 PseudoReward: [[-5.8141737]]
+Episode 470, Average Success Rate (last 10 eps): 0.90
+Total T: 141300 Episode Num: 471 Episode T: 300 Reward: 250.000 PseudoReward: [[30.47026]]
+Episode 471, Average Success Rate (last 10 eps): 0.90
+Total T: 141600 Episode Num: 472 Episode T: 300 Reward: 270.000 PseudoReward: [[18.744617]]
+Episode 472, Average Success Rate (last 10 eps): 0.90
+Total T: 141900 Episode Num: 473 Episode T: 300 Reward: 295.000 PseudoReward: [[18.742477]]
+Episode 473, Average Success Rate (last 10 eps): 0.90
+Total T: 142200 Episode Num: 474 Episode T: 300 Reward: 244.000 PseudoReward: [[-3.7423873]]
+Episode 474, Average Success Rate (last 10 eps): 0.90
+Total T: 142500 Episode Num: 475 Episode T: 300 Reward: 289.000 PseudoReward: [[20.538816]]
+Episode 475, Average Success Rate (last 10 eps): 1.00
+Total T: 142800 Episode Num: 476 Episode T: 300 Reward: 292.000 PseudoReward: [[43.917503]]
+Episode 476, Average Success Rate (last 10 eps): 1.00
+Total T: 143100 Episode Num: 477 Episode T: 300 Reward: 244.000 PseudoReward: [[45.23503]]
+Episode 477, Average Success Rate (last 10 eps): 1.00
+Total T: 143400 Episode Num: 478 Episode T: 300 Reward: 291.000 PseudoReward: [[27.596102]]
+Episode 478, Average Success Rate (last 10 eps): 1.00
+Total T: 143700 Episode Num: 479 Episode T: 300 Reward: 295.000 PseudoReward: [[28.508633]]
+Episode 479, Average Success Rate (last 10 eps): 1.00
+Total T: 144000 Episode Num: 480 Episode T: 300 Reward: 269.000 PseudoReward: [[8.967799]]
+Episode 480, Average Success Rate (last 10 eps): 1.00
+Total T: 144300 Episode Num: 481 Episode T: 300 Reward: 279.000 PseudoReward: [[23.098438]]
+Episode 481, Average Success Rate (last 10 eps): 1.00
+Total T: 144600 Episode Num: 482 Episode T: 300 Reward: 294.000 PseudoReward: [[-1.666263]]
+Episode 482, Average Success Rate (last 10 eps): 1.00
+Total T: 144900 Episode Num: 483 Episode T: 300 Reward: 270.000 PseudoReward: [[37.56717]]
+Episode 483, Average Success Rate (last 10 eps): 1.00
+Total T: 145200 Episode Num: 484 Episode T: 300 Reward: 228.000 PseudoReward: [[24.735928]]
+Episode 484, Average Success Rate (last 10 eps): 1.00
+Total T: 145500 Episode Num: 485 Episode T: 300 Reward: 0.000 PseudoReward: [[27.926382]]
+Episode 485, Average Success Rate (last 10 eps): 0.90
+Total T: 145800 Episode Num: 486 Episode T: 300 Reward: 0.000 PseudoReward: [[33.454178]]
+Episode 486, Average Success Rate (last 10 eps): 0.80
+Total T: 146100 Episode Num: 487 Episode T: 300 Reward: 283.000 PseudoReward: [[8.384958]]
+Episode 487, Average Success Rate (last 10 eps): 0.80
+Total T: 146400 Episode Num: 488 Episode T: 300 Reward: 278.000 PseudoReward: [[3.0971515]]
+Episode 488, Average Success Rate (last 10 eps): 0.80
+Total T: 146700 Episode Num: 489 Episode T: 300 Reward: 0.000 PseudoReward: [[37.523888]]
+Episode 489, Average Success Rate (last 10 eps): 0.70
+Total T: 147000 Episode Num: 490 Episode T: 300 Reward: 266.000 PseudoReward: [[16.587431]]
+Episode 490, Average Success Rate (last 10 eps): 0.70
+Total T: 147300 Episode Num: 491 Episode T: 300 Reward: 273.000 PseudoReward: [[24.053383]]
+Episode 491, Average Success Rate (last 10 eps): 0.70
+Total T: 147600 Episode Num: 492 Episode T: 300 Reward: 268.000 PseudoReward: [[30.787426]]
+Episode 492, Average Success Rate (last 10 eps): 0.70
+Total T: 147900 Episode Num: 493 Episode T: 300 Reward: 294.000 PseudoReward: [[-9.94124]]
+Episode 493, Average Success Rate (last 10 eps): 0.70
+Total T: 148200 Episode Num: 494 Episode T: 300 Reward: 272.000 PseudoReward: [[27.745323]]
+Episode 494, Average Success Rate (last 10 eps): 0.70
+Total T: 148500 Episode Num: 495 Episode T: 300 Reward: 230.000 PseudoReward: [[22.142101]]
+Episode 495, Average Success Rate (last 10 eps): 0.80
+Total T: 148800 Episode Num: 496 Episode T: 300 Reward: 278.000 PseudoReward: [[20.175936]]
+Episode 496, Average Success Rate (last 10 eps): 0.90
+Total T: 149100 Episode Num: 497 Episode T: 300 Reward: 232.000 PseudoReward: [[-7.356363]]
+Episode 497, Average Success Rate (last 10 eps): 0.90
+Total T: 149400 Episode Num: 498 Episode T: 300 Reward: 0.000 PseudoReward: [[3.8171508]]
+Episode 498, Average Success Rate (last 10 eps): 0.80
+Total T: 149700 Episode Num: 499 Episode T: 300 Reward: 0.000 PseudoReward: [[31.62189]]
+Episode 499, Average Success Rate (last 10 eps): 0.80
+Total T: 150000 Episode Num: 500 Episode T: 300 Reward: 281.000 PseudoReward: [[-10.001946]]
+Episode 500, Average Success Rate (last 10 eps): 0.80
+Total T: 150300 Episode Num: 501 Episode T: 300 Reward: 295.000 PseudoReward: [[-1.8184338]]
+Episode 501, Average Success Rate (last 10 eps): 0.80
+Total T: 150600 Episode Num: 502 Episode T: 300 Reward: 0.000 PseudoReward: [[0.5094307]]
+Episode 502, Average Success Rate (last 10 eps): 0.70
+Total T: 150900 Episode Num: 503 Episode T: 300 Reward: 234.000 PseudoReward: [[38.96856]]
+Episode 503, Average Success Rate (last 10 eps): 0.70
+Total T: 151200 Episode Num: 504 Episode T: 300 Reward: 291.000 PseudoReward: [[22.847738]]
+Episode 504, Average Success Rate (last 10 eps): 0.70
+Total T: 151500 Episode Num: 505 Episode T: 300 Reward: 276.000 PseudoReward: [[33.047054]]
+Episode 505, Average Success Rate (last 10 eps): 0.70
+Total T: 151800 Episode Num: 506 Episode T: 300 Reward: 277.000 PseudoReward: [[-2.8454468]]
+Episode 506, Average Success Rate (last 10 eps): 0.70
+Total T: 152100 Episode Num: 507 Episode T: 300 Reward: 274.000 PseudoReward: [[42.624287]]
+Episode 507, Average Success Rate (last 10 eps): 0.70
+Total T: 152400 Episode Num: 508 Episode T: 300 Reward: 277.000 PseudoReward: [[6.5749536]]
+Episode 508, Average Success Rate (last 10 eps): 0.80
+Total T: 152700 Episode Num: 509 Episode T: 300 Reward: 293.000 PseudoReward: [[-3.5950937]]
+Episode 509, Average Success Rate (last 10 eps): 0.90
+Total T: 153000 Episode Num: 510 Episode T: 300 Reward: 0.000 PseudoReward: [[0.06296648]]
+Episode 510, Average Success Rate (last 10 eps): 0.80
+Total T: 153300 Episode Num: 511 Episode T: 300 Reward: 0.000 PseudoReward: [[33.518764]]
+Episode 511, Average Success Rate (last 10 eps): 0.70
+Total T: 153600 Episode Num: 512 Episode T: 300 Reward: 28.000 PseudoReward: [[0.8211241]]
+Episode 512, Average Success Rate (last 10 eps): 0.80
+Total T: 153900 Episode Num: 513 Episode T: 300 Reward: 258.000 PseudoReward: [[-9.862337]]
+Episode 513, Average Success Rate (last 10 eps): 0.80
+Total T: 154200 Episode Num: 514 Episode T: 300 Reward: 284.000 PseudoReward: [[-4.2577]]
+Episode 514, Average Success Rate (last 10 eps): 0.80
+Total T: 154500 Episode Num: 515 Episode T: 300 Reward: 275.000 PseudoReward: [[6.796168]]
+Episode 515, Average Success Rate (last 10 eps): 0.80
+Total T: 154800 Episode Num: 516 Episode T: 300 Reward: 263.000 PseudoReward: [[32.247204]]
+Episode 516, Average Success Rate (last 10 eps): 0.80
+Total T: 155100 Episode Num: 517 Episode T: 300 Reward: 0.000 PseudoReward: [[-0.2026335]]
+Episode 517, Average Success Rate (last 10 eps): 0.70
+Total T: 155400 Episode Num: 518 Episode T: 300 Reward: 293.000 PseudoReward: [[27.111082]]
+Episode 518, Average Success Rate (last 10 eps): 0.70
+Total T: 155700 Episode Num: 519 Episode T: 300 Reward: 281.000 PseudoReward: [[7.2300835]]
+Episode 519, Average Success Rate (last 10 eps): 0.70
+Total T: 156000 Episode Num: 520 Episode T: 300 Reward: 292.000 PseudoReward: [[-4.7730994]]
+Episode 520, Average Success Rate (last 10 eps): 0.80
+Total T: 156300 Episode Num: 521 Episode T: 300 Reward: 0.000 PseudoReward: [[39.218925]]
+Episode 521, Average Success Rate (last 10 eps): 0.80
+Total T: 156600 Episode Num: 522 Episode T: 300 Reward: 279.000 PseudoReward: [[-3.4052804]]
+Episode 522, Average Success Rate (last 10 eps): 0.80
+Total T: 156900 Episode Num: 523 Episode T: 300 Reward: 278.000 PseudoReward: [[-3.769878]]
+Episode 523, Average Success Rate (last 10 eps): 0.80
+Total T: 157200 Episode Num: 524 Episode T: 300 Reward: 295.000 PseudoReward: [[-1.0558764]]
+Episode 524, Average Success Rate (last 10 eps): 0.80
+Total T: 157500 Episode Num: 525 Episode T: 300 Reward: 247.000 PseudoReward: [[27.283607]]
+Episode 525, Average Success Rate (last 10 eps): 0.80
+Total T: 157800 Episode Num: 526 Episode T: 300 Reward: 291.000 PseudoReward: [[21.001062]]
+Episode 526, Average Success Rate (last 10 eps): 0.80
+Total T: 158100 Episode Num: 527 Episode T: 300 Reward: 271.000 PseudoReward: [[22.44846]]
+Episode 527, Average Success Rate (last 10 eps): 0.90
+Total T: 158400 Episode Num: 528 Episode T: 300 Reward: 180.000 PseudoReward: [[-5.091134]]
+Episode 528, Average Success Rate (last 10 eps): 0.90
+Total T: 158700 Episode Num: 529 Episode T: 300 Reward: 0.000 PseudoReward: [[34.848587]]
+Episode 529, Average Success Rate (last 10 eps): 0.80
+Total T: 159000 Episode Num: 530 Episode T: 300 Reward: 280.000 PseudoReward: [[21.61384]]
+Episode 530, Average Success Rate (last 10 eps): 0.80
+Total T: 159300 Episode Num: 531 Episode T: 300 Reward: 264.000 PseudoReward: [[28.637606]]
+Episode 531, Average Success Rate (last 10 eps): 0.90
+Total T: 159600 Episode Num: 532 Episode T: 300 Reward: 267.000 PseudoReward: [[-4.7005787]]
+Episode 532, Average Success Rate (last 10 eps): 0.90
+Total T: 159900 Episode Num: 533 Episode T: 300 Reward: 273.000 PseudoReward: [[28.787954]]
+Episode 533, Average Success Rate (last 10 eps): 0.90
+Total T: 160200 Episode Num: 534 Episode T: 300 Reward: 0.000 PseudoReward: [[40.7751]]
+Episode 534, Average Success Rate (last 10 eps): 0.80
+Total T: 160500 Episode Num: 535 Episode T: 300 Reward: 0.000 PseudoReward: [[29.335669]]
+Episode 535, Average Success Rate (last 10 eps): 0.70
+Total T: 160800 Episode Num: 536 Episode T: 300 Reward: 277.000 PseudoReward: [[-1.558736]]
+Episode 536, Average Success Rate (last 10 eps): 0.70
+Total T: 161100 Episode Num: 537 Episode T: 300 Reward: 287.000 PseudoReward: [[41.712276]]
+Episode 537, Average Success Rate (last 10 eps): 0.70
+Total T: 161400 Episode Num: 538 Episode T: 300 Reward: 225.000 PseudoReward: [[-0.17046261]]
+Episode 538, Average Success Rate (last 10 eps): 0.70
+Total T: 161700 Episode Num: 539 Episode T: 300 Reward: 285.000 PseudoReward: [[5.2656145]]
+Episode 539, Average Success Rate (last 10 eps): 0.80
+Total T: 162000 Episode Num: 540 Episode T: 300 Reward: 260.000 PseudoReward: [[24.858269]]
+Episode 540, Average Success Rate (last 10 eps): 0.80
+Total T: 162300 Episode Num: 541 Episode T: 300 Reward: 267.000 PseudoReward: [[39.45924]]
+Episode 541, Average Success Rate (last 10 eps): 0.80
+Total T: 162600 Episode Num: 542 Episode T: 300 Reward: 280.000 PseudoReward: [[-8.811511]]
+Episode 542, Average Success Rate (last 10 eps): 0.80
+Total T: 162900 Episode Num: 543 Episode T: 300 Reward: 296.000 PseudoReward: [[-7.090388]]
+Episode 543, Average Success Rate (last 10 eps): 0.80
+Total T: 163200 Episode Num: 544 Episode T: 300 Reward: 256.000 PseudoReward: [[44.43669]]
+Episode 544, Average Success Rate (last 10 eps): 0.90
+Total T: 163500 Episode Num: 545 Episode T: 300 Reward: 296.000 PseudoReward: [[24.032692]]
+Episode 545, Average Success Rate (last 10 eps): 1.00
+Total T: 163800 Episode Num: 546 Episode T: 300 Reward: 0.000 PseudoReward: [[34.834656]]
+Episode 546, Average Success Rate (last 10 eps): 0.90
+Total T: 164100 Episode Num: 547 Episode T: 300 Reward: 267.000 PseudoReward: [[0.7723617]]
+Episode 547, Average Success Rate (last 10 eps): 0.90
+Total T: 164400 Episode Num: 548 Episode T: 300 Reward: 275.000 PseudoReward: [[-0.7866026]]
+Episode 548, Average Success Rate (last 10 eps): 0.90
+Total T: 164700 Episode Num: 549 Episode T: 300 Reward: 286.000 PseudoReward: [[0.87332517]]
+Episode 549, Average Success Rate (last 10 eps): 0.90
+Total T: 165000 Episode Num: 550 Episode T: 300 Reward: 281.000 PseudoReward: [[35.317646]]
+Episode 550, Average Success Rate (last 10 eps): 0.90
+Total T: 165300 Episode Num: 551 Episode T: 300 Reward: 0.000 PseudoReward: [[34.905514]]
+Episode 551, Average Success Rate (last 10 eps): 0.80
+Total T: 165600 Episode Num: 552 Episode T: 300 Reward: 0.000 PseudoReward: [[34.40144]]
+Episode 552, Average Success Rate (last 10 eps): 0.70
+Total T: 165900 Episode Num: 553 Episode T: 300 Reward: 261.000 PseudoReward: [[-1.3026525]]
+Episode 553, Average Success Rate (last 10 eps): 0.70
+Total T: 166200 Episode Num: 554 Episode T: 300 Reward: 70.000 PseudoReward: [[2.3666823]]
+Episode 554, Average Success Rate (last 10 eps): 0.70
+Total T: 166500 Episode Num: 555 Episode T: 300 Reward: 286.000 PseudoReward: [[6.7055564]]
+Episode 555, Average Success Rate (last 10 eps): 0.70
+Total T: 166800 Episode Num: 556 Episode T: 300 Reward: 0.000 PseudoReward: [[35.997604]]
+Episode 556, Average Success Rate (last 10 eps): 0.70
+Total T: 167100 Episode Num: 557 Episode T: 300 Reward: 297.000 PseudoReward: [[35.935158]]
+Episode 557, Average Success Rate (last 10 eps): 0.70
+Total T: 167400 Episode Num: 558 Episode T: 300 Reward: 278.000 PseudoReward: [[41.975094]]
+Episode 558, Average Success Rate (last 10 eps): 0.70
+Total T: 167700 Episode Num: 559 Episode T: 300 Reward: 288.000 PseudoReward: [[33.74295]]
+Episode 559, Average Success Rate (last 10 eps): 0.70
+Total T: 168000 Episode Num: 560 Episode T: 300 Reward: 283.000 PseudoReward: [[40.24441]]
+Episode 560, Average Success Rate (last 10 eps): 0.70
+Total T: 168300 Episode Num: 561 Episode T: 300 Reward: 0.000 PseudoReward: [[38.61835]]
+Episode 561, Average Success Rate (last 10 eps): 0.70
+Total T: 168600 Episode Num: 562 Episode T: 300 Reward: 281.000 PseudoReward: [[7.235088]]
+Episode 562, Average Success Rate (last 10 eps): 0.80
+Total T: 168900 Episode Num: 563 Episode T: 300 Reward: 261.000 PseudoReward: [[-3.5734446]]
+Episode 563, Average Success Rate (last 10 eps): 0.80
+Total T: 169200 Episode Num: 564 Episode T: 300 Reward: 286.000 PseudoReward: [[20.025774]]
+Episode 564, Average Success Rate (last 10 eps): 0.80
+Total T: 169500 Episode Num: 565 Episode T: 300 Reward: 0.000 PseudoReward: [[33.770237]]
+Episode 565, Average Success Rate (last 10 eps): 0.70
+Total T: 169800 Episode Num: 566 Episode T: 300 Reward: 0.000 PseudoReward: [[3.6215827]]
+Episode 566, Average Success Rate (last 10 eps): 0.70
+Total T: 170100 Episode Num: 567 Episode T: 300 Reward: 119.000 PseudoReward: [[-4.438817]]
+Episode 567, Average Success Rate (last 10 eps): 0.70
+Total T: 170400 Episode Num: 568 Episode T: 300 Reward: 271.000 PseudoReward: [[20.883232]]
+Episode 568, Average Success Rate (last 10 eps): 0.70
+Total T: 170700 Episode Num: 569 Episode T: 300 Reward: 288.000 PseudoReward: [[40.487087]]
+Episode 569, Average Success Rate (last 10 eps): 0.70
+Total T: 171000 Episode Num: 570 Episode T: 300 Reward: 0.000 PseudoReward: [[5.3265285]]
+Episode 570, Average Success Rate (last 10 eps): 0.60
+Total T: 171300 Episode Num: 571 Episode T: 300 Reward: 292.000 PseudoReward: [[6.6643]]
+Episode 571, Average Success Rate (last 10 eps): 0.70
+Total T: 171600 Episode Num: 572 Episode T: 300 Reward: 271.000 PseudoReward: [[42.473648]]
+Episode 572, Average Success Rate (last 10 eps): 0.70
+Total T: 171900 Episode Num: 573 Episode T: 300 Reward: 284.000 PseudoReward: [[16.85979]]
+Episode 573, Average Success Rate (last 10 eps): 0.70
+Total T: 172200 Episode Num: 574 Episode T: 300 Reward: 267.000 PseudoReward: [[36.486923]]
+Episode 574, Average Success Rate (last 10 eps): 0.70
+Total T: 172500 Episode Num: 575 Episode T: 300 Reward: 272.000 PseudoReward: [[-8.781931]]
+Episode 575, Average Success Rate (last 10 eps): 0.80
+Total T: 172800 Episode Num: 576 Episode T: 300 Reward: 0.000 PseudoReward: [[30.907433]]
+Episode 576, Average Success Rate (last 10 eps): 0.80
+Total T: 173100 Episode Num: 577 Episode T: 300 Reward: 296.000 PseudoReward: [[4.172611]]
+Episode 577, Average Success Rate (last 10 eps): 0.80
+Total T: 173400 Episode Num: 578 Episode T: 300 Reward: 281.000 PseudoReward: [[-13.318285]]
+Episode 578, Average Success Rate (last 10 eps): 0.80
+Total T: 173700 Episode Num: 579 Episode T: 300 Reward: 0.000 PseudoReward: [[37.801693]]
+Episode 579, Average Success Rate (last 10 eps): 0.70
+Total T: 174000 Episode Num: 580 Episode T: 300 Reward: 286.000 PseudoReward: [[3.5576365]]
+Episode 580, Average Success Rate (last 10 eps): 0.80
+Total T: 174300 Episode Num: 581 Episode T: 300 Reward: 282.000 PseudoReward: [[-1.2645508]]
+Episode 581, Average Success Rate (last 10 eps): 0.80
+Total T: 174600 Episode Num: 582 Episode T: 300 Reward: 0.000 PseudoReward: [[27.680765]]
+Episode 582, Average Success Rate (last 10 eps): 0.70
+Total T: 174900 Episode Num: 583 Episode T: 300 Reward: 287.000 PseudoReward: [[39.873245]]
+Episode 583, Average Success Rate (last 10 eps): 0.70
+Total T: 175200 Episode Num: 584 Episode T: 300 Reward: 282.000 PseudoReward: [[-1.0084028]]
+Episode 584, Average Success Rate (last 10 eps): 0.70
+Total T: 175500 Episode Num: 585 Episode T: 300 Reward: 299.000 PseudoReward: [[21.8544]]
+Episode 585, Average Success Rate (last 10 eps): 0.70
+Total T: 175800 Episode Num: 586 Episode T: 300 Reward: 276.000 PseudoReward: [[7.9642234]]
+Episode 586, Average Success Rate (last 10 eps): 0.80
+Total T: 176100 Episode Num: 587 Episode T: 300 Reward: 278.000 PseudoReward: [[7.1310453]]
+Episode 587, Average Success Rate (last 10 eps): 0.80
+Total T: 176400 Episode Num: 588 Episode T: 300 Reward: 293.000 PseudoReward: [[18.931559]]
+Episode 588, Average Success Rate (last 10 eps): 0.80
+Total T: 176700 Episode Num: 589 Episode T: 300 Reward: 0.000 PseudoReward: [[42.02743]]
+Episode 589, Average Success Rate (last 10 eps): 0.80
+Total T: 177000 Episode Num: 590 Episode T: 300 Reward: 276.000 PseudoReward: [[18.346693]]
+Episode 590, Average Success Rate (last 10 eps): 0.80
+Total T: 177300 Episode Num: 591 Episode T: 300 Reward: 281.000 PseudoReward: [[-4.507162]]
+Episode 591, Average Success Rate (last 10 eps): 0.80
+Total T: 177600 Episode Num: 592 Episode T: 300 Reward: 266.000 PseudoReward: [[18.991787]]
+Episode 592, Average Success Rate (last 10 eps): 0.90
+Total T: 177900 Episode Num: 593 Episode T: 300 Reward: 292.000 PseudoReward: [[39.871056]]
+Episode 593, Average Success Rate (last 10 eps): 0.90
+Total T: 178200 Episode Num: 594 Episode T: 300 Reward: 288.000 PseudoReward: [[6.5362167]]
+Episode 594, Average Success Rate (last 10 eps): 0.90
+Total T: 178500 Episode Num: 595 Episode T: 300 Reward: 274.000 PseudoReward: [[6.213503]]
+Episode 595, Average Success Rate (last 10 eps): 0.90
+Total T: 178800 Episode Num: 596 Episode T: 300 Reward: 273.000 PseudoReward: [[5.6803217]]
+Episode 596, Average Success Rate (last 10 eps): 0.90
+Total T: 179100 Episode Num: 597 Episode T: 300 Reward: 262.000 PseudoReward: [[-2.3347213]]
+Episode 597, Average Success Rate (last 10 eps): 0.90
+Total T: 179400 Episode Num: 598 Episode T: 300 Reward: 241.000 PseudoReward: [[4.2265124]]
+Episode 598, Average Success Rate (last 10 eps): 0.90
+Total T: 179700 Episode Num: 599 Episode T: 300 Reward: 275.000 PseudoReward: [[6.565032]]
+Episode 599, Average Success Rate (last 10 eps): 1.00
+Total T: 180000 Episode Num: 600 Episode T: 300 Reward: 277.000 PseudoReward: [[28.183302]]
+Episode 600, Average Success Rate (last 10 eps): 1.00
+Total T: 180300 Episode Num: 601 Episode T: 300 Reward: 276.000 PseudoReward: [[32.178425]]
+Episode 601, Average Success Rate (last 10 eps): 1.00
+Total T: 180600 Episode Num: 602 Episode T: 300 Reward: 237.000 PseudoReward: [[24.271833]]
+Episode 602, Average Success Rate (last 10 eps): 1.00
+Total T: 180900 Episode Num: 603 Episode T: 300 Reward: 275.000 PseudoReward: [[6.616372]]
+Episode 603, Average Success Rate (last 10 eps): 1.00
+Total T: 181200 Episode Num: 604 Episode T: 300 Reward: 285.000 PseudoReward: [[22.002666]]
+Episode 604, Average Success Rate (last 10 eps): 1.00
+Total T: 181500 Episode Num: 605 Episode T: 300 Reward: 290.000 PseudoReward: [[20.8421]]
+Episode 605, Average Success Rate (last 10 eps): 1.00
+Total T: 181800 Episode Num: 606 Episode T: 300 Reward: 254.000 PseudoReward: [[43.18997]]
+Episode 606, Average Success Rate (last 10 eps): 1.00
+Total T: 182100 Episode Num: 607 Episode T: 300 Reward: 266.000 PseudoReward: [[25.235374]]
+Episode 607, Average Success Rate (last 10 eps): 1.00
+Total T: 182400 Episode Num: 608 Episode T: 300 Reward: 300.000 PseudoReward: [[2.8292022]]
+Episode 608, Average Success Rate (last 10 eps): 1.00
+Total T: 182700 Episode Num: 609 Episode T: 300 Reward: 0.000 PseudoReward: [[4.317824]]
+Episode 609, Average Success Rate (last 10 eps): 0.90
+Total T: 183000 Episode Num: 610 Episode T: 300 Reward: 281.000 PseudoReward: [[8.735955]]
+Episode 610, Average Success Rate (last 10 eps): 0.90
+Total T: 183300 Episode Num: 611 Episode T: 300 Reward: 269.000 PseudoReward: [[23.070747]]
+Episode 611, Average Success Rate (last 10 eps): 0.90
+Total T: 183600 Episode Num: 612 Episode T: 300 Reward: 0.000 PseudoReward: [[38.50947]]
+Episode 612, Average Success Rate (last 10 eps): 0.80
+Total T: 183900 Episode Num: 613 Episode T: 300 Reward: 270.000 PseudoReward: [[6.390022]]
+Episode 613, Average Success Rate (last 10 eps): 0.80
+Total T: 184200 Episode Num: 614 Episode T: 300 Reward: 269.000 PseudoReward: [[27.776072]]
+Episode 614, Average Success Rate (last 10 eps): 0.80
+Total T: 184500 Episode Num: 615 Episode T: 300 Reward: 270.000 PseudoReward: [[41.21863]]
+Episode 615, Average Success Rate (last 10 eps): 0.80
+Total T: 184800 Episode Num: 616 Episode T: 300 Reward: 0.000 PseudoReward: [[38.236355]]
+Episode 616, Average Success Rate (last 10 eps): 0.70
+Total T: 185100 Episode Num: 617 Episode T: 300 Reward: 265.000 PseudoReward: [[18.747171]]
+Episode 617, Average Success Rate (last 10 eps): 0.70
+Total T: 185400 Episode Num: 618 Episode T: 300 Reward: 275.000 PseudoReward: [[34.544758]]
+Episode 618, Average Success Rate (last 10 eps): 0.70
+Total T: 185700 Episode Num: 619 Episode T: 300 Reward: 280.000 PseudoReward: [[20.021801]]
+Episode 619, Average Success Rate (last 10 eps): 0.80
+Total T: 186000 Episode Num: 620 Episode T: 300 Reward: 299.000 PseudoReward: [[38.57606]]
+Episode 620, Average Success Rate (last 10 eps): 0.80
+Total T: 186300 Episode Num: 621 Episode T: 300 Reward: 258.000 PseudoReward: [[-11.507935]]
+Episode 621, Average Success Rate (last 10 eps): 0.80
+Total T: 186600 Episode Num: 622 Episode T: 300 Reward: 288.000 PseudoReward: [[9.365668]]
+Episode 622, Average Success Rate (last 10 eps): 0.90
+Total T: 186900 Episode Num: 623 Episode T: 300 Reward: 286.000 PseudoReward: [[21.505262]]
+Episode 623, Average Success Rate (last 10 eps): 0.90
+Total T: 187200 Episode Num: 624 Episode T: 300 Reward: 289.000 PseudoReward: [[-0.91521287]]
+Episode 624, Average Success Rate (last 10 eps): 0.90
+Total T: 187500 Episode Num: 625 Episode T: 300 Reward: 0.000 PseudoReward: [[37.618435]]
+Episode 625, Average Success Rate (last 10 eps): 0.80
+Total T: 187800 Episode Num: 626 Episode T: 300 Reward: 287.000 PseudoReward: [[41.30187]]
+Episode 626, Average Success Rate (last 10 eps): 0.90
+Total T: 188100 Episode Num: 627 Episode T: 300 Reward: 282.000 PseudoReward: [[18.33886]]
+Episode 627, Average Success Rate (last 10 eps): 0.90
+Total T: 188400 Episode Num: 628 Episode T: 300 Reward: 298.000 PseudoReward: [[38.363678]]
+Episode 628, Average Success Rate (last 10 eps): 0.90
+Total T: 188700 Episode Num: 629 Episode T: 300 Reward: 284.000 PseudoReward: [[27.218801]]
+Episode 629, Average Success Rate (last 10 eps): 0.90
+Total T: 189000 Episode Num: 630 Episode T: 300 Reward: 287.000 PseudoReward: [[24.51976]]
+Episode 630, Average Success Rate (last 10 eps): 0.90
+Total T: 189300 Episode Num: 631 Episode T: 300 Reward: 280.000 PseudoReward: [[-10.448995]]
+Episode 631, Average Success Rate (last 10 eps): 0.90
+Total T: 189600 Episode Num: 632 Episode T: 300 Reward: 265.000 PseudoReward: [[-4.217411]]
+Episode 632, Average Success Rate (last 10 eps): 0.90
+Total T: 189900 Episode Num: 633 Episode T: 300 Reward: 291.000 PseudoReward: [[-13.512794]]
+Episode 633, Average Success Rate (last 10 eps): 0.90
+Total T: 190200 Episode Num: 634 Episode T: 300 Reward: 262.000 PseudoReward: [[2.365594]]
+Episode 634, Average Success Rate (last 10 eps): 0.90
+Total T: 190500 Episode Num: 635 Episode T: 300 Reward: 284.000 PseudoReward: [[21.172161]]
+Episode 635, Average Success Rate (last 10 eps): 1.00
+Total T: 190800 Episode Num: 636 Episode T: 300 Reward: 0.000 PseudoReward: [[30.699947]]
+Episode 636, Average Success Rate (last 10 eps): 0.90
+Total T: 191100 Episode Num: 637 Episode T: 300 Reward: 287.000 PseudoReward: [[22.240362]]
+Episode 637, Average Success Rate (last 10 eps): 0.90
+Total T: 191400 Episode Num: 638 Episode T: 300 Reward: 220.000 PseudoReward: [[-4.4604588]]
+Episode 638, Average Success Rate (last 10 eps): 0.90
+Total T: 191700 Episode Num: 639 Episode T: 300 Reward: 0.000 PseudoReward: [[34.38942]]
+Episode 639, Average Success Rate (last 10 eps): 0.80
+Total T: 192000 Episode Num: 640 Episode T: 300 Reward: 291.000 PseudoReward: [[29.9374]]
+Episode 640, Average Success Rate (last 10 eps): 0.80
+Total T: 192300 Episode Num: 641 Episode T: 300 Reward: 279.000 PseudoReward: [[0.23383331]]
+Episode 641, Average Success Rate (last 10 eps): 0.80
+Total T: 192600 Episode Num: 642 Episode T: 300 Reward: 264.000 PseudoReward: [[20.575876]]
+Episode 642, Average Success Rate (last 10 eps): 0.80
+Total T: 192900 Episode Num: 643 Episode T: 300 Reward: 0.000 PseudoReward: [[36.378315]]
+Episode 643, Average Success Rate (last 10 eps): 0.70
+Total T: 193200 Episode Num: 644 Episode T: 300 Reward: 285.000 PseudoReward: [[16.731667]]
+Episode 644, Average Success Rate (last 10 eps): 0.70
+Total T: 193500 Episode Num: 645 Episode T: 300 Reward: 295.000 PseudoReward: [[1.6488734]]
+Episode 645, Average Success Rate (last 10 eps): 0.70
+Total T: 193800 Episode Num: 646 Episode T: 300 Reward: 294.000 PseudoReward: [[23.96678]]
+Episode 646, Average Success Rate (last 10 eps): 0.80
+Total T: 194100 Episode Num: 647 Episode T: 300 Reward: 290.000 PseudoReward: [[-4.219875]]
+Episode 647, Average Success Rate (last 10 eps): 0.80
+Total T: 194400 Episode Num: 648 Episode T: 300 Reward: 266.000 PseudoReward: [[0.66638374]]
+Episode 648, Average Success Rate (last 10 eps): 0.80
+Total T: 194700 Episode Num: 649 Episode T: 300 Reward: 0.000 PseudoReward: [[34.778835]]
+Episode 649, Average Success Rate (last 10 eps): 0.80
+Total T: 195000 Episode Num: 650 Episode T: 300 Reward: 271.000 PseudoReward: [[19.100954]]
+Episode 650, Average Success Rate (last 10 eps): 0.80
+Total T: 195300 Episode Num: 651 Episode T: 300 Reward: 281.000 PseudoReward: [[-3.0957541]]
+Episode 651, Average Success Rate (last 10 eps): 0.80
+Total T: 195600 Episode Num: 652 Episode T: 300 Reward: 287.000 PseudoReward: [[34.203255]]
+Episode 652, Average Success Rate (last 10 eps): 0.80
+Total T: 195900 Episode Num: 653 Episode T: 300 Reward: 271.000 PseudoReward: [[-0.72975975]]
+Episode 653, Average Success Rate (last 10 eps): 0.90
+Total T: 196200 Episode Num: 654 Episode T: 300 Reward: 291.000 PseudoReward: [[31.561749]]
+Episode 654, Average Success Rate (last 10 eps): 0.90
+Total T: 196500 Episode Num: 655 Episode T: 300 Reward: 278.000 PseudoReward: [[17.896965]]
+Episode 655, Average Success Rate (last 10 eps): 0.90
+Total T: 196800 Episode Num: 656 Episode T: 300 Reward: 293.000 PseudoReward: [[-6.0958376]]
+Episode 656, Average Success Rate (last 10 eps): 0.90
+Total T: 197100 Episode Num: 657 Episode T: 300 Reward: 263.000 PseudoReward: [[25.80004]]
+Episode 657, Average Success Rate (last 10 eps): 0.90
+Total T: 197400 Episode Num: 658 Episode T: 300 Reward: 269.000 PseudoReward: [[17.27535]]
+Episode 658, Average Success Rate (last 10 eps): 0.90
+Total T: 197700 Episode Num: 659 Episode T: 300 Reward: 294.000 PseudoReward: [[23.119265]]
+Episode 659, Average Success Rate (last 10 eps): 1.00
+Total T: 198000 Episode Num: 660 Episode T: 300 Reward: 254.000 PseudoReward: [[10.3182955]]
+Episode 660, Average Success Rate (last 10 eps): 1.00
+Total T: 198300 Episode Num: 661 Episode T: 300 Reward: 288.000 PseudoReward: [[6.852294]]
+Episode 661, Average Success Rate (last 10 eps): 1.00
+Total T: 198600 Episode Num: 662 Episode T: 300 Reward: 291.000 PseudoReward: [[-4.8629336]]
+Episode 662, Average Success Rate (last 10 eps): 1.00
+Total T: 198900 Episode Num: 663 Episode T: 300 Reward: 279.000 PseudoReward: [[18.281137]]
+Episode 663, Average Success Rate (last 10 eps): 1.00
+Total T: 199200 Episode Num: 664 Episode T: 300 Reward: 288.000 PseudoReward: [[-1.5344963]]
+Episode 664, Average Success Rate (last 10 eps): 1.00
+Total T: 199500 Episode Num: 665 Episode T: 300 Reward: 269.000 PseudoReward: [[-5.426743]]
+Episode 665, Average Success Rate (last 10 eps): 1.00
+Total T: 199800 Episode Num: 666 Episode T: 300 Reward: 282.000 PseudoReward: [[5.538475]]
+Episode 666, Average Success Rate (last 10 eps): 1.00
+Total T: 200100 Episode Num: 667 Episode T: 300 Reward: 267.000 PseudoReward: [[42.96993]]
+Episode 667, Average Success Rate (last 10 eps): 1.00
+Total T: 200400 Episode Num: 668 Episode T: 300 Reward: 291.000 PseudoReward: [[5.0593786]]
+Episode 668, Average Success Rate (last 10 eps): 1.00
+Total T: 200700 Episode Num: 669 Episode T: 300 Reward: 282.000 PseudoReward: [[14.211752]]
+Episode 669, Average Success Rate (last 10 eps): 1.00
+Total T: 201000 Episode Num: 670 Episode T: 300 Reward: 0.000 PseudoReward: [[35.1551]]
+Episode 670, Average Success Rate (last 10 eps): 0.90
+Total T: 201300 Episode Num: 671 Episode T: 300 Reward: 137.000 PseudoReward: [[-3.4280286]]
+Episode 671, Average Success Rate (last 10 eps): 0.90
+Total T: 201600 Episode Num: 672 Episode T: 300 Reward: 282.000 PseudoReward: [[14.432498]]
+Episode 672, Average Success Rate (last 10 eps): 0.90
+Total T: 201900 Episode Num: 673 Episode T: 300 Reward: 283.000 PseudoReward: [[17.005047]]
+Episode 673, Average Success Rate (last 10 eps): 0.90
+Total T: 202200 Episode Num: 674 Episode T: 300 Reward: 0.000 PseudoReward: [[33.76696]]
+Episode 674, Average Success Rate (last 10 eps): 0.80
+Total T: 202500 Episode Num: 675 Episode T: 300 Reward: 283.000 PseudoReward: [[25.49415]]
+Episode 675, Average Success Rate (last 10 eps): 0.80
+Total T: 202800 Episode Num: 676 Episode T: 300 Reward: 277.000 PseudoReward: [[23.171864]]
+Episode 676, Average Success Rate (last 10 eps): 0.80
+Total T: 203100 Episode Num: 677 Episode T: 300 Reward: 292.000 PseudoReward: [[20.23456]]
+Episode 677, Average Success Rate (last 10 eps): 0.80
+Total T: 203400 Episode Num: 678 Episode T: 300 Reward: 0.000 PseudoReward: [[40.5978]]
+Episode 678, Average Success Rate (last 10 eps): 0.70
+Total T: 203700 Episode Num: 679 Episode T: 300 Reward: 273.000 PseudoReward: [[23.580717]]
+Episode 679, Average Success Rate (last 10 eps): 0.70
+Total T: 204000 Episode Num: 680 Episode T: 300 Reward: 262.000 PseudoReward: [[-6.8894463]]
+Episode 680, Average Success Rate (last 10 eps): 0.80
+Total T: 204300 Episode Num: 681 Episode T: 300 Reward: 0.000 PseudoReward: [[34.538143]]
+Episode 681, Average Success Rate (last 10 eps): 0.70
+Total T: 204600 Episode Num: 682 Episode T: 300 Reward: 280.000 PseudoReward: [[38.10894]]
+Episode 682, Average Success Rate (last 10 eps): 0.70
+Total T: 204900 Episode Num: 683 Episode T: 300 Reward: 280.000 PseudoReward: [[38.295803]]
+Episode 683, Average Success Rate (last 10 eps): 0.70
+Total T: 205200 Episode Num: 684 Episode T: 300 Reward: 0.000 PseudoReward: [[30.50962]]
+Episode 684, Average Success Rate (last 10 eps): 0.70
+Total T: 205500 Episode Num: 685 Episode T: 300 Reward: 248.000 PseudoReward: [[5.0717845]]
+Episode 685, Average Success Rate (last 10 eps): 0.70
+Total T: 205800 Episode Num: 686 Episode T: 300 Reward: 289.000 PseudoReward: [[-1.8906915]]
+Episode 686, Average Success Rate (last 10 eps): 0.70
+Total T: 206100 Episode Num: 687 Episode T: 300 Reward: 278.000 PseudoReward: [[21.286837]]
+Episode 687, Average Success Rate (last 10 eps): 0.70
+Total T: 206400 Episode Num: 688 Episode T: 300 Reward: 264.000 PseudoReward: [[-7.326597]]
+Episode 688, Average Success Rate (last 10 eps): 0.80
+Total T: 206700 Episode Num: 689 Episode T: 300 Reward: 0.000 PseudoReward: [[31.384754]]
+Episode 689, Average Success Rate (last 10 eps): 0.70
+Total T: 207000 Episode Num: 690 Episode T: 300 Reward: 0.000 PseudoReward: [[35.811024]]
+Episode 690, Average Success Rate (last 10 eps): 0.60
+Total T: 207300 Episode Num: 691 Episode T: 300 Reward: 242.000 PseudoReward: [[-4.6463637]]
+Episode 691, Average Success Rate (last 10 eps): 0.70
+Total T: 207600 Episode Num: 692 Episode T: 300 Reward: 288.000 PseudoReward: [[19.855549]]
+Episode 692, Average Success Rate (last 10 eps): 0.70
+Total T: 207900 Episode Num: 693 Episode T: 300 Reward: 270.000 PseudoReward: [[-16.977308]]
+Episode 693, Average Success Rate (last 10 eps): 0.70
+Total T: 208200 Episode Num: 694 Episode T: 300 Reward: 296.000 PseudoReward: [[-1.8171693]]
+Episode 694, Average Success Rate (last 10 eps): 0.80
+Total T: 208500 Episode Num: 695 Episode T: 300 Reward: 283.000 PseudoReward: [[23.376448]]
+Episode 695, Average Success Rate (last 10 eps): 0.80
+Total T: 208800 Episode Num: 696 Episode T: 300 Reward: 244.000 PseudoReward: [[-2.3388717]]
+Episode 696, Average Success Rate (last 10 eps): 0.80
+Total T: 209100 Episode Num: 697 Episode T: 300 Reward: 0.000 PseudoReward: [[37.059685]]
+Episode 697, Average Success Rate (last 10 eps): 0.70
+Total T: 209400 Episode Num: 698 Episode T: 300 Reward: 0.000 PseudoReward: [[39.22841]]
+Episode 698, Average Success Rate (last 10 eps): 0.60
+Total T: 209700 Episode Num: 699 Episode T: 300 Reward: 0.000 PseudoReward: [[32.865482]]
+Episode 699, Average Success Rate (last 10 eps): 0.60
+Total T: 210000 Episode Num: 700 Episode T: 300 Reward: 253.000 PseudoReward: [[-5.04612]]
+Episode 700, Average Success Rate (last 10 eps): 0.70
+Total T: 210300 Episode Num: 701 Episode T: 300 Reward: 0.000 PseudoReward: [[32.6565]]
+Episode 701, Average Success Rate (last 10 eps): 0.60
+Total T: 210600 Episode Num: 702 Episode T: 300 Reward: 0.000 PseudoReward: [[39.597008]]
+Episode 702, Average Success Rate (last 10 eps): 0.50
+Total T: 210900 Episode Num: 703 Episode T: 300 Reward: 210.000 PseudoReward: [[19.721405]]
+Episode 703, Average Success Rate (last 10 eps): 0.50
+Total T: 211200 Episode Num: 704 Episode T: 300 Reward: 287.000 PseudoReward: [[24.917799]]
+Episode 704, Average Success Rate (last 10 eps): 0.50
+Total T: 211500 Episode Num: 705 Episode T: 300 Reward: 247.000 PseudoReward: [[6.3767915]]
+Episode 705, Average Success Rate (last 10 eps): 0.50
+Total T: 211800 Episode Num: 706 Episode T: 300 Reward: 293.000 PseudoReward: [[20.509502]]
+Episode 706, Average Success Rate (last 10 eps): 0.50
+Total T: 212100 Episode Num: 707 Episode T: 300 Reward: 278.000 PseudoReward: [[17.52446]]
+Episode 707, Average Success Rate (last 10 eps): 0.60
+Total T: 212400 Episode Num: 708 Episode T: 300 Reward: 293.000 PseudoReward: [[23.965746]]
+Episode 708, Average Success Rate (last 10 eps): 0.70
+Total T: 212700 Episode Num: 709 Episode T: 300 Reward: 291.000 PseudoReward: [[-7.2451825]]
+Episode 709, Average Success Rate (last 10 eps): 0.80
+Total T: 213000 Episode Num: 710 Episode T: 300 Reward: 256.000 PseudoReward: [[-2.4684508]]
+Episode 710, Average Success Rate (last 10 eps): 0.80
+Total T: 213300 Episode Num: 711 Episode T: 300 Reward: 290.000 PseudoReward: [[21.321178]]
+Episode 711, Average Success Rate (last 10 eps): 0.90
+Total T: 213600 Episode Num: 712 Episode T: 300 Reward: 256.000 PseudoReward: [[-3.187506]]
+Episode 712, Average Success Rate (last 10 eps): 1.00
+Total T: 213900 Episode Num: 713 Episode T: 300 Reward: 240.000 PseudoReward: [[-1.1842003]]
+Episode 713, Average Success Rate (last 10 eps): 1.00
+Total T: 214200 Episode Num: 714 Episode T: 300 Reward: 269.000 PseudoReward: [[5.528887]]
+Episode 714, Average Success Rate (last 10 eps): 1.00
+Total T: 214500 Episode Num: 715 Episode T: 300 Reward: 278.000 PseudoReward: [[35.25413]]
+Episode 715, Average Success Rate (last 10 eps): 1.00
+Total T: 214800 Episode Num: 716 Episode T: 300 Reward: 254.000 PseudoReward: [[30.380486]]
+Episode 716, Average Success Rate (last 10 eps): 1.00
+Total T: 215100 Episode Num: 717 Episode T: 300 Reward: 262.000 PseudoReward: [[8.6647005]]
+Episode 717, Average Success Rate (last 10 eps): 1.00
+Total T: 215400 Episode Num: 718 Episode T: 300 Reward: 270.000 PseudoReward: [[24.41502]]
+Episode 718, Average Success Rate (last 10 eps): 1.00
+Total T: 215700 Episode Num: 719 Episode T: 300 Reward: 0.000 PseudoReward: [[37.7275]]
+Episode 719, Average Success Rate (last 10 eps): 0.90
+Total T: 216000 Episode Num: 720 Episode T: 300 Reward: 298.000 PseudoReward: [[1.9490885]]
+Episode 720, Average Success Rate (last 10 eps): 0.90
+Total T: 216300 Episode Num: 721 Episode T: 300 Reward: 254.000 PseudoReward: [[6.112748]]
+Episode 721, Average Success Rate (last 10 eps): 0.90
+Total T: 216600 Episode Num: 722 Episode T: 300 Reward: 289.000 PseudoReward: [[22.155031]]
+Episode 722, Average Success Rate (last 10 eps): 0.90
+Total T: 216900 Episode Num: 723 Episode T: 300 Reward: 293.000 PseudoReward: [[19.698586]]
+Episode 723, Average Success Rate (last 10 eps): 0.90
+Total T: 217200 Episode Num: 724 Episode T: 300 Reward: 274.000 PseudoReward: [[-8.798613]]
+Episode 724, Average Success Rate (last 10 eps): 0.90
+Total T: 217500 Episode Num: 725 Episode T: 300 Reward: 270.000 PseudoReward: [[26.784557]]
+Episode 725, Average Success Rate (last 10 eps): 0.90
+Total T: 217800 Episode Num: 726 Episode T: 300 Reward: 290.000 PseudoReward: [[33.037292]]
+Episode 726, Average Success Rate (last 10 eps): 0.90
+Total T: 218100 Episode Num: 727 Episode T: 300 Reward: 276.000 PseudoReward: [[27.48226]]
+Episode 727, Average Success Rate (last 10 eps): 0.90
+Total T: 218400 Episode Num: 728 Episode T: 300 Reward: 254.000 PseudoReward: [[37.206818]]
+Episode 728, Average Success Rate (last 10 eps): 0.90
+Total T: 218700 Episode Num: 729 Episode T: 300 Reward: 271.000 PseudoReward: [[39.36499]]
+Episode 729, Average Success Rate (last 10 eps): 1.00
+Total T: 219000 Episode Num: 730 Episode T: 300 Reward: 272.000 PseudoReward: [[34.73642]]
+Episode 730, Average Success Rate (last 10 eps): 1.00
+Total T: 219300 Episode Num: 731 Episode T: 300 Reward: 277.000 PseudoReward: [[7.652697]]
+Episode 731, Average Success Rate (last 10 eps): 1.00
+Total T: 219600 Episode Num: 732 Episode T: 300 Reward: 286.000 PseudoReward: [[-6.1635056]]
+Episode 732, Average Success Rate (last 10 eps): 1.00
+Total T: 219900 Episode Num: 733 Episode T: 300 Reward: 279.000 PseudoReward: [[1.9026042]]
+Episode 733, Average Success Rate (last 10 eps): 1.00
+Total T: 220200 Episode Num: 734 Episode T: 300 Reward: 295.000 PseudoReward: [[0.2806378]]
+Episode 734, Average Success Rate (last 10 eps): 1.00
+Total T: 220500 Episode Num: 735 Episode T: 300 Reward: 281.000 PseudoReward: [[-10.008209]]
+Episode 735, Average Success Rate (last 10 eps): 1.00
+Total T: 220800 Episode Num: 736 Episode T: 300 Reward: 276.000 PseudoReward: [[-9.079866]]
+Episode 736, Average Success Rate (last 10 eps): 1.00
+Total T: 221100 Episode Num: 737 Episode T: 300 Reward: 228.000 PseudoReward: [[0.2889862]]
+Episode 737, Average Success Rate (last 10 eps): 1.00
+Total T: 221400 Episode Num: 738 Episode T: 300 Reward: 296.000 PseudoReward: [[28.5827]]
+Episode 738, Average Success Rate (last 10 eps): 1.00
+Total T: 221700 Episode Num: 739 Episode T: 300 Reward: 294.000 PseudoReward: [[6.5561786]]
+Episode 739, Average Success Rate (last 10 eps): 1.00
+Total T: 222000 Episode Num: 740 Episode T: 300 Reward: 247.000 PseudoReward: [[6.043396]]
+Episode 740, Average Success Rate (last 10 eps): 1.00
+Total T: 222300 Episode Num: 741 Episode T: 300 Reward: 0.000 PseudoReward: [[35.508636]]
+Episode 741, Average Success Rate (last 10 eps): 0.90
+Total T: 222600 Episode Num: 742 Episode T: 300 Reward: 291.000 PseudoReward: [[-9.817846]]
+Episode 742, Average Success Rate (last 10 eps): 0.90
+Total T: 222900 Episode Num: 743 Episode T: 300 Reward: 261.000 PseudoReward: [[-9.79782]]
+Episode 743, Average Success Rate (last 10 eps): 0.90
+Total T: 223200 Episode Num: 744 Episode T: 300 Reward: 281.000 PseudoReward: [[7.250036]]
+Episode 744, Average Success Rate (last 10 eps): 0.90
+Total T: 223500 Episode Num: 745 Episode T: 300 Reward: 290.000 PseudoReward: [[6.660065]]
+Episode 745, Average Success Rate (last 10 eps): 0.90
+Total T: 223800 Episode Num: 746 Episode T: 300 Reward: 242.000 PseudoReward: [[9.718199]]
+Episode 746, Average Success Rate (last 10 eps): 0.90
+Total T: 224100 Episode Num: 747 Episode T: 300 Reward: 241.000 PseudoReward: [[-8.809089]]
+Episode 747, Average Success Rate (last 10 eps): 0.90
+Total T: 224400 Episode Num: 748 Episode T: 300 Reward: 269.000 PseudoReward: [[-10.448836]]
+Episode 748, Average Success Rate (last 10 eps): 0.90
+Total T: 224700 Episode Num: 749 Episode T: 300 Reward: 234.000 PseudoReward: [[38.33245]]
+Episode 749, Average Success Rate (last 10 eps): 0.90
+Total T: 225000 Episode Num: 750 Episode T: 300 Reward: 286.000 PseudoReward: [[-3.1988978]]
+Episode 750, Average Success Rate (last 10 eps): 0.90
+Total T: 225300 Episode Num: 751 Episode T: 300 Reward: 279.000 PseudoReward: [[-0.22722626]]
+Episode 751, Average Success Rate (last 10 eps): 1.00
+Total T: 225600 Episode Num: 752 Episode T: 300 Reward: 289.000 PseudoReward: [[25.01286]]
+Episode 752, Average Success Rate (last 10 eps): 1.00
+Total T: 225900 Episode Num: 753 Episode T: 300 Reward: 230.000 PseudoReward: [[43.707977]]
+Episode 753, Average Success Rate (last 10 eps): 1.00
+Total T: 226200 Episode Num: 754 Episode T: 300 Reward: 264.000 PseudoReward: [[1.425124]]
+Episode 754, Average Success Rate (last 10 eps): 1.00
+Total T: 226500 Episode Num: 755 Episode T: 300 Reward: 275.000 PseudoReward: [[41.21482]]
+Episode 755, Average Success Rate (last 10 eps): 1.00
+Total T: 226800 Episode Num: 756 Episode T: 300 Reward: 242.000 PseudoReward: [[-14.090554]]
+Episode 756, Average Success Rate (last 10 eps): 1.00
+Total T: 227100 Episode Num: 757 Episode T: 300 Reward: 295.000 PseudoReward: [[-11.775847]]
+Episode 757, Average Success Rate (last 10 eps): 1.00
+Total T: 227400 Episode Num: 758 Episode T: 300 Reward: 272.000 PseudoReward: [[5.818556]]
+Episode 758, Average Success Rate (last 10 eps): 1.00
+Total T: 227700 Episode Num: 759 Episode T: 300 Reward: 234.000 PseudoReward: [[28.68348]]
+Episode 759, Average Success Rate (last 10 eps): 1.00
+Total T: 228000 Episode Num: 760 Episode T: 300 Reward: 279.000 PseudoReward: [[25.348007]]
+Episode 760, Average Success Rate (last 10 eps): 1.00
+Total T: 228300 Episode Num: 761 Episode T: 300 Reward: 266.000 PseudoReward: [[6.358157]]
+Episode 761, Average Success Rate (last 10 eps): 1.00
+Total T: 228600 Episode Num: 762 Episode T: 300 Reward: 0.000 PseudoReward: [[33.55844]]
+Episode 762, Average Success Rate (last 10 eps): 0.90
+Total T: 228900 Episode Num: 763 Episode T: 300 Reward: 0.000 PseudoReward: [[35.09024]]
+Episode 763, Average Success Rate (last 10 eps): 0.80
+Total T: 229200 Episode Num: 764 Episode T: 300 Reward: 274.000 PseudoReward: [[3.2743995]]
+Episode 764, Average Success Rate (last 10 eps): 0.80
+Total T: 229500 Episode Num: 765 Episode T: 300 Reward: 299.000 PseudoReward: [[28.944773]]
+Episode 765, Average Success Rate (last 10 eps): 0.80
+Total T: 229800 Episode Num: 766 Episode T: 300 Reward: 0.000 PseudoReward: [[38.60535]]
+Episode 766, Average Success Rate (last 10 eps): 0.70
+Total T: 230100 Episode Num: 767 Episode T: 300 Reward: 299.000 PseudoReward: [[6.7982144]]
+Episode 767, Average Success Rate (last 10 eps): 0.70
+Total T: 230400 Episode Num: 768 Episode T: 300 Reward: 273.000 PseudoReward: [[34.117435]]
+Episode 768, Average Success Rate (last 10 eps): 0.70
+Total T: 230700 Episode Num: 769 Episode T: 300 Reward: 289.000 PseudoReward: [[24.247854]]
+Episode 769, Average Success Rate (last 10 eps): 0.70
+Total T: 231000 Episode Num: 770 Episode T: 300 Reward: 253.000 PseudoReward: [[-7.853734]]
+Episode 770, Average Success Rate (last 10 eps): 0.70
+Total T: 231300 Episode Num: 771 Episode T: 300 Reward: 294.000 PseudoReward: [[24.76204]]
+Episode 771, Average Success Rate (last 10 eps): 0.70
+Total T: 231600 Episode Num: 772 Episode T: 300 Reward: 292.000 PseudoReward: [[26.41187]]
+Episode 772, Average Success Rate (last 10 eps): 0.80
+Total T: 231900 Episode Num: 773 Episode T: 300 Reward: 0.000 PseudoReward: [[37.3941]]
+Episode 773, Average Success Rate (last 10 eps): 0.80
+Total T: 232200 Episode Num: 774 Episode T: 300 Reward: 0.000 PseudoReward: [[29.0789]]
+Episode 774, Average Success Rate (last 10 eps): 0.70
+Total T: 232500 Episode Num: 775 Episode T: 300 Reward: 257.000 PseudoReward: [[-6.915704]]
+Episode 775, Average Success Rate (last 10 eps): 0.70
+Total T: 232800 Episode Num: 776 Episode T: 300 Reward: 282.000 PseudoReward: [[17.33666]]
+Episode 776, Average Success Rate (last 10 eps): 0.80
+Total T: 233100 Episode Num: 777 Episode T: 300 Reward: 295.000 PseudoReward: [[-17.858492]]
+Episode 777, Average Success Rate (last 10 eps): 0.80
+Total T: 233400 Episode Num: 778 Episode T: 300 Reward: 246.000 PseudoReward: [[-11.711686]]
+Episode 778, Average Success Rate (last 10 eps): 0.80
+Total T: 233700 Episode Num: 779 Episode T: 300 Reward: 251.000 PseudoReward: [[34.989353]]
+Episode 779, Average Success Rate (last 10 eps): 0.80
+Total T: 234000 Episode Num: 780 Episode T: 300 Reward: 0.000 PseudoReward: [[37.47973]]
+Episode 780, Average Success Rate (last 10 eps): 0.70
+Total T: 234300 Episode Num: 781 Episode T: 300 Reward: 270.000 PseudoReward: [[-7.3773193]]
+Episode 781, Average Success Rate (last 10 eps): 0.70
+Total T: 234600 Episode Num: 782 Episode T: 300 Reward: 294.000 PseudoReward: [[22.051401]]
+Episode 782, Average Success Rate (last 10 eps): 0.70
+Total T: 234900 Episode Num: 783 Episode T: 300 Reward: 284.000 PseudoReward: [[-5.067244]]
+Episode 783, Average Success Rate (last 10 eps): 0.80
+Total T: 235200 Episode Num: 784 Episode T: 300 Reward: 261.000 PseudoReward: [[22.999603]]
+Episode 784, Average Success Rate (last 10 eps): 0.90
+Total T: 235500 Episode Num: 785 Episode T: 300 Reward: 265.000 PseudoReward: [[23.136772]]
+Episode 785, Average Success Rate (last 10 eps): 0.90
+Total T: 235800 Episode Num: 786 Episode T: 300 Reward: 274.000 PseudoReward: [[38.19486]]
+Episode 786, Average Success Rate (last 10 eps): 0.90
+Total T: 236100 Episode Num: 787 Episode T: 300 Reward: 269.000 PseudoReward: [[-7.0162144]]
+Episode 787, Average Success Rate (last 10 eps): 0.90
+Total T: 236400 Episode Num: 788 Episode T: 300 Reward: 297.000 PseudoReward: [[36.170807]]
+Episode 788, Average Success Rate (last 10 eps): 0.90
+Total T: 236700 Episode Num: 789 Episode T: 300 Reward: 0.000 PseudoReward: [[32.71723]]
+Episode 789, Average Success Rate (last 10 eps): 0.80
+Total T: 237000 Episode Num: 790 Episode T: 300 Reward: 257.000 PseudoReward: [[42.534176]]
+Episode 790, Average Success Rate (last 10 eps): 0.90
+Total T: 237300 Episode Num: 791 Episode T: 300 Reward: 289.000 PseudoReward: [[-2.796362]]
+Episode 791, Average Success Rate (last 10 eps): 0.90
+Total T: 237600 Episode Num: 792 Episode T: 300 Reward: 281.000 PseudoReward: [[19.36009]]
+Episode 792, Average Success Rate (last 10 eps): 0.90
+Total T: 237900 Episode Num: 793 Episode T: 300 Reward: 291.000 PseudoReward: [[-9.955314]]
+Episode 793, Average Success Rate (last 10 eps): 0.90
+Total T: 238200 Episode Num: 794 Episode T: 300 Reward: 274.000 PseudoReward: [[-11.543238]]
+Episode 794, Average Success Rate (last 10 eps): 0.90
+Total T: 238500 Episode Num: 795 Episode T: 300 Reward: 261.000 PseudoReward: [[15.98542]]
+Episode 795, Average Success Rate (last 10 eps): 0.90
+Total T: 238800 Episode Num: 796 Episode T: 300 Reward: 295.000 PseudoReward: [[22.536804]]
+Episode 796, Average Success Rate (last 10 eps): 0.90
+Total T: 239100 Episode Num: 797 Episode T: 300 Reward: 0.000 PseudoReward: [[38.124332]]
+Episode 797, Average Success Rate (last 10 eps): 0.80
+Total T: 239400 Episode Num: 798 Episode T: 300 Reward: 263.000 PseudoReward: [[30.829847]]
+Episode 798, Average Success Rate (last 10 eps): 0.80
+Total T: 239700 Episode Num: 799 Episode T: 300 Reward: 0.000 PseudoReward: [[34.2025]]
+Episode 799, Average Success Rate (last 10 eps): 0.80
+Total T: 240000 Episode Num: 800 Episode T: 300 Reward: 271.000 PseudoReward: [[27.518913]]
+Episode 800, Average Success Rate (last 10 eps): 0.80
+Total T: 240300 Episode Num: 801 Episode T: 300 Reward: 289.000 PseudoReward: [[34.756653]]
+Episode 801, Average Success Rate (last 10 eps): 0.80
+Total T: 240600 Episode Num: 802 Episode T: 300 Reward: 280.000 PseudoReward: [[-7.609826]]
+Episode 802, Average Success Rate (last 10 eps): 0.80
+Total T: 240900 Episode Num: 803 Episode T: 300 Reward: 239.000 PseudoReward: [[30.619219]]
+Episode 803, Average Success Rate (last 10 eps): 0.80
+Total T: 241200 Episode Num: 804 Episode T: 300 Reward: 285.000 PseudoReward: [[7.022312]]
+Episode 804, Average Success Rate (last 10 eps): 0.80
+Total T: 241500 Episode Num: 805 Episode T: 300 Reward: 259.000 PseudoReward: [[22.61685]]
+Episode 805, Average Success Rate (last 10 eps): 0.80
+Total T: 241800 Episode Num: 806 Episode T: 300 Reward: 276.000 PseudoReward: [[36.878334]]
+Episode 806, Average Success Rate (last 10 eps): 0.80
+Total T: 242100 Episode Num: 807 Episode T: 300 Reward: 288.000 PseudoReward: [[24.361094]]
+Episode 807, Average Success Rate (last 10 eps): 0.90
+Total T: 242400 Episode Num: 808 Episode T: 300 Reward: 290.000 PseudoReward: [[-5.0332694]]
+Episode 808, Average Success Rate (last 10 eps): 0.90
+Total T: 242700 Episode Num: 809 Episode T: 300 Reward: 34.000 PseudoReward: [[25.684246]]
+Episode 809, Average Success Rate (last 10 eps): 1.00
+Total T: 243000 Episode Num: 810 Episode T: 300 Reward: 252.000 PseudoReward: [[1.2224779]]
+Episode 810, Average Success Rate (last 10 eps): 1.00
+Total T: 243300 Episode Num: 811 Episode T: 300 Reward: 223.000 PseudoReward: [[9.134614]]
+Episode 811, Average Success Rate (last 10 eps): 1.00
+Total T: 243600 Episode Num: 812 Episode T: 300 Reward: 259.000 PseudoReward: [[-13.002287]]
+Episode 812, Average Success Rate (last 10 eps): 1.00
+Total T: 243900 Episode Num: 813 Episode T: 300 Reward: 270.000 PseudoReward: [[4.663881]]
+Episode 813, Average Success Rate (last 10 eps): 1.00
+Total T: 244200 Episode Num: 814 Episode T: 300 Reward: 289.000 PseudoReward: [[19.626408]]
+Episode 814, Average Success Rate (last 10 eps): 1.00
+Total T: 244500 Episode Num: 815 Episode T: 300 Reward: 0.000 PseudoReward: [[36.253914]]
+Episode 815, Average Success Rate (last 10 eps): 0.90
+Total T: 244800 Episode Num: 816 Episode T: 300 Reward: 294.000 PseudoReward: [[28.953587]]
+Episode 816, Average Success Rate (last 10 eps): 0.90
+Total T: 245100 Episode Num: 817 Episode T: 300 Reward: 283.000 PseudoReward: [[42.558735]]
+Episode 817, Average Success Rate (last 10 eps): 0.90
+Total T: 245400 Episode Num: 818 Episode T: 300 Reward: 255.000 PseudoReward: [[32.26904]]
+Episode 818, Average Success Rate (last 10 eps): 0.90
+Total T: 245700 Episode Num: 819 Episode T: 300 Reward: 291.000 PseudoReward: [[5.1815705]]
+Episode 819, Average Success Rate (last 10 eps): 0.90
+Total T: 246000 Episode Num: 820 Episode T: 300 Reward: 0.000 PseudoReward: [[31.10324]]
+Episode 820, Average Success Rate (last 10 eps): 0.80
+Total T: 246300 Episode Num: 821 Episode T: 300 Reward: 285.000 PseudoReward: [[-10.277146]]
+Episode 821, Average Success Rate (last 10 eps): 0.80
+Total T: 246600 Episode Num: 822 Episode T: 300 Reward: 275.000 PseudoReward: [[17.555315]]
+Episode 822, Average Success Rate (last 10 eps): 0.80
+Total T: 246900 Episode Num: 823 Episode T: 300 Reward: 274.000 PseudoReward: [[3.3254142]]
+Episode 823, Average Success Rate (last 10 eps): 0.80
+Total T: 247200 Episode Num: 824 Episode T: 300 Reward: 258.000 PseudoReward: [[-7.531019]]
+Episode 824, Average Success Rate (last 10 eps): 0.80
+Total T: 247500 Episode Num: 825 Episode T: 300 Reward: 278.000 PseudoReward: [[-9.476732]]
+Episode 825, Average Success Rate (last 10 eps): 0.90
+Total T: 247800 Episode Num: 826 Episode T: 300 Reward: 278.000 PseudoReward: [[24.569687]]
+Episode 826, Average Success Rate (last 10 eps): 0.90
+Total T: 248100 Episode Num: 827 Episode T: 300 Reward: 286.000 PseudoReward: [[30.419731]]
+Episode 827, Average Success Rate (last 10 eps): 0.90
+Total T: 248400 Episode Num: 828 Episode T: 300 Reward: 274.000 PseudoReward: [[39.676167]]
+Episode 828, Average Success Rate (last 10 eps): 0.90
+Total T: 248700 Episode Num: 829 Episode T: 300 Reward: 291.000 PseudoReward: [[4.81237]]
+Episode 829, Average Success Rate (last 10 eps): 0.90
+Total T: 249000 Episode Num: 830 Episode T: 300 Reward: 262.000 PseudoReward: [[20.713951]]
+Episode 830, Average Success Rate (last 10 eps): 1.00
+Total T: 249300 Episode Num: 831 Episode T: 300 Reward: 276.000 PseudoReward: [[-3.4406433]]
+Episode 831, Average Success Rate (last 10 eps): 1.00
+Total T: 249600 Episode Num: 832 Episode T: 300 Reward: 287.000 PseudoReward: [[21.501095]]
+Episode 832, Average Success Rate (last 10 eps): 1.00
+Total T: 249900 Episode Num: 833 Episode T: 300 Reward: 0.000 PseudoReward: [[38.98569]]
+Episode 833, Average Success Rate (last 10 eps): 0.90
+Total T: 250200 Episode Num: 834 Episode T: 300 Reward: 291.000 PseudoReward: [[32.141586]]
+Episode 834, Average Success Rate (last 10 eps): 0.90
+Total T: 250500 Episode Num: 835 Episode T: 300 Reward: 0.000 PseudoReward: [[40.521133]]
+Episode 835, Average Success Rate (last 10 eps): 0.80
+Total T: 250800 Episode Num: 836 Episode T: 300 Reward: 273.000 PseudoReward: [[24.730953]]
+Episode 836, Average Success Rate (last 10 eps): 0.80
+Total T: 251100 Episode Num: 837 Episode T: 300 Reward: 294.000 PseudoReward: [[20.468874]]
+Episode 837, Average Success Rate (last 10 eps): 0.80
+Total T: 251400 Episode Num: 838 Episode T: 300 Reward: 264.000 PseudoReward: [[7.0895233]]
+Episode 838, Average Success Rate (last 10 eps): 0.80
+Total T: 251700 Episode Num: 839 Episode T: 300 Reward: 293.000 PseudoReward: [[7.258568]]
+Episode 839, Average Success Rate (last 10 eps): 0.80
+Total T: 252000 Episode Num: 840 Episode T: 300 Reward: 284.000 PseudoReward: [[-6.224797]]
+Episode 840, Average Success Rate (last 10 eps): 0.80
+Total T: 252300 Episode Num: 841 Episode T: 300 Reward: 274.000 PseudoReward: [[39.928436]]
+Episode 841, Average Success Rate (last 10 eps): 0.80
+Total T: 252600 Episode Num: 842 Episode T: 300 Reward: 259.000 PseudoReward: [[17.138332]]
+Episode 842, Average Success Rate (last 10 eps): 0.80
+Total T: 252900 Episode Num: 843 Episode T: 300 Reward: 271.000 PseudoReward: [[36.135662]]
+Episode 843, Average Success Rate (last 10 eps): 0.90
+Total T: 253200 Episode Num: 844 Episode T: 300 Reward: 264.000 PseudoReward: [[-6.373718]]
+Episode 844, Average Success Rate (last 10 eps): 0.90
+Total T: 253500 Episode Num: 845 Episode T: 300 Reward: 295.000 PseudoReward: [[-3.1314042]]
+Episode 845, Average Success Rate (last 10 eps): 1.00
+Total T: 253800 Episode Num: 846 Episode T: 300 Reward: 275.000 PseudoReward: [[38.423473]]
+Episode 846, Average Success Rate (last 10 eps): 1.00
+Total T: 254100 Episode Num: 847 Episode T: 300 Reward: 272.000 PseudoReward: [[-8.328666]]
+Episode 847, Average Success Rate (last 10 eps): 1.00
+Total T: 254400 Episode Num: 848 Episode T: 300 Reward: 246.000 PseudoReward: [[25.128347]]
+Episode 848, Average Success Rate (last 10 eps): 1.00
+Total T: 254700 Episode Num: 849 Episode T: 300 Reward: 0.000 PseudoReward: [[34.79887]]
+Episode 849, Average Success Rate (last 10 eps): 0.90
+Total T: 255000 Episode Num: 850 Episode T: 300 Reward: 273.000 PseudoReward: [[1.1488734]]
+Episode 850, Average Success Rate (last 10 eps): 0.90
+Total T: 255300 Episode Num: 851 Episode T: 300 Reward: 275.000 PseudoReward: [[29.490316]]
+Episode 851, Average Success Rate (last 10 eps): 0.90
+Total T: 255600 Episode Num: 852 Episode T: 300 Reward: 248.000 PseudoReward: [[-1.5299231]]
+Episode 852, Average Success Rate (last 10 eps): 0.90
+Total T: 255900 Episode Num: 853 Episode T: 300 Reward: 288.000 PseudoReward: [[-4.7824025]]
+Episode 853, Average Success Rate (last 10 eps): 0.90
+Total T: 256200 Episode Num: 854 Episode T: 300 Reward: 256.000 PseudoReward: [[-3.0190477]]
+Episode 854, Average Success Rate (last 10 eps): 0.90
+Total T: 256500 Episode Num: 855 Episode T: 300 Reward: 267.000 PseudoReward: [[-6.9247885]]
+Episode 855, Average Success Rate (last 10 eps): 0.90
+Total T: 256800 Episode Num: 856 Episode T: 300 Reward: 267.000 PseudoReward: [[6.245718]]
+Episode 856, Average Success Rate (last 10 eps): 0.90
+Total T: 257100 Episode Num: 857 Episode T: 300 Reward: 289.000 PseudoReward: [[-12.697412]]
+Episode 857, Average Success Rate (last 10 eps): 0.90
+Total T: 257400 Episode Num: 858 Episode T: 300 Reward: 292.000 PseudoReward: [[15.033496]]
+Episode 858, Average Success Rate (last 10 eps): 0.90
+Total T: 257700 Episode Num: 859 Episode T: 300 Reward: 297.000 PseudoReward: [[39.552456]]
+Episode 859, Average Success Rate (last 10 eps): 1.00
+Total T: 258000 Episode Num: 860 Episode T: 300 Reward: 273.000 PseudoReward: [[-6.875381]]
+Episode 860, Average Success Rate (last 10 eps): 1.00
+Total T: 258300 Episode Num: 861 Episode T: 300 Reward: 273.000 PseudoReward: [[21.991772]]
+Episode 861, Average Success Rate (last 10 eps): 1.00
+Total T: 258600 Episode Num: 862 Episode T: 300 Reward: 266.000 PseudoReward: [[30.847181]]
+Episode 862, Average Success Rate (last 10 eps): 1.00
+Total T: 258900 Episode Num: 863 Episode T: 300 Reward: 276.000 PseudoReward: [[-14.94852]]
+Episode 863, Average Success Rate (last 10 eps): 1.00
+Total T: 259200 Episode Num: 864 Episode T: 300 Reward: 288.000 PseudoReward: [[3.3747334]]
+Episode 864, Average Success Rate (last 10 eps): 1.00
+Total T: 259500 Episode Num: 865 Episode T: 300 Reward: 268.000 PseudoReward: [[21.509537]]
+Episode 865, Average Success Rate (last 10 eps): 1.00
+Total T: 259800 Episode Num: 866 Episode T: 300 Reward: 0.000 PseudoReward: [[34.038383]]
+Episode 866, Average Success Rate (last 10 eps): 0.90
+Total T: 260100 Episode Num: 867 Episode T: 300 Reward: 293.000 PseudoReward: [[6.988049]]
+Episode 867, Average Success Rate (last 10 eps): 0.90
+Total T: 260400 Episode Num: 868 Episode T: 300 Reward: 281.000 PseudoReward: [[-5.718225]]
+Episode 868, Average Success Rate (last 10 eps): 0.90
+Total T: 260700 Episode Num: 869 Episode T: 300 Reward: 259.000 PseudoReward: [[20.97834]]
+Episode 869, Average Success Rate (last 10 eps): 0.90
+Total T: 261000 Episode Num: 870 Episode T: 300 Reward: 280.000 PseudoReward: [[15.170701]]
+Episode 870, Average Success Rate (last 10 eps): 0.90
+Total T: 261300 Episode Num: 871 Episode T: 300 Reward: 290.000 PseudoReward: [[24.219038]]
+Episode 871, Average Success Rate (last 10 eps): 0.90
+Total T: 261600 Episode Num: 872 Episode T: 300 Reward: 0.000 PseudoReward: [[32.357235]]
+Episode 872, Average Success Rate (last 10 eps): 0.80
+Total T: 261900 Episode Num: 873 Episode T: 300 Reward: 294.000 PseudoReward: [[17.435623]]
+Episode 873, Average Success Rate (last 10 eps): 0.80
+Total T: 262200 Episode Num: 874 Episode T: 300 Reward: 291.000 PseudoReward: [[-11.223263]]
+Episode 874, Average Success Rate (last 10 eps): 0.80
+Total T: 262500 Episode Num: 875 Episode T: 300 Reward: 267.000 PseudoReward: [[23.003723]]
+Episode 875, Average Success Rate (last 10 eps): 0.80
+Total T: 262800 Episode Num: 876 Episode T: 300 Reward: 277.000 PseudoReward: [[43.0153]]
+Episode 876, Average Success Rate (last 10 eps): 0.90
+Total T: 263100 Episode Num: 877 Episode T: 300 Reward: 298.000 PseudoReward: [[7.4708366]]
+Episode 877, Average Success Rate (last 10 eps): 0.90
+Total T: 263400 Episode Num: 878 Episode T: 300 Reward: 277.000 PseudoReward: [[-2.3871527]]
+Episode 878, Average Success Rate (last 10 eps): 0.90
+Total T: 263700 Episode Num: 879 Episode T: 300 Reward: 277.000 PseudoReward: [[24.682209]]
+Episode 879, Average Success Rate (last 10 eps): 0.90
+Total T: 264000 Episode Num: 880 Episode T: 300 Reward: 0.000 PseudoReward: [[37.951115]]
+Episode 880, Average Success Rate (last 10 eps): 0.80
+Total T: 264300 Episode Num: 881 Episode T: 300 Reward: 272.000 PseudoReward: [[-6.533383]]
+Episode 881, Average Success Rate (last 10 eps): 0.80
+Total T: 264600 Episode Num: 882 Episode T: 300 Reward: 242.000 PseudoReward: [[18.556997]]
+Episode 882, Average Success Rate (last 10 eps): 0.90
+Total T: 264900 Episode Num: 883 Episode T: 300 Reward: 0.000 PseudoReward: [[30.097403]]
+Episode 883, Average Success Rate (last 10 eps): 0.80
+Total T: 265200 Episode Num: 884 Episode T: 300 Reward: 257.000 PseudoReward: [[-6.5236726]]
+Episode 884, Average Success Rate (last 10 eps): 0.80
+Total T: 265500 Episode Num: 885 Episode T: 300 Reward: 274.000 PseudoReward: [[-4.864467]]
+Episode 885, Average Success Rate (last 10 eps): 0.80
+Total T: 265800 Episode Num: 886 Episode T: 300 Reward: 269.000 PseudoReward: [[20.0949]]
+Episode 886, Average Success Rate (last 10 eps): 0.80
+Total T: 266100 Episode Num: 887 Episode T: 300 Reward: 273.000 PseudoReward: [[-10.8457]]
+Episode 887, Average Success Rate (last 10 eps): 0.80
+Total T: 266400 Episode Num: 888 Episode T: 300 Reward: 263.000 PseudoReward: [[7.1266136]]
+Episode 888, Average Success Rate (last 10 eps): 0.80
+Total T: 266700 Episode Num: 889 Episode T: 300 Reward: 294.000 PseudoReward: [[20.968735]]
+Episode 889, Average Success Rate (last 10 eps): 0.80
+Total T: 267000 Episode Num: 890 Episode T: 300 Reward: 294.000 PseudoReward: [[23.99883]]
+Episode 890, Average Success Rate (last 10 eps): 0.90
+Total T: 267300 Episode Num: 891 Episode T: 300 Reward: 288.000 PseudoReward: [[-7.0322537]]
+Episode 891, Average Success Rate (last 10 eps): 0.90
+Total T: 267600 Episode Num: 892 Episode T: 300 Reward: 261.000 PseudoReward: [[23.48672]]
+Episode 892, Average Success Rate (last 10 eps): 0.90
+Total T: 267900 Episode Num: 893 Episode T: 300 Reward: 245.000 PseudoReward: [[-6.6457863]]
+Episode 893, Average Success Rate (last 10 eps): 1.00
+Total T: 268200 Episode Num: 894 Episode T: 300 Reward: 277.000 PseudoReward: [[4.076535]]
+Episode 894, Average Success Rate (last 10 eps): 1.00
+Total T: 268500 Episode Num: 895 Episode T: 300 Reward: 264.000 PseudoReward: [[21.126558]]
+Episode 895, Average Success Rate (last 10 eps): 1.00
+Total T: 268800 Episode Num: 896 Episode T: 300 Reward: 0.000 PseudoReward: [[28.730051]]
+Episode 896, Average Success Rate (last 10 eps): 0.90
+Total T: 269100 Episode Num: 897 Episode T: 300 Reward: 274.000 PseudoReward: [[-0.6504117]]
+Episode 897, Average Success Rate (last 10 eps): 0.90
+Total T: 269400 Episode Num: 898 Episode T: 300 Reward: 265.000 PseudoReward: [[11.124524]]
+Episode 898, Average Success Rate (last 10 eps): 0.90
+Total T: 269700 Episode Num: 899 Episode T: 300 Reward: 271.000 PseudoReward: [[-0.8192213]]
+Episode 899, Average Success Rate (last 10 eps): 0.90
+Total T: 270000 Episode Num: 900 Episode T: 300 Reward: 255.000 PseudoReward: [[-14.515829]]
+Episode 900, Average Success Rate (last 10 eps): 0.90
+Total T: 270300 Episode Num: 901 Episode T: 300 Reward: 269.000 PseudoReward: [[39.307106]]
+Episode 901, Average Success Rate (last 10 eps): 0.90
+Total T: 270600 Episode Num: 902 Episode T: 300 Reward: 255.000 PseudoReward: [[-4.2360687]]
+Episode 902, Average Success Rate (last 10 eps): 0.90
+Total T: 270900 Episode Num: 903 Episode T: 300 Reward: 284.000 PseudoReward: [[5.9472866]]
+Episode 903, Average Success Rate (last 10 eps): 0.90
+Total T: 271200 Episode Num: 904 Episode T: 300 Reward: 273.000 PseudoReward: [[-11.387774]]
+Episode 904, Average Success Rate (last 10 eps): 0.90
+Total T: 271500 Episode Num: 905 Episode T: 300 Reward: 293.000 PseudoReward: [[37.174686]]
+Episode 905, Average Success Rate (last 10 eps): 0.90
+Total T: 271800 Episode Num: 906 Episode T: 300 Reward: 252.000 PseudoReward: [[28.014542]]
+Episode 906, Average Success Rate (last 10 eps): 1.00
+Total T: 272100 Episode Num: 907 Episode T: 300 Reward: 254.000 PseudoReward: [[20.28269]]
+Episode 907, Average Success Rate (last 10 eps): 1.00
+Total T: 272400 Episode Num: 908 Episode T: 300 Reward: 279.000 PseudoReward: [[-5.940506]]
+Episode 908, Average Success Rate (last 10 eps): 1.00
+Total T: 272700 Episode Num: 909 Episode T: 300 Reward: 259.000 PseudoReward: [[-9.656288]]
+Episode 909, Average Success Rate (last 10 eps): 1.00
+Total T: 273000 Episode Num: 910 Episode T: 300 Reward: 290.000 PseudoReward: [[37.49903]]
+Episode 910, Average Success Rate (last 10 eps): 1.00
+Total T: 273300 Episode Num: 911 Episode T: 300 Reward: 287.000 PseudoReward: [[32.20588]]
+Episode 911, Average Success Rate (last 10 eps): 1.00
+Total T: 273600 Episode Num: 912 Episode T: 300 Reward: 294.000 PseudoReward: [[13.277115]]
+Episode 912, Average Success Rate (last 10 eps): 1.00
+Total T: 273900 Episode Num: 913 Episode T: 300 Reward: 294.000 PseudoReward: [[-14.549373]]
+Episode 913, Average Success Rate (last 10 eps): 1.00
+Total T: 274200 Episode Num: 914 Episode T: 300 Reward: 254.000 PseudoReward: [[27.45261]]
+Episode 914, Average Success Rate (last 10 eps): 1.00
+Total T: 274500 Episode Num: 915 Episode T: 300 Reward: 267.000 PseudoReward: [[7.6269717]]
+Episode 915, Average Success Rate (last 10 eps): 1.00
+Total T: 274800 Episode Num: 916 Episode T: 300 Reward: 261.000 PseudoReward: [[31.125397]]
+Episode 916, Average Success Rate (last 10 eps): 1.00
+Total T: 275100 Episode Num: 917 Episode T: 300 Reward: 277.000 PseudoReward: [[22.00216]]
+Episode 917, Average Success Rate (last 10 eps): 1.00
+Total T: 275400 Episode Num: 918 Episode T: 300 Reward: 298.000 PseudoReward: [[18.003489]]
+Episode 918, Average Success Rate (last 10 eps): 1.00
+Total T: 275700 Episode Num: 919 Episode T: 300 Reward: 260.000 PseudoReward: [[5.6873975]]
+Episode 919, Average Success Rate (last 10 eps): 1.00
+Total T: 276000 Episode Num: 920 Episode T: 300 Reward: 280.000 PseudoReward: [[17.529802]]
+Episode 920, Average Success Rate (last 10 eps): 1.00
+Total T: 276300 Episode Num: 921 Episode T: 300 Reward: 262.000 PseudoReward: [[-4.3886075]]
+Episode 921, Average Success Rate (last 10 eps): 1.00
+Total T: 276600 Episode Num: 922 Episode T: 300 Reward: 267.000 PseudoReward: [[21.513025]]
+Episode 922, Average Success Rate (last 10 eps): 1.00
+Total T: 276900 Episode Num: 923 Episode T: 300 Reward: 242.000 PseudoReward: [[-2.5837615]]
+Episode 923, Average Success Rate (last 10 eps): 1.00
+Total T: 277200 Episode Num: 924 Episode T: 300 Reward: 274.000 PseudoReward: [[23.552042]]
+Episode 924, Average Success Rate (last 10 eps): 1.00
+Total T: 277500 Episode Num: 925 Episode T: 300 Reward: 290.000 PseudoReward: [[30.994377]]
+Episode 925, Average Success Rate (last 10 eps): 1.00
+Total T: 277800 Episode Num: 926 Episode T: 300 Reward: 276.000 PseudoReward: [[-4.8094664]]
+Episode 926, Average Success Rate (last 10 eps): 1.00
+Total T: 278100 Episode Num: 927 Episode T: 300 Reward: 292.000 PseudoReward: [[-13.899918]]
+Episode 927, Average Success Rate (last 10 eps): 1.00
+Total T: 278400 Episode Num: 928 Episode T: 300 Reward: 0.000 PseudoReward: [[34.320038]]
+Episode 928, Average Success Rate (last 10 eps): 0.90
+Total T: 278700 Episode Num: 929 Episode T: 300 Reward: 292.000 PseudoReward: [[7.336853]]
+Episode 929, Average Success Rate (last 10 eps): 0.90
+Total T: 279000 Episode Num: 930 Episode T: 300 Reward: 0.000 PseudoReward: [[39.59832]]
+Episode 930, Average Success Rate (last 10 eps): 0.80
+Total T: 279300 Episode Num: 931 Episode T: 300 Reward: 256.000 PseudoReward: [[45.486996]]
+Episode 931, Average Success Rate (last 10 eps): 0.80
+Total T: 279600 Episode Num: 932 Episode T: 300 Reward: 284.000 PseudoReward: [[23.502762]]
+Episode 932, Average Success Rate (last 10 eps): 0.80
+Total T: 279900 Episode Num: 933 Episode T: 300 Reward: 246.000 PseudoReward: [[-8.198067]]
+Episode 933, Average Success Rate (last 10 eps): 0.80
+Total T: 280200 Episode Num: 934 Episode T: 300 Reward: 273.000 PseudoReward: [[37.152878]]
+Episode 934, Average Success Rate (last 10 eps): 0.80
+Total T: 280500 Episode Num: 935 Episode T: 300 Reward: 284.000 PseudoReward: [[18.759563]]
+Episode 935, Average Success Rate (last 10 eps): 0.80
+Total T: 280800 Episode Num: 936 Episode T: 300 Reward: 295.000 PseudoReward: [[22.326622]]
+Episode 936, Average Success Rate (last 10 eps): 0.80
+Total T: 281100 Episode Num: 937 Episode T: 300 Reward: 291.000 PseudoReward: [[3.1478179]]
+Episode 937, Average Success Rate (last 10 eps): 0.80
+Total T: 281400 Episode Num: 938 Episode T: 300 Reward: 283.000 PseudoReward: [[6.709856]]
+Episode 938, Average Success Rate (last 10 eps): 0.90
+Total T: 281700 Episode Num: 939 Episode T: 300 Reward: 0.000 PseudoReward: [[34.95691]]
+Episode 939, Average Success Rate (last 10 eps): 0.80
+Total T: 282000 Episode Num: 940 Episode T: 300 Reward: 283.000 PseudoReward: [[19.36332]]
+Episode 940, Average Success Rate (last 10 eps): 0.90
+Total T: 282300 Episode Num: 941 Episode T: 300 Reward: 276.000 PseudoReward: [[45.490715]]
+Episode 941, Average Success Rate (last 10 eps): 0.90
+Total T: 282600 Episode Num: 942 Episode T: 300 Reward: 293.000 PseudoReward: [[33.946754]]
+Episode 942, Average Success Rate (last 10 eps): 0.90
+Total T: 282900 Episode Num: 943 Episode T: 300 Reward: 290.000 PseudoReward: [[17.283203]]
+Episode 943, Average Success Rate (last 10 eps): 0.90
+Total T: 283200 Episode Num: 944 Episode T: 300 Reward: 185.000 PseudoReward: [[21.211102]]
+Episode 944, Average Success Rate (last 10 eps): 0.90
+Total T: 283500 Episode Num: 945 Episode T: 300 Reward: 276.000 PseudoReward: [[36.234276]]
+Episode 945, Average Success Rate (last 10 eps): 0.90
+Total T: 283800 Episode Num: 946 Episode T: 300 Reward: 0.000 PseudoReward: [[38.380524]]
+Episode 946, Average Success Rate (last 10 eps): 0.80
+Total T: 284100 Episode Num: 947 Episode T: 300 Reward: 255.000 PseudoReward: [[43.211178]]
+Episode 947, Average Success Rate (last 10 eps): 0.80
+Total T: 284400 Episode Num: 948 Episode T: 300 Reward: 291.000 PseudoReward: [[-3.592552]]
+Episode 948, Average Success Rate (last 10 eps): 0.80
+Total T: 284700 Episode Num: 949 Episode T: 300 Reward: 252.000 PseudoReward: [[5.627419]]
+Episode 949, Average Success Rate (last 10 eps): 0.90
+Total T: 285000 Episode Num: 950 Episode T: 300 Reward: 292.000 PseudoReward: [[-8.4587345]]
+Episode 950, Average Success Rate (last 10 eps): 0.90
+Total T: 285300 Episode Num: 951 Episode T: 300 Reward: 201.000 PseudoReward: [[-12.77455]]
+Episode 951, Average Success Rate (last 10 eps): 0.90
+Total T: 285600 Episode Num: 952 Episode T: 300 Reward: 250.000 PseudoReward: [[-5.291492]]
+Episode 952, Average Success Rate (last 10 eps): 0.90
+Total T: 285900 Episode Num: 953 Episode T: 300 Reward: 294.000 PseudoReward: [[26.031748]]
+Episode 953, Average Success Rate (last 10 eps): 0.90
+Total T: 286200 Episode Num: 954 Episode T: 300 Reward: 290.000 PseudoReward: [[-13.885182]]
+Episode 954, Average Success Rate (last 10 eps): 0.90
+Total T: 286500 Episode Num: 955 Episode T: 300 Reward: 289.000 PseudoReward: [[30.454885]]
+Episode 955, Average Success Rate (last 10 eps): 0.90
+Total T: 286800 Episode Num: 956 Episode T: 300 Reward: 298.000 PseudoReward: [[2.016005]]
+Episode 956, Average Success Rate (last 10 eps): 1.00
+Total T: 287100 Episode Num: 957 Episode T: 300 Reward: 275.000 PseudoReward: [[26.666922]]
+Episode 957, Average Success Rate (last 10 eps): 1.00
+Total T: 287400 Episode Num: 958 Episode T: 300 Reward: 261.000 PseudoReward: [[24.546595]]
+Episode 958, Average Success Rate (last 10 eps): 1.00
+Total T: 287700 Episode Num: 959 Episode T: 300 Reward: 288.000 PseudoReward: [[18.65367]]
+Episode 959, Average Success Rate (last 10 eps): 1.00
+Total T: 288000 Episode Num: 960 Episode T: 300 Reward: 276.000 PseudoReward: [[27.863844]]
+Episode 960, Average Success Rate (last 10 eps): 1.00
+Total T: 288300 Episode Num: 961 Episode T: 300 Reward: 0.000 PseudoReward: [[32.138474]]
+Episode 961, Average Success Rate (last 10 eps): 0.90
+Total T: 288600 Episode Num: 962 Episode T: 300 Reward: 278.000 PseudoReward: [[3.1868849]]
+Episode 962, Average Success Rate (last 10 eps): 0.90
+Total T: 288900 Episode Num: 963 Episode T: 300 Reward: 283.000 PseudoReward: [[21.040241]]
+Episode 963, Average Success Rate (last 10 eps): 0.90
+Total T: 289200 Episode Num: 964 Episode T: 300 Reward: 260.000 PseudoReward: [[-7.8751493]]
+Episode 964, Average Success Rate (last 10 eps): 0.90
+Total T: 289500 Episode Num: 965 Episode T: 300 Reward: 194.000 PseudoReward: [[23.460642]]
+Episode 965, Average Success Rate (last 10 eps): 0.90
+Total T: 289800 Episode Num: 966 Episode T: 300 Reward: 277.000 PseudoReward: [[-2.8985815]]
+Episode 966, Average Success Rate (last 10 eps): 0.90
+Total T: 290100 Episode Num: 967 Episode T: 300 Reward: 0.000 PseudoReward: [[36.047447]]
+Episode 967, Average Success Rate (last 10 eps): 0.80
+Total T: 290400 Episode Num: 968 Episode T: 300 Reward: 277.000 PseudoReward: [[44.42608]]
+Episode 968, Average Success Rate (last 10 eps): 0.80
+Total T: 290700 Episode Num: 969 Episode T: 300 Reward: 276.000 PseudoReward: [[26.59043]]
+Episode 969, Average Success Rate (last 10 eps): 0.80
+Total T: 291000 Episode Num: 970 Episode T: 300 Reward: 288.000 PseudoReward: [[1.2753958]]
+Episode 970, Average Success Rate (last 10 eps): 0.80
+Total T: 291300 Episode Num: 971 Episode T: 300 Reward: 294.000 PseudoReward: [[22.697975]]
+Episode 971, Average Success Rate (last 10 eps): 0.90
+Total T: 291600 Episode Num: 972 Episode T: 300 Reward: 280.000 PseudoReward: [[20.659174]]
+Episode 972, Average Success Rate (last 10 eps): 0.90
+Total T: 291900 Episode Num: 973 Episode T: 300 Reward: 295.000 PseudoReward: [[29.497408]]
+Episode 973, Average Success Rate (last 10 eps): 0.90
+Total T: 292200 Episode Num: 974 Episode T: 300 Reward: 242.000 PseudoReward: [[-13.277945]]
+Episode 974, Average Success Rate (last 10 eps): 0.90
+Total T: 292500 Episode Num: 975 Episode T: 300 Reward: 291.000 PseudoReward: [[-5.5383644]]
+Episode 975, Average Success Rate (last 10 eps): 0.90
+Total T: 292800 Episode Num: 976 Episode T: 300 Reward: 272.000 PseudoReward: [[-13.689941]]
+Episode 976, Average Success Rate (last 10 eps): 0.90
+Total T: 293100 Episode Num: 977 Episode T: 300 Reward: 290.000 PseudoReward: [[-8.095055]]
+Episode 977, Average Success Rate (last 10 eps): 1.00
+Total T: 293400 Episode Num: 978 Episode T: 300 Reward: 255.000 PseudoReward: [[-7.742721]]
+Episode 978, Average Success Rate (last 10 eps): 1.00
+Total T: 293700 Episode Num: 979 Episode T: 300 Reward: 280.000 PseudoReward: [[-3.2876227]]
+Episode 979, Average Success Rate (last 10 eps): 1.00
+Total T: 294000 Episode Num: 980 Episode T: 300 Reward: 270.000 PseudoReward: [[42.26854]]
+Episode 980, Average Success Rate (last 10 eps): 1.00
+Total T: 294300 Episode Num: 981 Episode T: 300 Reward: 239.000 PseudoReward: [[5.7807984]]
+Episode 981, Average Success Rate (last 10 eps): 1.00
+Total T: 294600 Episode Num: 982 Episode T: 300 Reward: 292.000 PseudoReward: [[10.312394]]
+Episode 982, Average Success Rate (last 10 eps): 1.00
+Total T: 294900 Episode Num: 983 Episode T: 300 Reward: 275.000 PseudoReward: [[18.533192]]
+Episode 983, Average Success Rate (last 10 eps): 1.00
+Total T: 295200 Episode Num: 984 Episode T: 300 Reward: 289.000 PseudoReward: [[16.206835]]
+Episode 984, Average Success Rate (last 10 eps): 1.00
+Total T: 295500 Episode Num: 985 Episode T: 300 Reward: 260.000 PseudoReward: [[-5.2197747]]
+Episode 985, Average Success Rate (last 10 eps): 1.00
+Total T: 295800 Episode Num: 986 Episode T: 300 Reward: 255.000 PseudoReward: [[-10.186898]]
+Episode 986, Average Success Rate (last 10 eps): 1.00
+Total T: 296100 Episode Num: 987 Episode T: 300 Reward: 251.000 PseudoReward: [[42.103065]]
+Episode 987, Average Success Rate (last 10 eps): 1.00
+Total T: 296400 Episode Num: 988 Episode T: 300 Reward: 0.000 PseudoReward: [[36.34996]]
+Episode 988, Average Success Rate (last 10 eps): 0.90
+Total T: 296700 Episode Num: 989 Episode T: 300 Reward: 0.000 PseudoReward: [[32.29316]]
+Episode 989, Average Success Rate (last 10 eps): 0.80
+Total T: 297000 Episode Num: 990 Episode T: 300 Reward: 285.000 PseudoReward: [[21.782797]]
+Episode 990, Average Success Rate (last 10 eps): 0.80
+Total T: 297300 Episode Num: 991 Episode T: 300 Reward: 279.000 PseudoReward: [[32.16698]]
+Episode 991, Average Success Rate (last 10 eps): 0.80
+Total T: 297600 Episode Num: 992 Episode T: 300 Reward: 299.000 PseudoReward: [[20.396893]]
+Episode 992, Average Success Rate (last 10 eps): 0.80
+Total T: 297900 Episode Num: 993 Episode T: 300 Reward: 290.000 PseudoReward: [[24.332771]]
+Episode 993, Average Success Rate (last 10 eps): 0.80
+Total T: 298200 Episode Num: 994 Episode T: 300 Reward: 276.000 PseudoReward: [[22.856083]]
+Episode 994, Average Success Rate (last 10 eps): 0.80
+Total T: 298500 Episode Num: 995 Episode T: 300 Reward: 291.000 PseudoReward: [[6.45002]]
+Episode 995, Average Success Rate (last 10 eps): 0.80
+Total T: 298800 Episode Num: 996 Episode T: 300 Reward: 269.000 PseudoReward: [[20.764072]]
+Episode 996, Average Success Rate (last 10 eps): 0.80
+Total T: 299100 Episode Num: 997 Episode T: 300 Reward: 272.000 PseudoReward: [[19.969395]]
+Episode 997, Average Success Rate (last 10 eps): 0.80
+Total T: 299400 Episode Num: 998 Episode T: 300 Reward: 0.000 PseudoReward: [[38.28745]]
+Episode 998, Average Success Rate (last 10 eps): 0.80
+Total T: 299700 Episode Num: 999 Episode T: 300 Reward: 286.000 PseudoReward: [[22.440334]]
+Episode 999, Average Success Rate (last 10 eps): 0.90
+Total T: 300000 Episode Num: 1000 Episode T: 300 Reward: 272.000 PseudoReward: [[-10.951199]]
+Episode 1000, Average Success Rate (last 10 eps): 0.90
+Total T: 300300 Episode Num: 1001 Episode T: 300 Reward: 260.000 PseudoReward: [[-2.3608656]]
+Episode 1001, Average Success Rate (last 10 eps): 0.90
+Total T: 300600 Episode Num: 1002 Episode T: 300 Reward: 271.000 PseudoReward: [[36.401768]]
+Episode 1002, Average Success Rate (last 10 eps): 0.90
+Total T: 300900 Episode Num: 1003 Episode T: 300 Reward: 256.000 PseudoReward: [[-4.2476144]]
+Episode 1003, Average Success Rate (last 10 eps): 0.90
+Total T: 301200 Episode Num: 1004 Episode T: 300 Reward: 263.000 PseudoReward: [[7.4409266]]
+Episode 1004, Average Success Rate (last 10 eps): 0.90
+Total T: 301500 Episode Num: 1005 Episode T: 300 Reward: 277.000 PseudoReward: [[-0.5828658]]
+Episode 1005, Average Success Rate (last 10 eps): 0.90
+Total T: 301800 Episode Num: 1006 Episode T: 300 Reward: 266.000 PseudoReward: [[-6.962035]]
+Episode 1006, Average Success Rate (last 10 eps): 0.90
+Total T: 302100 Episode Num: 1007 Episode T: 300 Reward: 272.000 PseudoReward: [[21.010864]]
+Episode 1007, Average Success Rate (last 10 eps): 0.90
+Total T: 302400 Episode Num: 1008 Episode T: 300 Reward: 288.000 PseudoReward: [[21.777061]]
+Episode 1008, Average Success Rate (last 10 eps): 1.00
+Total T: 302700 Episode Num: 1009 Episode T: 300 Reward: 258.000 PseudoReward: [[-9.121405]]
+Episode 1009, Average Success Rate (last 10 eps): 1.00
+Total T: 303000 Episode Num: 1010 Episode T: 300 Reward: 273.000 PseudoReward: [[-5.9982657]]
+Episode 1010, Average Success Rate (last 10 eps): 1.00
+Total T: 303300 Episode Num: 1011 Episode T: 300 Reward: 280.000 PseudoReward: [[18.952187]]
+Episode 1011, Average Success Rate (last 10 eps): 1.00
+Total T: 303600 Episode Num: 1012 Episode T: 300 Reward: 0.000 PseudoReward: [[39.728928]]
+Episode 1012, Average Success Rate (last 10 eps): 0.90
+Total T: 303900 Episode Num: 1013 Episode T: 300 Reward: 299.000 PseudoReward: [[23.342916]]
+Episode 1013, Average Success Rate (last 10 eps): 0.90
+Total T: 304200 Episode Num: 1014 Episode T: 300 Reward: 280.000 PseudoReward: [[-6.4725566]]
+Episode 1014, Average Success Rate (last 10 eps): 0.90
+Total T: 304500 Episode Num: 1015 Episode T: 300 Reward: 257.000 PseudoReward: [[4.0362678]]
+Episode 1015, Average Success Rate (last 10 eps): 0.90
+Total T: 304800 Episode Num: 1016 Episode T: 300 Reward: 270.000 PseudoReward: [[-11.31145]]
+Episode 1016, Average Success Rate (last 10 eps): 0.90
+Total T: 305100 Episode Num: 1017 Episode T: 300 Reward: 287.000 PseudoReward: [[42.01315]]
+Episode 1017, Average Success Rate (last 10 eps): 0.90
+Total T: 305400 Episode Num: 1018 Episode T: 300 Reward: 291.000 PseudoReward: [[26.198463]]
+Episode 1018, Average Success Rate (last 10 eps): 0.90
+Total T: 305700 Episode Num: 1019 Episode T: 300 Reward: 260.000 PseudoReward: [[19.830362]]
+Episode 1019, Average Success Rate (last 10 eps): 0.90
+Total T: 306000 Episode Num: 1020 Episode T: 300 Reward: 284.000 PseudoReward: [[22.152472]]
+Episode 1020, Average Success Rate (last 10 eps): 0.90
+Total T: 306300 Episode Num: 1021 Episode T: 300 Reward: 264.000 PseudoReward: [[32.57324]]
+Episode 1021, Average Success Rate (last 10 eps): 0.90
+Total T: 306600 Episode Num: 1022 Episode T: 300 Reward: 273.000 PseudoReward: [[8.028195]]
+Episode 1022, Average Success Rate (last 10 eps): 1.00
+Total T: 306900 Episode Num: 1023 Episode T: 300 Reward: 289.000 PseudoReward: [[27.360481]]
+Episode 1023, Average Success Rate (last 10 eps): 1.00
+Total T: 307200 Episode Num: 1024 Episode T: 300 Reward: 286.000 PseudoReward: [[-7.505457]]
+Episode 1024, Average Success Rate (last 10 eps): 1.00
+Total T: 307500 Episode Num: 1025 Episode T: 300 Reward: 0.000 PseudoReward: [[36.25069]]
+Episode 1025, Average Success Rate (last 10 eps): 0.90
+Total T: 307800 Episode Num: 1026 Episode T: 300 Reward: 249.000 PseudoReward: [[20.019903]]
+Episode 1026, Average Success Rate (last 10 eps): 0.90
+Total T: 308100 Episode Num: 1027 Episode T: 300 Reward: 252.000 PseudoReward: [[7.555802]]
+Episode 1027, Average Success Rate (last 10 eps): 0.90
+Total T: 308400 Episode Num: 1028 Episode T: 300 Reward: 292.000 PseudoReward: [[31.925278]]
+Episode 1028, Average Success Rate (last 10 eps): 0.90
+Total T: 308700 Episode Num: 1029 Episode T: 300 Reward: 282.000 PseudoReward: [[26.865686]]
+Episode 1029, Average Success Rate (last 10 eps): 0.90
+Total T: 309000 Episode Num: 1030 Episode T: 300 Reward: 279.000 PseudoReward: [[20.125914]]
+Episode 1030, Average Success Rate (last 10 eps): 0.90
+Total T: 309300 Episode Num: 1031 Episode T: 300 Reward: 292.000 PseudoReward: [[31.062555]]
+Episode 1031, Average Success Rate (last 10 eps): 0.90
+Total T: 309600 Episode Num: 1032 Episode T: 300 Reward: 296.000 PseudoReward: [[19.095083]]
+Episode 1032, Average Success Rate (last 10 eps): 0.90
+Total T: 309900 Episode Num: 1033 Episode T: 300 Reward: 261.000 PseudoReward: [[-7.5168324]]
+Episode 1033, Average Success Rate (last 10 eps): 0.90
+Total T: 310200 Episode Num: 1034 Episode T: 300 Reward: 277.000 PseudoReward: [[-10.439177]]
+Episode 1034, Average Success Rate (last 10 eps): 0.90
+Total T: 310500 Episode Num: 1035 Episode T: 300 Reward: 266.000 PseudoReward: [[-4.3138657]]
+Episode 1035, Average Success Rate (last 10 eps): 1.00
+Total T: 310800 Episode Num: 1036 Episode T: 300 Reward: 286.000 PseudoReward: [[-15.892056]]
+Episode 1036, Average Success Rate (last 10 eps): 1.00
+Total T: 311100 Episode Num: 1037 Episode T: 300 Reward: 253.000 PseudoReward: [[37.872116]]
+Episode 1037, Average Success Rate (last 10 eps): 1.00
+Total T: 311400 Episode Num: 1038 Episode T: 300 Reward: 284.000 PseudoReward: [[30.25232]]
+Episode 1038, Average Success Rate (last 10 eps): 1.00
+Total T: 311700 Episode Num: 1039 Episode T: 300 Reward: 268.000 PseudoReward: [[6.4960394]]
+Episode 1039, Average Success Rate (last 10 eps): 1.00
+Total T: 312000 Episode Num: 1040 Episode T: 300 Reward: 288.000 PseudoReward: [[22.024166]]
+Episode 1040, Average Success Rate (last 10 eps): 1.00
+Total T: 312300 Episode Num: 1041 Episode T: 300 Reward: 273.000 PseudoReward: [[19.425097]]
+Episode 1041, Average Success Rate (last 10 eps): 1.00
+Total T: 312600 Episode Num: 1042 Episode T: 300 Reward: 291.000 PseudoReward: [[-5.6810994]]
+Episode 1042, Average Success Rate (last 10 eps): 1.00
+Total T: 312900 Episode Num: 1043 Episode T: 300 Reward: 276.000 PseudoReward: [[18.155472]]
+Episode 1043, Average Success Rate (last 10 eps): 1.00
+Total T: 313200 Episode Num: 1044 Episode T: 300 Reward: 237.000 PseudoReward: [[-7.759306]]
+Episode 1044, Average Success Rate (last 10 eps): 1.00
+Total T: 313500 Episode Num: 1045 Episode T: 300 Reward: 286.000 PseudoReward: [[20.948256]]
+Episode 1045, Average Success Rate (last 10 eps): 1.00
+Total T: 313800 Episode Num: 1046 Episode T: 300 Reward: 253.000 PseudoReward: [[-8.711846]]
+Episode 1046, Average Success Rate (last 10 eps): 1.00
+Total T: 314100 Episode Num: 1047 Episode T: 300 Reward: 254.000 PseudoReward: [[5.540256]]
+Episode 1047, Average Success Rate (last 10 eps): 1.00
+Total T: 314400 Episode Num: 1048 Episode T: 300 Reward: 291.000 PseudoReward: [[25.977337]]
+Episode 1048, Average Success Rate (last 10 eps): 1.00
+Total T: 314700 Episode Num: 1049 Episode T: 300 Reward: 283.000 PseudoReward: [[-3.8500433]]
+Episode 1049, Average Success Rate (last 10 eps): 1.00
+Total T: 315000 Episode Num: 1050 Episode T: 300 Reward: 0.000 PseudoReward: [[35.300716]]
+Episode 1050, Average Success Rate (last 10 eps): 0.90
+Total T: 315300 Episode Num: 1051 Episode T: 300 Reward: 269.000 PseudoReward: [[35.65809]]
+Episode 1051, Average Success Rate (last 10 eps): 0.90
+Total T: 315600 Episode Num: 1052 Episode T: 300 Reward: 287.000 PseudoReward: [[-2.6407454]]
+Episode 1052, Average Success Rate (last 10 eps): 0.90
+Total T: 315900 Episode Num: 1053 Episode T: 300 Reward: 283.000 PseudoReward: [[42.23717]]
+Episode 1053, Average Success Rate (last 10 eps): 0.90
+Total T: 316200 Episode Num: 1054 Episode T: 300 Reward: 273.000 PseudoReward: [[-4.3243785]]
+Episode 1054, Average Success Rate (last 10 eps): 0.90
+Total T: 316500 Episode Num: 1055 Episode T: 300 Reward: 284.000 PseudoReward: [[34.801476]]
+Episode 1055, Average Success Rate (last 10 eps): 0.90
+Total T: 316800 Episode Num: 1056 Episode T: 300 Reward: 285.000 PseudoReward: [[-13.436476]]
+Episode 1056, Average Success Rate (last 10 eps): 0.90
+Total T: 317100 Episode Num: 1057 Episode T: 300 Reward: 287.000 PseudoReward: [[17.192238]]
+Episode 1057, Average Success Rate (last 10 eps): 0.90
+Total T: 317400 Episode Num: 1058 Episode T: 300 Reward: 0.000 PseudoReward: [[35.666214]]
+Episode 1058, Average Success Rate (last 10 eps): 0.80
+Total T: 317700 Episode Num: 1059 Episode T: 300 Reward: 283.000 PseudoReward: [[-1.9753613]]
+Episode 1059, Average Success Rate (last 10 eps): 0.80
+Total T: 318000 Episode Num: 1060 Episode T: 300 Reward: 281.000 PseudoReward: [[2.9131734]]
+Episode 1060, Average Success Rate (last 10 eps): 0.90
+Total T: 318300 Episode Num: 1061 Episode T: 300 Reward: 274.000 PseudoReward: [[-4.3271785]]
+Episode 1061, Average Success Rate (last 10 eps): 0.90
+Total T: 318600 Episode Num: 1062 Episode T: 300 Reward: 263.000 PseudoReward: [[-7.4704614]]
+Episode 1062, Average Success Rate (last 10 eps): 0.90
+Total T: 318900 Episode Num: 1063 Episode T: 300 Reward: 250.000 PseudoReward: [[8.739646]]
+Episode 1063, Average Success Rate (last 10 eps): 0.90
+Total T: 319200 Episode Num: 1064 Episode T: 300 Reward: 270.000 PseudoReward: [[-10.649297]]
+Episode 1064, Average Success Rate (last 10 eps): 0.90
+Total T: 319500 Episode Num: 1065 Episode T: 300 Reward: 280.000 PseudoReward: [[25.621239]]
+Episode 1065, Average Success Rate (last 10 eps): 0.90
+Total T: 319800 Episode Num: 1066 Episode T: 300 Reward: 271.000 PseudoReward: [[26.979464]]
+Episode 1066, Average Success Rate (last 10 eps): 0.90
+Total T: 320100 Episode Num: 1067 Episode T: 300 Reward: 253.000 PseudoReward: [[29.775763]]
+Episode 1067, Average Success Rate (last 10 eps): 0.90
+Total T: 320400 Episode Num: 1068 Episode T: 300 Reward: 281.000 PseudoReward: [[-1.4754714]]
+Episode 1068, Average Success Rate (last 10 eps): 1.00
+Total T: 320700 Episode Num: 1069 Episode T: 300 Reward: 271.000 PseudoReward: [[28.374369]]
+Episode 1069, Average Success Rate (last 10 eps): 1.00
+Total T: 321000 Episode Num: 1070 Episode T: 300 Reward: 254.000 PseudoReward: [[-5.140311]]
+Episode 1070, Average Success Rate (last 10 eps): 1.00
+Total T: 321300 Episode Num: 1071 Episode T: 300 Reward: 249.000 PseudoReward: [[22.89216]]
+Episode 1071, Average Success Rate (last 10 eps): 1.00
+Total T: 321600 Episode Num: 1072 Episode T: 300 Reward: 287.000 PseudoReward: [[18.743452]]
+Episode 1072, Average Success Rate (last 10 eps): 1.00
+Total T: 321900 Episode Num: 1073 Episode T: 300 Reward: 274.000 PseudoReward: [[25.819136]]
+Episode 1073, Average Success Rate (last 10 eps): 1.00
+Total T: 322200 Episode Num: 1074 Episode T: 300 Reward: 274.000 PseudoReward: [[-8.015695]]
+Episode 1074, Average Success Rate (last 10 eps): 1.00
+Total T: 322500 Episode Num: 1075 Episode T: 300 Reward: 286.000 PseudoReward: [[16.976149]]
+Episode 1075, Average Success Rate (last 10 eps): 1.00
+Total T: 322800 Episode Num: 1076 Episode T: 300 Reward: 267.000 PseudoReward: [[30.958279]]
+Episode 1076, Average Success Rate (last 10 eps): 1.00
+Total T: 323100 Episode Num: 1077 Episode T: 300 Reward: 0.000 PseudoReward: [[31.890842]]
+Episode 1077, Average Success Rate (last 10 eps): 0.90
+Total T: 323400 Episode Num: 1078 Episode T: 300 Reward: 292.000 PseudoReward: [[28.298477]]
+Episode 1078, Average Success Rate (last 10 eps): 0.90
+Total T: 323700 Episode Num: 1079 Episode T: 300 Reward: 284.000 PseudoReward: [[24.567963]]
+Episode 1079, Average Success Rate (last 10 eps): 0.90
+Total T: 324000 Episode Num: 1080 Episode T: 300 Reward: 276.000 PseudoReward: [[5.810116]]
+Episode 1080, Average Success Rate (last 10 eps): 0.90
+Total T: 324300 Episode Num: 1081 Episode T: 300 Reward: 289.000 PseudoReward: [[6.77925]]
+Episode 1081, Average Success Rate (last 10 eps): 0.90
+Total T: 324600 Episode Num: 1082 Episode T: 300 Reward: 239.000 PseudoReward: [[6.585298]]
+Episode 1082, Average Success Rate (last 10 eps): 0.90
+Total T: 324900 Episode Num: 1083 Episode T: 300 Reward: 293.000 PseudoReward: [[39.340153]]
+Episode 1083, Average Success Rate (last 10 eps): 0.90
+Total T: 325200 Episode Num: 1084 Episode T: 300 Reward: 296.000 PseudoReward: [[-6.985329]]
+Episode 1084, Average Success Rate (last 10 eps): 0.90
+Total T: 325500 Episode Num: 1085 Episode T: 300 Reward: 272.000 PseudoReward: [[5.722181]]
+Episode 1085, Average Success Rate (last 10 eps): 0.90
+Total T: 325800 Episode Num: 1086 Episode T: 300 Reward: 290.000 PseudoReward: [[5.4587216]]
+Episode 1086, Average Success Rate (last 10 eps): 0.90
+Total T: 326100 Episode Num: 1087 Episode T: 300 Reward: 231.000 PseudoReward: [[27.450024]]
+Episode 1087, Average Success Rate (last 10 eps): 1.00
+Total T: 326400 Episode Num: 1088 Episode T: 300 Reward: 252.000 PseudoReward: [[-1.2884465]]
+Episode 1088, Average Success Rate (last 10 eps): 1.00
+Total T: 326700 Episode Num: 1089 Episode T: 300 Reward: 270.000 PseudoReward: [[-12.916334]]
+Episode 1089, Average Success Rate (last 10 eps): 1.00
+Total T: 327000 Episode Num: 1090 Episode T: 300 Reward: 294.000 PseudoReward: [[6.491411]]
+Episode 1090, Average Success Rate (last 10 eps): 1.00
+Total T: 327300 Episode Num: 1091 Episode T: 300 Reward: 265.000 PseudoReward: [[22.199484]]
+Episode 1091, Average Success Rate (last 10 eps): 1.00
+Total T: 327600 Episode Num: 1092 Episode T: 300 Reward: 264.000 PseudoReward: [[14.780561]]
+Episode 1092, Average Success Rate (last 10 eps): 1.00
+Total T: 327900 Episode Num: 1093 Episode T: 300 Reward: 298.000 PseudoReward: [[-6.9117103]]
+Episode 1093, Average Success Rate (last 10 eps): 1.00
+Total T: 328200 Episode Num: 1094 Episode T: 300 Reward: 295.000 PseudoReward: [[37.540783]]
+Episode 1094, Average Success Rate (last 10 eps): 1.00
+Total T: 328500 Episode Num: 1095 Episode T: 300 Reward: 250.000 PseudoReward: [[-7.12303]]
+Episode 1095, Average Success Rate (last 10 eps): 1.00
+Total T: 328800 Episode Num: 1096 Episode T: 300 Reward: 252.000 PseudoReward: [[-4.702247]]
+Episode 1096, Average Success Rate (last 10 eps): 1.00
+Total T: 329100 Episode Num: 1097 Episode T: 300 Reward: 287.000 PseudoReward: [[21.56236]]
+Episode 1097, Average Success Rate (last 10 eps): 1.00
+Total T: 329400 Episode Num: 1098 Episode T: 300 Reward: 291.000 PseudoReward: [[3.5340137]]
+Episode 1098, Average Success Rate (last 10 eps): 1.00
+Total T: 329700 Episode Num: 1099 Episode T: 300 Reward: 271.000 PseudoReward: [[25.18964]]
+Episode 1099, Average Success Rate (last 10 eps): 1.00
+Total T: 330000 Episode Num: 1100 Episode T: 300 Reward: 280.000 PseudoReward: [[21.982841]]
+Episode 1100, Average Success Rate (last 10 eps): 1.00
+Total T: 330300 Episode Num: 1101 Episode T: 300 Reward: 264.000 PseudoReward: [[5.237905]]
+Episode 1101, Average Success Rate (last 10 eps): 1.00
+Total T: 330600 Episode Num: 1102 Episode T: 300 Reward: 236.000 PseudoReward: [[-7.8178473]]
+Episode 1102, Average Success Rate (last 10 eps): 1.00
+Total T: 330900 Episode Num: 1103 Episode T: 300 Reward: 238.000 PseudoReward: [[37.359062]]
+Episode 1103, Average Success Rate (last 10 eps): 1.00
+Total T: 331200 Episode Num: 1104 Episode T: 300 Reward: 297.000 PseudoReward: [[30.347744]]
+Episode 1104, Average Success Rate (last 10 eps): 1.00
+Total T: 331500 Episode Num: 1105 Episode T: 300 Reward: 265.000 PseudoReward: [[-9.680587]]
+Episode 1105, Average Success Rate (last 10 eps): 1.00
+Total T: 331800 Episode Num: 1106 Episode T: 300 Reward: 262.000 PseudoReward: [[36.090996]]
+Episode 1106, Average Success Rate (last 10 eps): 1.00
+Total T: 332100 Episode Num: 1107 Episode T: 300 Reward: 297.000 PseudoReward: [[28.244143]]
+Episode 1107, Average Success Rate (last 10 eps): 1.00
+Total T: 332400 Episode Num: 1108 Episode T: 300 Reward: 259.000 PseudoReward: [[40.110523]]
+Episode 1108, Average Success Rate (last 10 eps): 1.00
+Total T: 332700 Episode Num: 1109 Episode T: 300 Reward: 298.000 PseudoReward: [[29.239305]]
+Episode 1109, Average Success Rate (last 10 eps): 1.00
+Total T: 333000 Episode Num: 1110 Episode T: 300 Reward: 264.000 PseudoReward: [[31.188425]]
+Episode 1110, Average Success Rate (last 10 eps): 1.00
+Total T: 333300 Episode Num: 1111 Episode T: 300 Reward: 0.000 PseudoReward: [[35.319088]]
+Episode 1111, Average Success Rate (last 10 eps): 0.90
+Total T: 333600 Episode Num: 1112 Episode T: 300 Reward: 289.000 PseudoReward: [[16.381887]]
+Episode 1112, Average Success Rate (last 10 eps): 0.90
+Total T: 333900 Episode Num: 1113 Episode T: 300 Reward: 242.000 PseudoReward: [[-7.807436]]
+Episode 1113, Average Success Rate (last 10 eps): 0.90
+Total T: 334200 Episode Num: 1114 Episode T: 300 Reward: 276.000 PseudoReward: [[20.403763]]
+Episode 1114, Average Success Rate (last 10 eps): 0.90
+Total T: 334500 Episode Num: 1115 Episode T: 300 Reward: 0.000 PseudoReward: [[32.580708]]
+Episode 1115, Average Success Rate (last 10 eps): 0.80
+Total T: 334800 Episode Num: 1116 Episode T: 300 Reward: 286.000 PseudoReward: [[27.04069]]
+Episode 1116, Average Success Rate (last 10 eps): 0.80
+Total T: 335100 Episode Num: 1117 Episode T: 300 Reward: 268.000 PseudoReward: [[21.45617]]
+Episode 1117, Average Success Rate (last 10 eps): 0.80
+Total T: 335400 Episode Num: 1118 Episode T: 300 Reward: 0.000 PseudoReward: [[30.823929]]
+Episode 1118, Average Success Rate (last 10 eps): 0.70
+Total T: 335700 Episode Num: 1119 Episode T: 300 Reward: 0.000 PseudoReward: [[31.398397]]
+Episode 1119, Average Success Rate (last 10 eps): 0.60
+Total T: 336000 Episode Num: 1120 Episode T: 300 Reward: 285.000 PseudoReward: [[6.5208635]]
+Episode 1120, Average Success Rate (last 10 eps): 0.60
+Total T: 336300 Episode Num: 1121 Episode T: 300 Reward: 281.000 PseudoReward: [[22.051529]]
+Episode 1121, Average Success Rate (last 10 eps): 0.70
+Total T: 336600 Episode Num: 1122 Episode T: 300 Reward: 248.000 PseudoReward: [[23.494986]]
+Episode 1122, Average Success Rate (last 10 eps): 0.70
+Total T: 336900 Episode Num: 1123 Episode T: 300 Reward: 232.000 PseudoReward: [[-12.78113]]
+Episode 1123, Average Success Rate (last 10 eps): 0.70

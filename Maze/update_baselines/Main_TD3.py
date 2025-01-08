@@ -18,7 +18,7 @@ import random
 import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
 
-success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
+success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/U_maze/Umaze_success_demos_5.pkl'
 failed_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 with open(success_demo_path, 'rb') as f:
     success_demos = pickle.load(f)
@@ -142,7 +142,7 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 if __name__ == "__main__":
 
     wandb.init(
-        project="Main_1229",  
+        project="Main_Umaze",  
         name='TD3',
         config={
             "batch_size": 256,
@@ -159,16 +159,25 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 
+    # example_map = [
+    #     [1, 1, 1, 1, 1, 1, 1],
+    #     [1, 0, 0, 0, 0, 0, 1],
+    #     [1, 0, 1, 0, 1, 0, 1],
+    #     [1, 0, 1, 'g', 't', 0, 1],
+    #     [1, 0, 't', 0, 0, 0, 1],
+    #     [1, 1, 1, 1, 1, 1, 1]
+    # ]
     example_map = [
-        [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 0, 1],
-        [1, 0, 1, 'g', 't', 0, 1],
-        [1, 0, 't', 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1]
+    [1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1], 
+    [1, 1, 1, 0, 1], 
+    [1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1]
     ]
+    wandb.log({'map': example_map})
+
     env = gym.make('TrapMazeEnv', maze_map=example_map, reward_type="sparse", render_mode="rgb_array", max_episode_steps=300, camera_name="topview")
 
     # 定义状态维度和动作维度

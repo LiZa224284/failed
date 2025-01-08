@@ -18,7 +18,7 @@ import random
 import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
 
-success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
+success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/U_maze/Umaze_success_demos_5.pkl'
 failed_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 
 with open(success_demo_path, 'rb') as f:
@@ -143,7 +143,7 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 if __name__ == "__main__":
 
     wandb.init(
-        project="Main_1229",  
+        project="Main_Umaze",  
         name='MyMethod',
         config={
             "batch_size": 256,
@@ -160,15 +160,22 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
+    # example_map = [
+    #     [1, 1, 1, 1, 1, 1, 1],
+    #     [1, 0, 0, 0, 0, 0, 1],
+    #     [1, 0, 1, 0, 1, 0, 1],
+    #     [1, 0, 1, 'g', 't', 0, 1],
+    #     [1, 0, 't', 0, 0, 0, 1],
+    #     [1, 1, 1, 1, 1, 1, 1]
+    # ]
     example_map = [
-        [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 0, 1, 0, 1],
-        [1, 0, 1, 'g', 't', 0, 1],
-        [1, 0, 't', 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1]
+    [1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1], 
+    [1, 1, 1, 0, 1], 
+    [1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1]
     ]
     env = gym.make('TrapMazeEnv', maze_map=example_map, reward_type="sparse", render_mode="rgb_array", max_episode_steps=300, camera_name="topview")
 
@@ -217,37 +224,37 @@ if __name__ == "__main__":
     for t in range(max_timsteps):
         episode_timesteps += 1
 
-        for i in range(300):
-            if t < start_timesteps:
-                action = env.action_space.sample()
-            else:
-                noise = 0.2
-                action = action = td3_agent.select_action(state=state)
-                action += noise * np.random.normal(size=action.shape)
-                action = np.clip(action, -1.0, 1.0)
-            
-            next_state, reward, done, truncated, info = env.step(action)
-            next_state = np.concatenate([next_state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
-            done = torch.tensor(done, dtype=torch.bool)
-            truncated = torch.tensor(truncated, dtype=torch.bool)
-            done_bool = torch.logical_or(done, truncated).float()
+        # for i in range(300):
+        if t < start_timesteps:
+            action = env.action_space.sample()
+        else:
+            noise = 0.2
+            action = action = td3_agent.select_action(state=state)
+            action += noise * np.random.normal(size=action.shape)
+            action = np.clip(action, -1.0, 1.0)
+        
+        next_state, reward, done, truncated, info = env.step(action)
+        next_state = np.concatenate([next_state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
+        done = torch.tensor(done, dtype=torch.bool)
+        truncated = torch.tensor(truncated, dtype=torch.bool)
+        done_bool = torch.logical_or(done, truncated).float()
 
-            state_tensor = torch.from_numpy(state).float().to(device).unsqueeze(0)
-            action_tensor = torch.from_numpy(action).float().to(device).unsqueeze(0)
-            with torch.no_grad():
-                pseudo_reward = reward_net(state_tensor)
-                pseudo_reward = pseudo_reward.cpu().numpy()
-            replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
+        state_tensor = torch.from_numpy(state).float().to(device).unsqueeze(0)
+        action_tensor = torch.from_numpy(action).float().to(device).unsqueeze(0)
+        with torch.no_grad():
+            pseudo_reward = reward_net(state_tensor)
+            pseudo_reward = pseudo_reward.cpu().numpy()
+        replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
 
-            '''
-            traj.append([state,info])  #应该是字典 [{'state:'.., 'info':...}, {'state:'.., 'info':...}]
-            其中的 state 已经是 np array 了
-            '''
-            traj.append({"state": state, "info": info})
+        '''
+        traj.append([state,info])  #应该是字典 [{'state:'.., 'info':...}, {'state:'.., 'info':...}]
+        其中的 state 已经是 np array 了
+        '''
+        traj.append({"state": state, "info": info})
 
-            state = next_state
-            episode_reward += reward
-            pseudo_episode_reward += pseudo_reward
+        state = next_state
+        episode_reward += reward
+        pseudo_episode_reward += pseudo_reward
 
         if t > start_timesteps:
             td3_agent.train()
@@ -334,18 +341,19 @@ if __name__ == "__main__":
                 loss.backward()
                 optimizer.step()
                 print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
+                del predictions
 
-            save_path = f'/home/xlx9645/failed/Maze/update_baselines/models/MyMethod_models/mid_16/mid_reward_{t+1}.pth'
-            torch.save(reward_net.state_dict(), save_path)
+            # save_path = f'/home/xlx9645/failed/Maze/update_baselines/models/MyMethod_models/mid_16/mid_reward_{t+1}.pth'
+            # torch.save(reward_net.state_dict(), save_path)
 
-            fig_save_path = f"/home/xlx9645/failed/Maze/update_baselines/models/MyMethod_models/mid_16/my_map2_rewardnet_{t+1}.png"
-            visualize_bcirl_reward_function(
-                reward_net_path=save_path,
-                state_dim=state_dim,
-                action_dim=action_dim,
-                device=device,
-                figure_save_path=fig_save_path
-            )
+            # fig_save_path = f"/home/xlx9645/failed/Maze/update_baselines/models/MyMethod_models/mid_16/my_map2_rewardnet_{t+1}.png"
+            # visualize_bcirl_reward_function(
+            #     reward_net_path=save_path,
+            #     state_dim=state_dim,
+            #     action_dim=action_dim,
+            #     device=device,
+            #     figure_save_path=fig_save_path
+            # )
 
     wandb.finish()
     torch.save(td3_agent.actor.state_dict(), "/home/xlx9645/failed/Maze/update_baselines/models/MyMethod_models/mid_16/myit_actor.pth")

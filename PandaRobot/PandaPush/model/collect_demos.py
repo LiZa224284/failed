@@ -7,17 +7,18 @@ from imitation.data import rollout
 from imitation.data.wrappers import RolloutInfoWrapper
 from stable_baselines3.common.vec_env import DummyVecEnv
 from MyPush import MyPandaPushEnv
+from MyPush import MyPandaPushEnv_2
 
 
-env_name = 'MyPandaPushEnv'
+env_name = 'MyPandaPushEnv_2'
 env = gym.make(env_name)
-checkpoint = '/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPush/model/MyPush_TQC_model.zip'
+checkpoint = 'PandaRobot/PandaPush/model/PandaPush_TQC_3_model.zip'
 model = TQC("MultiInputPolicy", env, verbose=1, device="cuda")
 expert = model.load(checkpoint, env)
 vec_env = model.get_env()
 demos = []
 
-for i in range(500):
+for i in range(5):
     obs = vec_env.reset()
     done = False
     expert_demo = []
@@ -39,5 +40,5 @@ for i in range(500):
     demos.append(expert_demo)
     
 
-with open('/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPush/model/success_500.pkl', 'wb') as f:
+with open('/home/xlx9645/failed/PandaRobot/PandaPush/model/success_5_2.pkl', 'wb') as f:
     pickle.dump(demos, f)

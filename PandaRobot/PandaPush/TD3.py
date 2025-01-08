@@ -225,18 +225,10 @@ if __name__ == "__main__":
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    env_name = 'MyPandaPushEnv'
-    # env_name = 'PandaPush-v3'
+    # env_name = 'MyPandaPushEnv'
+    env_name = 'PandaPickAndPlace-v3'
     env = gym.make(env_name)
 
-    # example_map = [
-    #     [1, 1, 1, 1, 1, 1, 1],
-    #     [1, 0, 0, 0, 0, 0, 1],
-    #     [1, 0, 1, 0, 1, 0, 1],
-    #     [1, 0, 1, 'g', 't', 0, 1],
-    #     [1, 0, 't', 0, 0, 0, 1],
-    #     [1, 1, 1, 1, 1, 1, 1]
-    # ]
     # env = gym.make('TrapMazeEnv', maze_map=example_map, reward_type="sparse", render_mode="rgb_array", max_episode_steps=100, camera_name="topview")
     # env = gym.make('InvertedPendulum-v4')
     # 定义状态维度和动作维度

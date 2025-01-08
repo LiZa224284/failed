@@ -21,7 +21,7 @@ from scipy.stats import beta
 from sklearn.neighbors import KernelDensity
 import joblib
 
-success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
+success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/U_maze/Umaze_success_demos_5.pkl'
 failed_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_failed_demos_12.pkl'
 
 with open(success_demo_path, 'rb') as f:
@@ -197,8 +197,8 @@ def visualize_bcirl_reward_function(reward_net_path, state_dim, action_dim, devi
 if __name__ == "__main__":
 
     wandb.init(
-        project="Main_1229",  
-        name='SASR5',
+        project="Main_Umaze",  
+        name='SASR_start0',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -214,15 +214,22 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+    # example_map = [
+    #     [1, 1, 1, 1, 1, 1, 1],
+    #     [1, 0, 0, 0, 0, 0, 1],
+    #     [1, 0, 1, 0, 1, 0, 1],
+    #     [1, 0, 1, 'g', 't', 0, 1],
+    #     [1, 0, 't', 0, 0, 0, 1],
+    #     [1, 1, 1, 1, 1, 1, 1]
+    # ]
     example_map = [
-        [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 0, 1, 0, 1],
-        [1, 0, 1, 'g', 't', 0, 1],
-        [1, 0, 't', 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1]
+    [1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1], 
+    [1, 1, 1, 0, 1], 
+    [1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1]
     ]
     env = gym.make('TrapMazeEnv', maze_map=example_map, reward_type="sparse", render_mode="rgb_array", max_episode_steps=300, camera_name="topview")
 
@@ -262,31 +269,31 @@ if __name__ == "__main__":
     for t in range(max_timsteps):
         episode_timesteps += 1
 
-        for i in range(300):
-            if t < start_timesteps:
-                action = env.action_space.sample()
-            else:
-                noise = 0.2
-                action = action = td3_agent.select_action(state=state)
-                action += noise * np.random.normal(size=action.shape)
-                action = np.clip(action, -1.0, 1.0)
-            
-            next_state, reward, done, truncated, info = env.step(action)
-            next_state = np.concatenate([next_state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
-            done = torch.tensor(done, dtype=torch.bool)
-            truncated = torch.tensor(truncated, dtype=torch.bool)
-            done_bool = torch.logical_or(done, truncated).float()
+        # for i in range(300):
+        if t < start_timesteps:
+            action = env.action_space.sample()
+        else:
+            noise = 0.2
+            action = action = td3_agent.select_action(state=state)
+            action += noise * np.random.normal(size=action.shape)
+            action = np.clip(action, -1.0, 1.0)
+        
+        next_state, reward, done, truncated, info = env.step(action)
+        next_state = np.concatenate([next_state[key].flatten() for key in ['observation', 'achieved_goal', 'desired_goal']])
+        done = torch.tensor(done, dtype=torch.bool)
+        truncated = torch.tensor(truncated, dtype=torch.bool)
+        done_bool = torch.logical_or(done, truncated).float()
 
-            state_tensor = torch.from_numpy(state).float().to(device).unsqueeze(0)
-            action_tensor = torch.from_numpy(action).float().to(device).unsqueeze(0)
-            pseudo_reward = sasr_shaper.compute_shaped_reward(state, reward)
-            replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
+        state_tensor = torch.from_numpy(state).float().to(device).unsqueeze(0)
+        action_tensor = torch.from_numpy(action).float().to(device).unsqueeze(0)
+        pseudo_reward = sasr_shaper.compute_shaped_reward(state, reward)
+        replay_buffer.add(state, action, next_state, pseudo_reward, done_bool)
 
-            traj.append({"state": state, "info": info})
+        traj.append({"state": state, "info": info})
 
-            state = next_state
-            episode_reward += reward
-            pseudo_episode_reward += pseudo_reward
+        state = next_state
+        episode_reward += reward
+        pseudo_episode_reward += pseudo_reward
 
         if t > start_timesteps:
             td3_agent.train()
@@ -339,14 +346,14 @@ if __name__ == "__main__":
         # if (t+1) % 10 == 1:
             sasr_shaper.update_kde(success_demo_buffer, failed_demo_buffer)
 
-        if (t+1) % int(50e3) == 0:
-        # if (t+1) % 10 == 1:
-            save_path = f'/home/xlx9645/failed/Maze/update_baselines/models/SASR/mid_16/sasr_shaper_{t+1}_kde_models.joblib'
-            # save kde model
-            joblib.dump(sasr_shaper, save_path)
+        # if (t+1) % int(50e3) == 0:
+        # # if (t+1) % 10 == 1:
+        #     save_path = f'/home/xlx9645/failed/Maze/update_baselines/models/SASR/mid_16/sasr_shaper_{t+1}_kde_models.joblib'
+        #     # save kde model
+        #     joblib.dump(sasr_shaper, save_path)
 
-            fig_save_path = f"/home/xlx9645/failed/Maze/update_baselines/models/SASR/mid_16/sasr_shaper_{t+1}.png"
-            visualize_sasr_reward_function(sasr_shaper, fig_save_path)
+        #     fig_save_path = f"/home/xlx9645/failed/Maze/update_baselines/models/SASR/mid_16/sasr_shaper_{t+1}.png"
+        #     visualize_sasr_reward_function(sasr_shaper, fig_save_path)
 
     wandb.finish()
     torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/myit_actor.pth")

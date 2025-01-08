@@ -19,7 +19,7 @@ from TD3 import TD3, ReplayBuffer
 import matplotlib.pyplot as plt
 import argparse
 
-success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
+success_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/U_maze/Umaze_success_demos_5.pkl'
 failed_demo_path = '/home/xlx9645/failed/Maze/demo_generate/demos/action_trapMaze/all_success_demos_16.pkl'
 
 with open(success_demo_path, 'rb') as f:
@@ -127,8 +127,8 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     wandb.init(
-        project="Main_1229",  # 替换为你的项目名称
-        name='MaxEnt2',
+        project="Main_Umaze",  # 替换为你的项目名称
+        name='MaxEnt',
         config={
             "batch_size": 256,
             "buffer_size": int(1e6),
@@ -144,15 +144,22 @@ if __name__ == "__main__":
         },
     )
 
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
+    # example_map = [
+    #     [1, 1, 1, 1, 1, 1, 1],
+    #     [1, 0, 0, 0, 0, 0, 1],
+    #     [1, 0, 1, 1, 1, 0, 1],
+    #     [1, 0, 1, 'g', 't', 0, 1],
+    #     [1, 0, 't', 0, 0, 0, 1],
+    #     [1, 1, 1, 1, 1, 1, 1]
+    # ]
     example_map = [
-        [1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 0, 1],
-        [1, 0, 1, 'g', 't', 0, 1],
-        [1, 0, 't', 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1]
+    [1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1], 
+    [1, 1, 1, 0, 1], 
+    [1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1]
     ]
     env = gym.make('TrapMazeEnv', maze_map=example_map, reward_type="sparse", render_mode="rgb_array", max_episode_steps=300, camera_name="topview")
 
@@ -295,18 +302,18 @@ if __name__ == "__main__":
 
                 # wandb.log({"Discriminator Loss": bc_loss})
             
-        if (t+1) % 3000 == 0:
-            save_path = f'/home/xlx9645/failed/Maze/update_baselines/models/MaxEnt/mid_16/mid_reward_{t+1}.pth'
-            torch.save(reward_net.state_dict(), save_path)
+        # if (t+1) % 3000 == 0:
+        #     save_path = f'/home/xlx9645/failed/Maze/update_baselines/models/MaxEnt/mid_16/mid_reward_{t+1}.pth'
+        #     torch.save(reward_net.state_dict(), save_path)
 
-            fig_save_path = f"/home/xlx9645/failed/Maze/update_baselines/models/MaxEnt/mid_16/maxentl_map2_rewardnet_{t+1}.png"
-            visualize_bcirl_reward_function(
-                reward_net_path=save_path,
-                state_dim=state_dim,
-                action_dim=action_dim,
-                device=device,
-                figure_save_path=fig_save_path
-            )
+        #     fig_save_path = f"/home/xlx9645/failed/Maze/update_baselines/models/MaxEnt/mid_16/maxentl_map2_rewardnet_{t+1}.png"
+        #     visualize_bcirl_reward_function(
+        #         reward_net_path=save_path,
+        #         state_dim=state_dim,
+        #         action_dim=action_dim,
+        #         device=device,
+        #         figure_save_path=fig_save_path
+        #     )
 
     wandb.finish()
     torch.save(td3_agent.actor.state_dict(), "/home/xlx9645/failed/Maze/update_baselines/models/MaxEnt/mid_16/maxent_actor.pth")

@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 from TD3 import TD3, ReplayBuffer
 from MyPush import MyPandaPushEnv
 
-success_demo_path = '/home/yuxuanli/failed_IRL_new/PandaRobot/PandaPush/model/success_500.pkl'
+success_demo_path = '/home/xlx9645/failed/PandaRobot/PandaReach/model/success_10.pkl'
 
 with open(success_demo_path, 'rb') as f:
     success_demos = pickle.load(f)
@@ -160,16 +160,8 @@ if __name__ == "__main__":
 
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-    # example_map = [
-    #     [1, 1, 1, 1, 1, 1, 1],
-    #     [1, 0, 0, 0, 0, 0, 1],
-    #     [1, 0, 1, 0, 1, 0, 1],
-    #     [1, 0, 1, 'g', 't', 0, 1],
-    #     [1, 0, 't', 0, 0, 0, 1],
-    #     [1, 1, 1, 1, 1, 1, 1]
-    # ]
     # env = gym.make('TrapMazeEnv', maze_map=example_map, reward_type="sparse", render_mode="rgb_array", max_episode_steps=300, camera_name="topview")
-    env_name = 'MyPandaPushEnv'
+    env_name = 'PandaSlide-v3'
     env = gym.make(env_name)
     # 定义状态维度和动作维度
     state_dim = sum([np.prod(space.shape) for space in env.observation_space.spaces.values()])
@@ -326,5 +318,5 @@ if __name__ == "__main__":
                 print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item()}")
 
     wandb.finish()
-    torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/myit_actor.pth")
-    torch.save(reward_net.state_dict(), '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/myit_reward.pth')
+    # torch.save(td3_agent.actor.state_dict(), "/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/myit_actor.pth")
+    # torch.save(reward_net.state_dict(), '/home/yuxuanli/failed_IRL_new/Maze/update_baselines/models/MyMethod_models/myit_reward.pth')
